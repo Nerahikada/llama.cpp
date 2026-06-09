@@ -80,7 +80,7 @@
 				<LightbulbOff class="h-4 w-4 shrink-0 text-muted-foreground" />
 			{/if}
 
-			<span class="flex-1">推論</span>
+			<span class="flex-1">思考</span>
 
 			{#if thinkingEnabled}
 				<span class="text-xs text-muted-foreground">{currentEffort}</span>
@@ -121,7 +121,7 @@
 								<Info class="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
 							</Tooltip.Trigger>
 							<Tooltip.Content side="left">
-								<p>拡張コンテキストを利用した最大の推論レベル</p>
+								<p>拡張コンテキストを利用した最大の思考レベル</p>
 							</Tooltip.Content>
 						</Tooltip.Root>
 					{/if}
