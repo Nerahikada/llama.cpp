@@ -87,7 +87,7 @@ export function summarizeRequestBody(body: BodyInit | null | undefined): Request
 export function formatDiagnosticErrorMessage(error: unknown): string {
 	const message = error instanceof Error ? error.message : String(error);
 
-	return message.includes('Failed to fetch') ? `${message} (check CORS?)` : message;
+	return message.includes('Failed to fetch') ? `${message} (CORS を確認してください)` : message;
 }
 
 export function extractJsonRpcMethods(body: BodyInit | null | undefined): string[] | undefined {

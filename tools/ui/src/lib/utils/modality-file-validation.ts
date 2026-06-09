@@ -84,21 +84,21 @@ export function filterFilesByModalities(
 			case FileTypeCategory.IMAGE:
 				if (!hasVision) {
 					isSupported = false;
-					reason = 'Images require a vision-capable model';
+					reason = '画像には画像対応モデルが必要です';
 				}
 				break;
 
 			case FileTypeCategory.AUDIO:
 				if (!hasAudio) {
 					isSupported = false;
-					reason = 'Audio files require an audio-capable model';
+					reason = '音声ファイルには音声対応モデルが必要です';
 				}
 				break;
 
 			case FileTypeCategory.VIDEO:
 				if (!hasVideo) {
 					isSupported = false;
-					reason = 'Video files require a video-capable model';
+					reason = '動画ファイルには動画対応モデルが必要です';
 				}
 				break;
 
@@ -145,19 +145,19 @@ export function generateModalityErrorMessage(
 	if (unsupportedFiles.length === 1) {
 		const file = unsupportedFiles[0];
 		const reason = modalityReasons[file.name];
-		message = `The file "${file.name}" cannot be uploaded: ${reason}.`;
+		message = `ファイル "${file.name}" をアップロードできません: ${reason}。`;
 	} else {
 		const fileNames = unsupportedFiles.map((f) => f.name).join(', ');
-		message = `The following files cannot be uploaded: ${fileNames}.`;
+		message = `以下のファイルをアップロードできません: ${fileNames}。`;
 	}
 
 	// Add helpful information about what is supported
-	const supportedTypes: string[] = ['text files', 'PDFs'];
-	if (hasVision) supportedTypes.push('images');
-	if (hasAudio) supportedTypes.push('audio files');
-	if (hasVideo) supportedTypes.push('video files');
+	const supportedTypes: string[] = ['テキストファイル', 'PDF'];
+	if (hasVision) supportedTypes.push('画像');
+	if (hasAudio) supportedTypes.push('音声ファイル');
+	if (hasVideo) supportedTypes.push('動画ファイル');
 
-	message += ` This model supports: ${supportedTypes.join(', ')}.`;
+	message += ` このモデルは次をサポートしています: ${supportedTypes.join('、')}。`;
 
 	return message;
 }

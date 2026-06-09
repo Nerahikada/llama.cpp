@@ -21,7 +21,7 @@
 </script>
 
 {#if groups.length === 0}
-	<div class="py-8 text-center text-sm text-muted-foreground">No tools available</div>
+	<div class="py-8 text-center text-sm text-muted-foreground">利用可能なツールがありません</div>
 {:else}
 	<div class="space-y-2">
 		{#each groups as group (group.label)}
@@ -49,7 +49,7 @@
 					</span>
 
 					<span class="ml-auto shrink-0 text-xs text-muted-foreground">
-						{group.tools.length} tool{group.tools.length !== 1 ? 's' : ''}
+						{group.tools.length} 個のツール
 					</span>
 				</Collapsible.Trigger>
 
@@ -57,9 +57,9 @@
 					<div class="ml-4 border-l border-border/50 pl-2">
 						<!-- Header row -->
 						<div class="flex items-center gap-2 px-2 py-1 text-xs text-muted-foreground">
-							<span class="min-w-0 flex-1">Tool</span>
-							<span class="w-16 shrink-0 text-center">Enabled</span>
-							<span class="w-20 shrink-0 text-center">Always allow</span>
+							<span class="min-w-0 flex-1">ツール</span>
+							<span class="w-16 shrink-0 text-center">有効</span>
+							<span class="w-20 shrink-0 text-center">常に許可</span>
 						</div>
 
 						{#each group.tools as entry (entry.key)}

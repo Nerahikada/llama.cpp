@@ -100,13 +100,13 @@ export async function processFilesToChatUploaded(
 					: false;
 				const currentConfig = settingsStore.config;
 				if (hasVisionSupport && !currentConfig.pdfAsImage) {
-					toast.info(`You can enable parsing PDF as images with vision models.`, {
+					toast.info(`画像対応モデルでは PDF を画像として解析できます。`, {
 						duration: 8000,
 						action: {
-							label: 'Enable PDF as Images',
+							label: 'PDF を画像として有効化',
 							onClick: () => {
 								settingsStore.updateConfig(SETTINGS_KEYS.PDF_AS_IMAGE, true);
-								toast.success('PDF parsing as images enabled!', {
+								toast.success('PDF を画像として解析する設定を有効にしました!', {
 									duration: 3000
 								});
 							}

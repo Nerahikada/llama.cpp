@@ -83,7 +83,7 @@
 			try {
 				JSON.parse(localConfig.customJson);
 			} catch (error) {
-				alert('Invalid JSON in custom parameters. Please check the format and try again.');
+				alert('カスタムパラメータの JSON が無効です。形式を確認してもう一度お試しください。');
 				console.error(error);
 				return;
 			}
@@ -101,7 +101,7 @@
 						processedConfig[field] = numValue;
 					}
 				} else {
-					alert(`Invalid numeric value for ${field}. Please enter a valid number.`);
+					alert(`${field} の数値が無効です。有効な数値を入力してください。`);
 					return;
 				}
 			}
@@ -169,7 +169,7 @@
 				</div>
 
 				<div class="mt-8 border-t border-border/30 pt-6">
-					<p class="text-xs text-muted-foreground">Settings are saved in browser's localStorage</p>
+					<p class="text-xs text-muted-foreground">設定はブラウザの localStorage に保存されます</p>
 				</div>
 			</div>
 

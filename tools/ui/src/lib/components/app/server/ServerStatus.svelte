@@ -26,11 +26,11 @@
 	}
 
 	function getStatusText() {
-		if (loading) return 'Connecting...';
-		if (error) return 'Connection Error';
-		if (serverData) return 'Connected';
+		if (loading) return '接続中...';
+		if (error) return '接続エラー';
+		if (serverData) return '接続済み';
 
-		return 'Unknown';
+		return '不明';
 	}
 </script>
 
@@ -45,7 +45,7 @@
 		<Badge variant="outline" class="text-xs">
 			<Server class="mr-1 h-3 w-3" />
 
-			{model || 'Unknown Model'}
+			{model || '不明なモデル'}
 		</Badge>
 
 		{#if serverData?.default_generation_settings?.n_ctx}

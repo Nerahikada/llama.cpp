@@ -364,20 +364,24 @@ export class ChatService {
 			if (error instanceof Error) {
 				if (error.name === 'TypeError' && error.message.includes('fetch')) {
 					userFriendlyError = new Error(
-						'Unable to connect to server - please check if the server is running'
+						'サーバーに接続できません。サーバーが起動しているか確認してください'
 					);
 					userFriendlyError.name = 'NetworkError';
 				} else if (error.message.includes('ECONNREFUSED')) {
-					userFriendlyError = new Error('Connection refused - server may be offline');
+					userFriendlyError = new Error(
+						'接続が拒否されました。サーバーがオフラインの可能性があります'
+					);
 					userFriendlyError.name = 'NetworkError';
 				} else if (error.message.includes('ETIMEDOUT')) {
-					userFriendlyError = new Error('Request timed out - the server took too long to respond');
+					userFriendlyError = new Error(
+						'リクエストがタイムアウトしました。サーバーの応答に時間がかかりすぎています'
+					);
 					userFriendlyError.name = 'TimeoutError';
 				} else {
 					userFriendlyError = error;
 				}
 			} else {
-				userFriendlyError = new Error('Unknown error occurred while sending message');
+				userFriendlyError = new Error('メッセージの送信中に不明なエラーが発生しました');
 			}
 
 			console.error('Error in sendMessage:', error);
@@ -764,7 +768,9 @@ export class ChatService {
 			const responseText = await response.text();
 
 			if (!responseText.trim()) {
-				const noResponseError = new Error('No response received from server. Please try again.');
+				const noResponseError = new Error(
+					'サーバーから応答がありませんでした。もう一度お試しください。'
+				);
 
 				throw noResponseError;
 			}
@@ -794,7 +800,9 @@ export class ChatService {
 			}
 
 			if (!content.trim() && !serializedToolCalls) {
-				const noResponseError = new Error('No response received from server. Please try again.');
+				const noResponseError = new Error(
+					'サーバーから応答がありませんでした。もう一度お試しください。'
+				);
 
 				throw noResponseError;
 			}
@@ -1122,7 +1130,7 @@ export class ChatService {
 			const errorText = await response.text();
 			const errorData: ApiErrorResponse = JSON.parse(errorText);
 
-			const message = errorData.error?.message || 'Unknown server error';
+			const message = errorData.error?.message || '不明なサーバーエラー';
 			const error = new Error(message) as Error & {
 				contextInfo?: { n_prompt_tokens: number; n_ctx: number };
 			};
@@ -1138,7 +1146,7 @@ export class ChatService {
 			return error;
 		} catch {
 			const fallback = new Error(
-				`Server error (${response.status}): ${response.statusText}`
+				`サーバーエラー (${response.status}): ${response.statusText}`
 			) as Error & {
 				contextInfo?: { n_prompt_tokens: number; n_ctx: number };
 			};

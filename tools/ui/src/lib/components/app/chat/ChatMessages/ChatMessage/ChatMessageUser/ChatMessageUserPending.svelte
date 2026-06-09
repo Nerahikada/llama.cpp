@@ -35,7 +35,7 @@
 
 <div
 	use:fadeInView
-	aria-label="Pending user message"
+	aria-label="保留中のユーザーメッセージ"
 	class="group flex flex-col items-end gap-3 transition-opacity hover:opacity-80 md:gap-2 {className} sticky {showProcessingInfo
 		? 'bottom-44'
 		: 'bottom-32'}"
@@ -58,9 +58,9 @@
 					<div
 						class="pointer-events-auto inset-0 flex items-center gap-1 opacity-0 transition-all duration-150 group-hover:opacity-100"
 					>
-						<ActionIcon icon={Edit} tooltip="Edit" onclick={editCtx.handleEdit} />
-						<ActionIcon icon={Trash2} tooltip="Delete" onclick={onDelete} />
-						<ActionIcon icon={ArrowUp} tooltip="Send immediately" onclick={onSendImmediately} />
+						<ActionIcon icon={Edit} tooltip="編集" onclick={editCtx.handleEdit} />
+						<ActionIcon icon={Trash2} tooltip="削除" onclick={onDelete} />
+						<ActionIcon icon={ArrowUp} tooltip="すぐに送信" onclick={onSendImmediately} />
 					</div>
 				</div>
 			</div>

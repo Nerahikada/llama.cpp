@@ -203,14 +203,14 @@
 			class="my-2"
 			icon={streamingIcon}
 			iconClass={streamingIconClass}
-			title={section.toolName || 'Tool call'}
-			subtitle={isStreaming ? '' : 'incomplete'}
+			title={section.toolName || 'ツール呼び出し'}
+			subtitle={isStreaming ? '' : '未完了'}
 			{isStreaming}
 			onToggle={() => toggleExpanded(index, section)}
 		>
 			<div class="pt-3">
 				<div class="my-3 flex items-center gap-2 text-xs text-muted-foreground">
-					<span>Arguments:</span>
+					<span>引数:</span>
 
 					{#if isStreaming}
 						<Loader2 class="h-3 w-3 animate-spin" />
@@ -225,13 +225,13 @@
 					/>
 				{:else if isStreaming}
 					<div class="rounded bg-muted/30 p-2 text-xs text-muted-foreground italic">
-						Receiving arguments...
+						引数を受信中...
 					</div>
 				{:else}
 					<div
 						class="rounded bg-yellow-500/10 p-2 text-xs text-yellow-600 italic dark:text-yellow-400"
 					>
-						Response was truncated
+						応答が途中で切り詰められました
 					</div>
 				{/if}
 			</div>
@@ -247,13 +247,13 @@
 			icon={toolIcon}
 			iconClass={toolIconClass}
 			title={section.toolName || ''}
-			subtitle={isPending ? 'executing...' : undefined}
+			subtitle={isPending ? '実行中...' : undefined}
 			isStreaming={isPending}
 			onToggle={() => toggleExpanded(index, section)}
 		>
 			{#if section.toolArgs && section.toolArgs !== '{}'}
 				<div class="pt-3">
-					<div class="my-3 text-xs text-muted-foreground">Arguments:</div>
+					<div class="my-3 text-xs text-muted-foreground">引数:</div>
 
 					<SyntaxHighlightedCode
 						code={formatJsonPretty(section.toolArgs)}
@@ -266,7 +266,7 @@
 
 			<div class="pt-3">
 				<div class="my-3 flex items-center gap-2 text-xs text-muted-foreground">
-					<span>Result:</span>
+					<span>結果:</span>
 
 					{#if isPending}
 						<Loader2 class="h-3 w-3 animate-spin" />
@@ -274,7 +274,7 @@
 				</div>
 				{#if isPending}
 					<div class="rounded bg-muted/30 p-2 text-xs text-muted-foreground italic">
-						Waiting for result...
+						結果を待機中...
 					</div>
 				{:else if section.toolResult}
 					<div class="overflow-auto rounded-lg border border-border bg-muted p-4">
@@ -293,15 +293,15 @@
 						{/each}
 					</div>
 				{:else}
-					<div class="rounded bg-muted/30 p-2 text-xs text-muted-foreground italic">No output</div>
+					<div class="rounded bg-muted/30 p-2 text-xs text-muted-foreground italic">出力なし</div>
 				{/if}
 			</div>
 		</CollapsibleContentBlock>
 	{:else if section.type === AgenticSectionType.REASONING}
 		{@const reasoningSubtitle = section.wasInterrupted
 			? hasReasoningError
-				? 'Error'
-				: 'Cancelled'
+				? 'エラー'
+				: 'キャンセル'
 			: isStreaming
 				? ''
 				: undefined}
@@ -310,7 +310,7 @@
 			open={isExpanded(index, section)}
 			class="my-2"
 			icon={Brain}
-			title="Reasoning"
+			title="推論"
 			subtitle={reasoningSubtitle}
 			rawContent={section.content}
 			onToggle={() => toggleExpanded(index, section)}
@@ -322,8 +322,8 @@
 			</div>
 		</CollapsibleContentBlock>
 	{:else if section.type === AgenticSectionType.REASONING_PENDING}
-		{@const reasoningTitle = isStreaming ? 'Reasoning...' : 'Reasoning'}
-		{@const reasoningSubtitle = isStreaming ? '' : hasReasoningError ? 'Error' : 'Cancelled'}
+		{@const reasoningTitle = isStreaming ? '推論中...' : '推論'}
+		{@const reasoningSubtitle = isStreaming ? '' : hasReasoningError ? 'エラー' : 'キャンセル'}
 
 		<CollapsibleContentBlock
 			open={isExpanded(index, section)}
@@ -349,7 +349,7 @@
 		{#each turnGroups as turn, turnIndex (turnIndex)}
 			{@const turnStats = message?.timings?.agentic?.perTurn?.[turnIndex]}
 			<div class="agentic-turn my-2 hover:bg-muted/80 dark:hover:bg-muted/30">
-				<span class="agentic-turn-label">Turn {turnIndex + 1}</span>
+				<span class="agentic-turn-label">ターン {turnIndex + 1}</span>
 				{#each turn.sections as section, sIdx (turn.flatIndices[sIdx])}
 					{@render renderSection(section, turn.flatIndices[sIdx])}
 				{/each}

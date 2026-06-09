@@ -166,12 +166,8 @@
 			</div>
 
 			<span class="text-xs text-muted-foreground">
-				({serverRes.resources.length} resource{serverRes.resources.length !== 1
-					? 's'
-					: ''}{#if hasTemplates}, {serverRes.templates.length} template{serverRes.templates
-						.length !== 1
-						? 's'
-						: ''}{/if})
+				(リソース {serverRes.resources.length} 件{#if hasTemplates}, テンプレート {serverRes
+						.templates.length} 件{/if})
 			</span>
 		</span>
 
@@ -184,10 +180,10 @@
 		<div class="ml-4 flex flex-col gap-0.5 border-l border-border/50 pl-2">
 			{#if serverRes.error}
 				<div class="py-1 text-xs text-red-500">
-					Error: {serverRes.error}
+					エラー: {serverRes.error}
 				</div>
 			{:else if !hasContent}
-				<div class="py-1 text-xs text-muted-foreground">No resources</div>
+				<div class="py-1 text-xs text-muted-foreground">リソースなし</div>
 			{:else}
 				{#if hasResources}
 					{#each sortTreeChildren( [...resourceTree.children.values()] ) as child (child.resource?.uri || `${serverName}:${child.name}`)}
@@ -203,7 +199,7 @@
 					<div
 						class="py-0.5 text-[11px] font-medium tracking-wide text-muted-foreground/70 uppercase"
 					>
-						Templates
+						テンプレート
 					</div>
 
 					{#each templateInfos as template (template.uriTemplate)}

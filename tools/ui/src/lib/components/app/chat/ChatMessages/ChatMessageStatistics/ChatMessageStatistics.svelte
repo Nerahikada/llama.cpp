@@ -158,18 +158,16 @@
 			{@render viewButton({
 				view: ChatMessageStatsView.READING,
 				icon: BookOpenText,
-				label: 'Reading',
-				tooltipText: 'Reading (prompt processing)'
+				label: '読み込み',
+				tooltipText: '読み込み（プロンプト処理）'
 			})}
 		{/if}
 
 		{@render viewButton({
 			view: ChatMessageStatsView.GENERATION,
 			icon: Sparkles,
-			label: 'Generation',
-			tooltipText: isGenerationDisabled
-				? 'Generation (waiting for tokens...)'
-				: 'Generation (token output)',
+			label: '生成',
+			tooltipText: isGenerationDisabled ? '生成（トークンを待機中...）' : '生成（トークン出力）',
 			disabled: isGenerationDisabled
 		})}
 
@@ -177,16 +175,16 @@
 			{@render viewButton({
 				view: ChatMessageStatsView.TOOLS,
 				icon: Wrench,
-				label: 'Tools',
-				tooltipText: 'Tool calls'
+				label: 'ツール',
+				tooltipText: 'ツール呼び出し'
 			})}
 
 			{#if !hideSummary}
 				{@render viewButton({
 					view: ChatMessageStatsView.SUMMARY,
 					icon: Layers,
-					label: 'Summary',
-					tooltipText: 'Agentic summary'
+					label: 'サマリー',
+					tooltipText: 'エージェントのサマリー'
 				})}
 			{/if}
 		{/if}
@@ -197,85 +195,85 @@
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={WholeWord}
-				value="{predictedTokens?.toLocaleString()} tokens"
-				tooltipLabel="Generated tokens"
+				value="{predictedTokens?.toLocaleString()} トークン"
+				tooltipLabel="生成されたトークン"
 			/>
 
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Clock}
 				value={formattedTime}
-				tooltipLabel="Generation time"
+				tooltipLabel="生成時間"
 			/>
 
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Gauge}
 				value="{tokensPerSecond.toFixed(2)} t/s"
-				tooltipLabel="Generation speed"
+				tooltipLabel="生成速度"
 			/>
 		{:else if activeView === ChatMessageStatsView.TOOLS && hasAgenticStats}
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Wrench}
-				value="{agenticTimings!.toolCallsCount} calls"
-				tooltipLabel="Tool calls executed"
+				value="{agenticTimings!.toolCallsCount} 回"
+				tooltipLabel="実行されたツール呼び出し"
 			/>
 
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Clock}
 				value={formattedAgenticToolsTime}
-				tooltipLabel="Tool execution time"
+				tooltipLabel="ツール実行時間"
 			/>
 
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Gauge}
 				value="{agenticToolsPerSecond.toFixed(2)} calls/s"
-				tooltipLabel="Tool execution rate"
+				tooltipLabel="ツール実行レート"
 			/>
 		{:else if activeView === ChatMessageStatsView.SUMMARY && hasAgenticStats}
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Layers}
-				value="{agenticTimings!.turns} turns"
-				tooltipLabel="Agentic turns (LLM calls)"
+				value="{agenticTimings!.turns} ターン"
+				tooltipLabel="エージェントのターン（LLM 呼び出し）"
 			/>
 
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={WholeWord}
-				value="{agenticTimings!.llm.predicted_n.toLocaleString()} tokens"
-				tooltipLabel="Total tokens generated"
+				value="{agenticTimings!.llm.predicted_n.toLocaleString()} トークン"
+				tooltipLabel="生成されたトークンの合計"
 			/>
 
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Clock}
 				value={formattedAgenticTotalTime}
-				tooltipLabel="Total time (LLM + tools)"
+				tooltipLabel="合計時間（LLM + ツール）"
 			/>
 		{:else if hasPromptStats}
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={WholeWord}
-				value="{promptTokens} tokens"
-				tooltipLabel="Prompt tokens"
+				value="{promptTokens} トークン"
+				tooltipLabel="プロンプトのトークン"
 			/>
 
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Clock}
 				value={formattedPromptTime ?? '0s'}
-				tooltipLabel="Prompt processing time"
+				tooltipLabel="プロンプト処理時間"
 			/>
 
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Gauge}
 				value="{promptTokensPerSecond!.toFixed(2)} tokens/s"
-				tooltipLabel="Prompt processing speed"
+				tooltipLabel="プロンプト処理速度"
 			/>
 		{/if}
 	</div>

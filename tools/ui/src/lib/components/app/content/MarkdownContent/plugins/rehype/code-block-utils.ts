@@ -57,7 +57,11 @@ export function createButton(
 /**
  * Creates a copy button element.
  */
-export function createCopyButton(id: string, idAttribute: string, title: string = 'Copy'): Element {
+export function createCopyButton(
+	id: string,
+	idAttribute: string,
+	title: string = 'コピー'
+): Element {
 	return createButton(COPY_CODE_BTN_CLASS, title, COPY_ICON_SVG, id, idAttribute);
 }
 
@@ -67,7 +71,7 @@ export function createCopyButton(id: string, idAttribute: string, title: string 
 export function createPreviewButton(
 	id: string,
 	idAttribute: string,
-	title: string = 'Preview'
+	title: string = 'プレビュー'
 ): Element {
 	return createButton(PREVIEW_CODE_BTN_CLASS, title, PREVIEW_ICON_SVG, id, idAttribute);
 }

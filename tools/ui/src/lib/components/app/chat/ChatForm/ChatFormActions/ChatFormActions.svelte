@@ -143,9 +143,9 @@
 			onclick={() =>
 				ChatService.stopReasoning(activeMessage?.completionId ?? '', activeMessage?.model)}
 			class="group h-8 w-8 rounded-full p-0"
-			title="Skip reasoning"
+			title="推論をスキップ"
 		>
-			<span class="sr-only">Skip reasoning</span>
+			<span class="sr-only">推論をスキップ</span>
 
 			<SkipForward class="h-4 w-4 stroke-muted-foreground group-hover:stroke-foreground" />
 		</Button>
@@ -158,7 +158,7 @@
 			onclick={onStop}
 			class="group h-8 w-8 rounded-full p-0 hover:bg-destructive/10!"
 		>
-			<span class="sr-only">Stop</span>
+			<span class="sr-only">停止</span>
 
 			<Square
 				class="h-8 w-8 fill-muted-foreground stroke-muted-foreground group-hover:fill-destructive group-hover:stroke-destructive hover:fill-destructive hover:stroke-destructive"

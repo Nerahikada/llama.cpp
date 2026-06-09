@@ -284,7 +284,7 @@ class ConversationsStore {
 	 * @returns The ID of the created conversation
 	 */
 	async createConversation(name?: string): Promise<string> {
-		const conversationName = name || `Chat ${new Date().toLocaleString()}`;
+		const conversationName = name || `チャット ${new Date().toLocaleString()}`;
 		const conversation = await DatabaseService.createConversation(conversationName);
 
 		if (this.pendingMcpServerOverrides.length > 0) {
@@ -426,12 +426,12 @@ class ConversationsStore {
 			this.clearActiveConversation();
 			this.conversations = [];
 
-			toast.success('All conversations deleted');
+			toast.success('すべての会話を削除しました');
 
 			await goto(ROUTES.NEW_CHAT);
 		} catch (error) {
 			console.error('Failed to delete all conversations:', error);
-			toast.error('Failed to delete conversations');
+			toast.error('会話の削除に失敗しました');
 		}
 	}
 
@@ -861,12 +861,12 @@ class ConversationsStore {
 
 			await goto(RouterService.chat(newConv.id));
 
-			toast.success('Conversation forked');
+			toast.success('会話をフォークしました');
 
 			return newConv.id;
 		} catch (error) {
 			console.error('Failed to fork conversation:', error);
-			toast.error('Failed to fork conversation');
+			toast.error('会話のフォークに失敗しました');
 
 			return null;
 		}
@@ -983,7 +983,7 @@ class ConversationsStore {
 				const file = (e.target as HTMLInputElement)?.files?.[0];
 
 				if (!file) {
-					reject(new Error('No file selected'));
+					reject(new Error('ファイルが選択されていません'));
 					return;
 				}
 
@@ -1002,11 +1002,13 @@ class ConversationsStore {
 					) {
 						importedData = [parsedData];
 					} else {
-						throw new Error('Invalid file format');
+						throw new Error('ファイル形式が無効です');
 					}
 
 					const result = await DatabaseService.importConversations(importedData);
-					toast.success(`Imported ${result.imported} conversation(s), skipped ${result.skipped}`);
+					toast.success(
+						`${result.imported} 件の会話をインポートし、${result.skipped} 件をスキップしました`
+					);
 
 					await this.loadConversations();
 
@@ -1016,10 +1018,10 @@ class ConversationsStore {
 
 					resolve(importedConversations);
 				} catch (err: unknown) {
-					const message = err instanceof Error ? err.message : 'Unknown error';
+					const message = err instanceof Error ? err.message : '不明なエラー';
 					console.error('Failed to import conversations:', err);
-					toast.error('Import failed', { description: message });
-					reject(new Error(`Import failed: ${message}`));
+					toast.error('インポートに失敗しました', { description: message });
+					reject(new Error(`インポートに失敗しました: ${message}`));
 				}
 			};
 

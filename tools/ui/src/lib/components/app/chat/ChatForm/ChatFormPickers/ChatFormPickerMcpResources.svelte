@@ -166,7 +166,7 @@
 <ChatFormPickerPopover
 	bind:isOpen
 	class={className}
-	srLabel="Open resource picker"
+	srLabel="リソースピッカーを開く"
 	{onClose}
 	onKeydown={handleKeydown}
 >
@@ -176,8 +176,8 @@
 		{selectedIndex}
 		bind:searchQuery={internalSearchQuery}
 		{showSearchInput}
-		searchPlaceholder="Search resources..."
-		emptyMessage="No MCP resources available"
+		searchPlaceholder="リソースを検索..."
+		emptyMessage="利用可能な MCP リソースがありません"
 		itemKey={(resource) => resource.serverName + ':' + resource.uri}
 	>
 		{#snippet item(resource, index, isSelected)}
@@ -200,7 +200,7 @@
 							<span
 								class="inline-flex items-center rounded-full bg-primary/10 px-1.5 py-0.5 text-[10px] font-medium text-primary"
 							>
-								attached
+								添付済み
 							</span>
 						{/if}
 					{/snippet}
@@ -229,7 +229,7 @@
 				>
 					<FolderOpen class="h-3 w-3" />
 
-					Browse all
+					すべて表示
 				</Button>
 			{/if}
 		{/snippet}

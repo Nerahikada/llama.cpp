@@ -192,7 +192,7 @@ export function createHandleImageError(
 		// Get the fallback HTML and replace the image
 		const fallbackHtml = `<div class="image-error-placeholder" data-original-src="${img.src}">
 			<span class="image-error-icon">⚠️</span>
-			<span class="image-error-text">Failed to load image</span>
+			<span class="image-error-text">画像の読み込みに失敗しました</span>
 		</div>`;
 
 		// Replace the img element with fallback in the block's HTML

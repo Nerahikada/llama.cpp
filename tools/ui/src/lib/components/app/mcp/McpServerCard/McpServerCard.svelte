@@ -169,7 +169,7 @@
 			{:else if protocolVersion}
 				<div class="flex flex-wrap items-center gap-1">
 					<span class="text-[10px] text-muted-foreground">
-						Protocol version: {protocolVersion}
+						プロトコルバージョン: {protocolVersion}
 					</span>
 				</div>
 			{/if}

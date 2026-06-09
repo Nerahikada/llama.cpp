@@ -16,31 +16,31 @@
 <AlertDialog.Root bind:open>
 	<AlertDialog.Content>
 		<AlertDialog.Header>
-			<AlertDialog.Title>Update Conversation Title?</AlertDialog.Title>
+			<AlertDialog.Title>会話のタイトルを更新しますか?</AlertDialog.Title>
 
 			<AlertDialog.Description>
-				Do you want to update the conversation title to match the first message content?
+				最初のメッセージの内容に合わせて会話のタイトルを更新しますか?
 			</AlertDialog.Description>
 		</AlertDialog.Header>
 
 		<div class="space-y-4 pt-2 pb-6">
 			<div class="space-y-2">
-				<p class="text-sm font-medium text-muted-foreground">Current title:</p>
+				<p class="text-sm font-medium text-muted-foreground">現在のタイトル:</p>
 
 				<p class="rounded-md bg-muted/50 p-3 text-sm font-medium">{currentTitle}</p>
 			</div>
 
 			<div class="space-y-2">
-				<p class="text-sm font-medium text-muted-foreground">New title would be:</p>
+				<p class="text-sm font-medium text-muted-foreground">新しいタイトル:</p>
 
 				<p class="rounded-md bg-muted/50 p-3 text-sm font-medium">{newTitle}</p>
 			</div>
 		</div>
 
 		<AlertDialog.Footer>
-			<Button variant="outline" onclick={onCancel}>Keep Current Title</Button>
+			<Button variant="outline" onclick={onCancel}>現在のタイトルを維持</Button>
 
-			<Button onclick={onConfirm}>Update Title</Button>
+			<Button onclick={onConfirm}>タイトルを更新</Button>
 		</AlertDialog.Footer>
 	</AlertDialog.Content>
 </AlertDialog.Root>

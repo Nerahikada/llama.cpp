@@ -40,7 +40,7 @@
 						'[&:not(:first-child)]:last:mr-4 [&:not(:last-child)]:first:ml-4'
 					]}
 					onclick={() => onNavigate(index)}
-					aria-label={`Go to ${item.name}`}
+					aria-label={`${item.name} へ移動`}
 				>
 					{#if item.isImage && item.preview}
 						<img src={item.preview} alt={item.name} class="h-12 w-12 object-cover" />

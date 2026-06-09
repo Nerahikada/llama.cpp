@@ -3,7 +3,7 @@
 	import { copyToClipboard } from '$lib/utils';
 	import ActionIcon from './ActionIcon.svelte';
 
-	export let ariaLabel: string = 'Copy to clipboard';
+	export let ariaLabel: string = 'クリップボードにコピー';
 	export let canCopy: boolean = true;
 	export let text: string;
 </script>

@@ -58,14 +58,14 @@
 	<div class="flex items-center gap-2 p-4 md:absolute md:top-8 md:left-8 md:px-0 md:py-2">
 		<McpLogo class="h-5 w-5 md:h-6 md:w-6" />
 
-		<h1 class="text-xl font-semibold md:text-2xl">MCP Servers</h1>
+		<h1 class="text-xl font-semibold md:text-2xl">MCP サーバー</h1>
 	</div>
 
 	<div class="sticky top-0 z-10 mt-4 flex items-start gap-4 p-4 md:justify-end md:px-8">
 		<Button variant="outline" size="sm" class="shrink-0" onclick={() => (isAddingServer = true)}>
 			<Plus class="h-4 w-4" />
 
-			Add New Server
+			新しいサーバーを追加
 		</Button>
 	</div>
 
@@ -74,7 +74,7 @@
 	<div class="grid gap-5 md:space-y-4 {className}">
 		{#if servers.length === 0 && !isAddingServer}
 			<div class="rounded-md border border-dashed p-4 text-sm text-muted-foreground">
-				No MCP Servers configured yet. Add one to enable agentic features.
+				MCP サーバーがまだ構成されていません。エージェント機能を有効にするには追加してください。
 			</div>
 		{/if}
 

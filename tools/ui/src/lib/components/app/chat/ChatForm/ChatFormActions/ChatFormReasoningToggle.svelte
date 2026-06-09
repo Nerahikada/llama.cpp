@@ -21,7 +21,7 @@
 	let thinkingEnabled = $derived(conversationsStore.getThinkingEnabled());
 	let currentEffort = $derived(conversationsStore.getReasoningEffort());
 	let isOff = $derived(!thinkingEnabled);
-	let tooltipText = $derived(thinkingEnabled ? `${currentEffort} Reasoning` : 'Disabled Reasoning');
+	let tooltipText = $derived(thinkingEnabled ? `推論: ${currentEffort}` : '推論: 無効');
 	let subOpen = $state(false);
 
 	// Get conversation model from message history
@@ -84,7 +84,7 @@
 						'flex h-6 w-6 cursor-pointer items-center justify-center rounded-full p-0 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
 						thinkingEnabled ? 'bg-amber-400/10 hover:bg-amber-400/20' : 'bg-muted'
 					]}
-					aria-label={`${tooltipText}. Click to configure.`}
+					aria-label={`${tooltipText}。クリックして設定します。`}
 				>
 					{#if thinkingEnabled}
 						<Lightbulb class="h-3 w-3 text-amber-400" />
@@ -103,7 +103,7 @@
 			align="start"
 			class="w-60 rounded-xl bg-popover p-3 text-popover-foreground shadow-md outline-none"
 		>
-			<div class="mb-2 px-2.5 text-sm font-medium">Reasoning effort</div>
+			<div class="mb-2 px-2.5 text-sm font-medium">推論レベル</div>
 
 			{#each REASONING_EFFORT_LEVELS as level (level.value)}
 				<button
@@ -123,8 +123,8 @@
 					{#if !level.isOff}
 						<span class="text-[11px] text-muted-foreground opacity-60">
 							{REASONING_EFFORT_TOKENS[level.value] === -1
-								? 'Unlimited'
-								: `Max ${REASONING_EFFORT_TOKENS[level.value].toLocaleString()} tokens`}
+								? '無制限'
+								: `最大 ${REASONING_EFFORT_TOKENS[level.value].toLocaleString()} トークン`}
 						</span>
 					{/if}
 
@@ -134,7 +134,7 @@
 								<Info class="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
 							</Tooltip.Trigger>
 							<Tooltip.Content side="left">
-								<p>Maximum reasoning effort with extended context usage</p>
+								<p>拡張コンテキストを利用した最大の推論レベル</p>
 							</Tooltip.Content>
 						</Tooltip.Root>
 					{/if}

@@ -17,13 +17,13 @@
 	let newServerUrl = $state('');
 	let newServerHeaders = $state('');
 	let newServerUrlError = $derived.by(() => {
-		if (!newServerUrl.trim()) return 'URL is required';
+		if (!newServerUrl.trim()) return 'URL は必須です';
 		try {
 			new URL(newServerUrl);
 
 			return null;
 		} catch {
-			return 'Invalid URL format';
+			return 'URL の形式が正しくありません';
 		}
 	});
 
@@ -57,7 +57,7 @@
 <Dialog.Root {open} onOpenChange={handleOpenChange}>
 	<Dialog.Content class="sm:max-w-md">
 		<Dialog.Header>
-			<Dialog.Title>Add New Server</Dialog.Title>
+			<Dialog.Title>新しいサーバーを追加</Dialog.Title>
 		</Dialog.Header>
 
 		<div class="space-y-4 py-4">
@@ -72,16 +72,18 @@
 		</div>
 
 		<Dialog.Footer>
-			<Button variant="secondary" size="sm" onclick={() => handleOpenChange(false)}>Cancel</Button>
+			<Button variant="secondary" size="sm" onclick={() => handleOpenChange(false)}
+				>キャンセル</Button
+			>
 
 			<Button
 				variant="default"
 				size="sm"
 				onclick={saveNewServer}
 				disabled={!!newServerUrlError}
-				aria-label="Save"
+				aria-label="保存"
 			>
-				Add
+				追加
 			</Button>
 		</Dialog.Footer>
 	</Dialog.Content>

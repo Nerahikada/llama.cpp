@@ -214,7 +214,7 @@
 <div
 	class="text-md group w-full leading-7.5 {className}"
 	role="group"
-	aria-label="Assistant message with actions"
+	aria-label="操作付きのアシスタントメッセージ"
 >
 	{#if showProcessingInfoTop}
 		<div class="mt-6 w-full max-w-[48rem]" in:fade>
@@ -222,7 +222,7 @@
 				<span class="processing-text">
 					{processingState.getPromptProgressText() ??
 						processingState.getProcessingMessage() ??
-						'Processing...'}
+						'処理中...'}
 				</span>
 			</div>
 		</div>
@@ -254,7 +254,7 @@
 				<span class="processing-text">
 					{processingState.getPromptProgressText() ??
 						processingState.getProcessingMessage() ??
-						'Processing...'}
+						'処理中...'}
 				</span>
 			</div>
 		</div>

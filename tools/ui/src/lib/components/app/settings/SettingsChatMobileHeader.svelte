@@ -34,7 +34,7 @@
 	<div class="flex items-center gap-2 px-4 pt-4 pb-2 md:pt-6">
 		<Settings class="h-5 w-5 md:h-6 md:w-6" />
 
-		<h1 class="text-xl font-semibold md:text-2xl">Settings</h1>
+		<h1 class="text-xl font-semibold md:text-2xl">設定</h1>
 	</div>
 
 	<div class="border-b border-border/30 py-2">
@@ -44,7 +44,7 @@
 					? 'opacity-100'
 					: 'pointer-events-none opacity-0'}"
 				onclick={carousel.scrollLeft}
-				aria-label="Scroll left"
+				aria-label="左にスクロール"
 			>
 				<ChevronLeft class="h-4 w-4" />
 			</button>
@@ -98,7 +98,7 @@
 					? 'opacity-100'
 					: 'pointer-events-none opacity-0'}"
 				onclick={carousel.scrollRight}
-				aria-label="Scroll right"
+				aria-label="右にスクロール"
 			>
 				<ChevronRight class="h-4 w-4" />
 			</button>

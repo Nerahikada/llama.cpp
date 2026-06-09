@@ -42,16 +42,15 @@
 		<Dialog.Content class="z-[1000001] max-w-2xl">
 			<Dialog.Header>
 				<Dialog.Title>
-					Select Conversations to {mode === 'export' ? 'Export' : 'Import'}
+					{mode === 'export' ? 'エクスポート' : 'インポート'}する会話を選択
 				</Dialog.Title>
 
 				<Dialog.Description>
 					{#if mode === 'export'}
-						Choose which conversations you want to export. Selected conversations will be downloaded
-						as a JSON file.
+						エクスポートする会話を選択してください。選択した会話は JSON
+						ファイルとしてダウンロードされます。
 					{:else}
-						Choose which conversations you want to import. Selected conversations will be merged
-						with your existing conversations.
+						インポートする会話を選択してください。選択した会話は既存の会話と統合されます。
 					{/if}
 				</Dialog.Description>
 			</Dialog.Header>

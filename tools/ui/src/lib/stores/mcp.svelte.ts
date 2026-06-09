@@ -677,7 +677,7 @@ class MCPStore {
 		if (successCount === 0 && serverEntries.length > 0) {
 			this.updateState({
 				isInitializing: false,
-				error: 'All MCP server connections failed',
+				error: 'すべての MCP サーバー接続に失敗しました',
 				toolCount: 0,
 				connectedServers: []
 			});
@@ -1389,7 +1389,7 @@ class MCPStore {
 		if (!trimmedUrl) {
 			this.updateHealthCheck(server.id, {
 				status: HealthCheckStatus.ERROR,
-				message: 'Please enter a server URL first.',
+				message: 'まずサーバー URL を入力してください。',
 				logs: []
 			});
 			return;
@@ -1471,13 +1471,13 @@ class MCPStore {
 				await MCPService.disconnect(connection);
 			}
 		} catch (error) {
-			const message = error instanceof Error ? error.message : 'Unknown error occurred';
+			const message = error instanceof Error ? error.message : '不明なエラーが発生しました';
 
 			if (logs.at(-1)?.phase !== MCPConnectionPhase.ERROR) {
 				logs.push({
 					timestamp: new Date(),
 					phase: MCPConnectionPhase.ERROR,
-					message: `Connection failed: ${message}`,
+					message: `接続に失敗しました: ${message}`,
 					level: MCPLogLevel.ERROR
 				});
 			}
@@ -1895,7 +1895,7 @@ class MCPStore {
 			if (content) {
 				mcpResourceStore.updateAttachmentContent(attachment.id, content);
 			} else {
-				mcpResourceStore.updateAttachmentError(attachment.id, 'Failed to read resource');
+				mcpResourceStore.updateAttachmentError(attachment.id, 'リソースの読み取りに失敗しました');
 			}
 		} catch (error) {
 			const message = error instanceof Error ? error.message : String(error);

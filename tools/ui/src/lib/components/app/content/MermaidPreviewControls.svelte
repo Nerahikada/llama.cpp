@@ -33,8 +33,8 @@
 		<button
 			class="mermaid-preview-btn flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent text-foreground transition-colors hover:bg-muted-foreground/15 active:bg-muted-foreground/25"
 			onclick={onZoomOut}
-			title="Zoom out"
-			aria-label="Zoom out"
+			title="縮小"
+			aria-label="縮小"
 		>
 			<ZoomOutIcon class="mermaid-preview-btn-icon h-4 w-4" />
 		</button>
@@ -45,8 +45,8 @@
 		<button
 			class="mermaid-preview-btn flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent text-foreground transition-colors hover:bg-muted-foreground/15 active:bg-muted-foreground/25"
 			onclick={onZoomIn}
-			title="Zoom in"
-			aria-label="Zoom in"
+			title="拡大"
+			aria-label="拡大"
 		>
 			<ZoomInIcon class="mermaid-preview-btn-icon h-4 w-4" />
 		</button>
@@ -55,8 +55,8 @@
 		<button
 			class="mermaid-preview-btn flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent text-foreground transition-colors hover:bg-muted-foreground/15 active:bg-muted-foreground/25"
 			onclick={onResetView}
-			title="Reset view"
-			aria-label="Reset view"
+			title="表示をリセット"
+			aria-label="表示をリセット"
 		>
 			<RotateCcwIcon class="mermaid-preview-btn-icon h-4 w-4" />
 		</button>
@@ -65,8 +65,8 @@
 		<button
 			class="mermaid-preview-btn flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent text-foreground transition-colors hover:bg-muted-foreground/15 active:bg-muted-foreground/25"
 			onclick={downloadSvg}
-			title="Download SVG"
-			aria-label="Download SVG"
+			title="SVG をダウンロード"
+			aria-label="SVG をダウンロード"
 		>
 			<Download class="mermaid-preview-btn-icon h-4 w-4" />
 		</button>

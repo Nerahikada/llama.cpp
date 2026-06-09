@@ -697,12 +697,12 @@
 						<ActionIconCopyToClipboard
 							text={incompleteCodeBlock.code}
 							canCopy={false}
-							ariaLabel="Diagram incomplete"
+							ariaLabel="図が未完成です"
 						/>
 					</div>
 				</div>
 				<div class="mermaid-loading-placeholder">
-					<span class="mermaid-loading-text">Generating diagram...</span>
+					<span class="mermaid-loading-text">図を生成中...</span>
 				</div>
 			</div>
 		{:else}

@@ -17,7 +17,7 @@
 	<DropdownMenu.SubTrigger class="flex cursor-pointer items-center gap-2">
 		<PencilRuler class="h-4 w-4" />
 
-		<span>Tools</span>
+		<span>ツール</span>
 	</DropdownMenu.SubTrigger>
 
 	<DropdownMenu.SubContent class="w-72 p-0">
@@ -26,7 +26,7 @@
 				<div class="px-3 py-4 text-center text-sm text-muted-foreground">
 					<Loader2 class="mx-auto mb-1 h-4 w-4 animate-spin" />
 
-					Loading tools...
+					ツールを読み込み中...
 				</div>
 			{:else if toolsStore.isToolsEndpointUnreachable}
 				<div class="grid gap-2.5 px-3 py-4 text-sm text-muted-foreground">
@@ -34,9 +34,8 @@
 						<Info class="mt-0.5 h-4 w-4 shrink-0" />
 
 						<span>
-							Run llama-server with <code>{CLI_FLAGS.TOOLS}</code> flag to enable
-
-							<strong>Built-in Tools</strong>.
+							<strong>組み込みツール</strong>を有効化するには、<code>{CLI_FLAGS.TOOLS}</code> フラグを付けて
+							llama-server を実行してください。
 						</span>
 					</span>
 
@@ -44,14 +43,16 @@
 						<Info class="mt-0.5 h-4 w-4 shrink-0" />
 
 						<span>
-							{hasMcpServersAvailable ? 'Enable' : 'Add'} MCP Server(s) to access
-
-							<strong>MCP Tools</strong>.
+							<strong>MCP ツール</strong>を利用するには、MCP サーバーを{hasMcpServersAvailable
+								? '有効化'
+								: '追加'}してください。
 						</span>
 					</span>
 				</div>
 			{:else if toolsStore.error}
-				<div class="px-3 py-4 text-center text-sm text-muted-foreground">Failed to load tools</div>
+				<div class="px-3 py-4 text-center text-sm text-muted-foreground">
+					ツールの読み込みに失敗しました
+				</div>
 			{:else if toolsPanel.noToolsInfoMessage}
 				<div class="flex gap-2 px-3 py-4 text-sm text-muted-foreground">
 					<Info class="mt-0.5 h-4 w-4 shrink-0" />
@@ -59,7 +60,9 @@
 					<span>{toolsPanel.noToolsInfoMessage}</span>
 				</div>
 			{:else}
-				<div class="px-3 py-4 text-center text-sm text-muted-foreground">No tools available</div>
+				<div class="px-3 py-4 text-center text-sm text-muted-foreground">
+					利用可能なツールがありません
+				</div>
 			{/if}
 		{:else}
 			<div class="max-h-80 overflow-y-auto p-2 pr-1">
@@ -116,8 +119,7 @@
 
 								<Tooltip.Content side="right">
 									<p>
-										{checked ? 'Disable' : 'Enable'}
-										{group.tools.length} tool{group.tools.length !== 1 ? 's' : ''}
+										{group.tools.length} 件のツールを{checked ? '無効化' : '有効化'}
 									</p>
 								</Tooltip.Content>
 							</Tooltip.Root>

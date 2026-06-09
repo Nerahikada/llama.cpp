@@ -47,7 +47,7 @@
 </script>
 
 <div
-	aria-label="User message with actions"
+	aria-label="操作付きのユーザーメッセージ"
 	class="group flex flex-col items-end gap-3 md:gap-2 {className}"
 	role="group"
 >

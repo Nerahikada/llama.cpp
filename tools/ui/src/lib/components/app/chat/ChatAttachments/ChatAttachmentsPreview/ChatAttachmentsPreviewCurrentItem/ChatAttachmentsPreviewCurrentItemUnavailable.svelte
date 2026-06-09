@@ -12,6 +12,6 @@
 	<div class="text-center">
 		<IconComponent class="mx-auto mb-4 h-16 w-16 text-white/50" />
 
-		<p class="text-white/70">Preview not available for this file type</p>
+		<p class="text-white/70">このファイル形式はプレビューを利用できません</p>
 	</div>
 </div>

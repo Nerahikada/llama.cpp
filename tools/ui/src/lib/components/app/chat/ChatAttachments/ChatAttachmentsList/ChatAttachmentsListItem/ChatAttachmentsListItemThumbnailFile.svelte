@@ -69,7 +69,7 @@
 		if (attachment?.type === AttachmentType.PDF) {
 			const pdfAttachment = attachment as DatabaseMessageExtraPdfFile;
 
-			return pdfAttachment.processedAsImages ? 'Sent as Image' : 'Sent as Text';
+			return pdfAttachment.processedAsImages ? '画像として送信' : 'テキストとして送信';
 		}
 
 		return null;
@@ -100,7 +100,7 @@
 	<div
 		class="absolute top-2 right-2 opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
 	>
-		<ActionIcon icon={X} tooltip="Remove" stopPropagationOnClick onclick={() => onRemove?.(id)} />
+		<ActionIcon icon={X} tooltip="削除" stopPropagationOnClick onclick={() => onRemove?.(id)} />
 	</div>
 {/snippet}
 
@@ -126,7 +126,7 @@
 
 {#if isTextWithContent || isPdfWithContent}
 	<button
-		aria-label={readonly ? `Preview ${name}` : undefined}
+		aria-label={readonly ? `${name} をプレビュー` : undefined}
 		class="rounded-lg border border-border bg-muted p-3 {className} cursor-pointer {readonly
 			? 'w-full max-w-2xl transition-shadow hover:shadow-md'
 			: `group relative text-left ${textContent ? 'max-h-24 max-w-72' : 'max-w-36'}`} overflow-hidden"

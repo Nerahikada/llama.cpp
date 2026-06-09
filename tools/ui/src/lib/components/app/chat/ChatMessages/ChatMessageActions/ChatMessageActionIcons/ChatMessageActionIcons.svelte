@@ -71,7 +71,7 @@
 	function handleOpenForkDialog() {
 		const conv = activeConversation();
 
-		forkName = `Fork of ${conv?.name ?? 'Conversation'}`;
+		forkName = `${conv?.name ?? '会話'} のフォーク`;
 		forkIncludeAttachments = true;
 		showForkDialog = true;
 	}
@@ -95,31 +95,31 @@
 		<div
 			class="pointer-events-auto inset-0 flex items-center gap-1 opacity-100 transition-all duration-150"
 		>
-			<ActionIcon icon={Copy} tooltip="Copy" onclick={onCopy} />
+			<ActionIcon icon={Copy} tooltip="コピー" onclick={onCopy} />
 
 			{#if onEdit}
-				<ActionIcon icon={Edit} tooltip="Edit" onclick={onEdit} />
+				<ActionIcon icon={Edit} tooltip="編集" onclick={onEdit} />
 			{/if}
 
 			{#if role === MessageRole.ASSISTANT && onRegenerate}
-				<ActionIcon icon={RefreshCw} tooltip="Regenerate" onclick={() => onRegenerate()} />
+				<ActionIcon icon={RefreshCw} tooltip="再生成" onclick={() => onRegenerate()} />
 			{/if}
 
 			{#if role === MessageRole.ASSISTANT && onContinue}
-				<ActionIcon icon={ArrowRight} tooltip="Continue" onclick={onContinue} />
+				<ActionIcon icon={ArrowRight} tooltip="続行" onclick={onContinue} />
 			{/if}
 
 			{#if onForkConversation}
-				<ActionIcon icon={GitBranch} tooltip="Fork conversation" onclick={handleOpenForkDialog} />
+				<ActionIcon icon={GitBranch} tooltip="会話をフォーク" onclick={handleOpenForkDialog} />
 			{/if}
 
-			<ActionIcon icon={Trash2} tooltip="Delete" onclick={onDelete} />
+			<ActionIcon icon={Trash2} tooltip="削除" onclick={onDelete} />
 		</div>
 	</div>
 
 	{#if showRawOutputSwitch}
 		<div class="flex items-center gap-2">
-			<span class="text-xs text-muted-foreground">Show raw output</span>
+			<span class="text-xs text-muted-foreground">生の出力を表示</span>
 			<Switch
 				checked={rawOutputEnabled}
 				onCheckedChange={(checked) => onRawOutputToggle?.(checked)}
@@ -130,14 +130,14 @@
 
 <DialogConfirmation
 	bind:open={showDeleteDialog}
-	title="Delete Message"
+	title="メッセージを削除"
 	description={deletionInfo && deletionInfo.totalCount > 1
-		? `This will delete ${deletionInfo.totalCount} messages including: ${deletionInfo.userMessages} user message${deletionInfo.userMessages > 1 ? 's' : ''} and ${deletionInfo.assistantMessages} assistant response${deletionInfo.assistantMessages > 1 ? 's' : ''}. All messages in this branch and their responses will be permanently removed. This action cannot be undone.`
-		: 'Are you sure you want to delete this message? This action cannot be undone.'}
+		? `${deletionInfo.userMessages} 件のユーザーメッセージと ${deletionInfo.assistantMessages} 件のアシスタントの応答を含む ${deletionInfo.totalCount} 件のメッセージを削除します。このブランチ内のすべてのメッセージとその応答が完全に削除されます。この操作は元に戻せません。`
+		: 'このメッセージを削除してもよろしいですか？この操作は元に戻せません。'}
 	confirmText={deletionInfo && deletionInfo.totalCount > 1
-		? `Delete ${deletionInfo.totalCount} Messages`
-		: 'Delete'}
-	cancelText="Cancel"
+		? `${deletionInfo.totalCount} 件のメッセージを削除`
+		: '削除'}
+	cancelText="キャンセル"
 	variant="destructive"
 	icon={Trash2}
 	onConfirm={handleConfirmDelete}
@@ -146,22 +146,22 @@
 
 <DialogConfirmation
 	bind:open={showForkDialog}
-	title="Fork Conversation"
-	description="Create a new conversation branching from this message."
-	confirmText="Fork"
-	cancelText="Cancel"
+	title="会話をフォーク"
+	description="このメッセージから分岐した新しい会話を作成します。"
+	confirmText="フォーク"
+	cancelText="キャンセル"
 	icon={GitBranch}
 	onConfirm={handleConfirmFork}
 	onCancel={() => (showForkDialog = false)}
 >
 	<div class="flex flex-col gap-4 py-2">
 		<div class="flex flex-col gap-2">
-			<Label for="fork-name">Title</Label>
+			<Label for="fork-name">タイトル</Label>
 
 			<Input
 				id="fork-name"
 				class="text-foreground"
-				placeholder="Enter fork name"
+				placeholder="フォーク名を入力"
 				type="text"
 				bind:value={forkName}
 			/>
@@ -177,7 +177,7 @@
 			/>
 
 			<Label for="fork-attachments" class="cursor-pointer text-sm font-normal">
-				Include all attachments
+				すべての添付ファイルを含める
 			</Label>
 		</div>
 	</div>

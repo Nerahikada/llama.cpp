@@ -53,7 +53,7 @@
 		onkeydown={onKeydown}
 		onblur={onBlur}
 		onfocus={onFocus}
-		placeholder="Enter {name}"
+		placeholder="{name} を入力"
 		autocomplete="off"
 	/>
 

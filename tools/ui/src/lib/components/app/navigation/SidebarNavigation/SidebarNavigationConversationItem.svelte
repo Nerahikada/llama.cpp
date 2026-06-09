@@ -132,7 +132,7 @@
 				</Tooltip.Trigger>
 
 				<Tooltip.Content>
-					<p>See parent conversation</p>
+					<p>親の会話を表示</p>
 				</Tooltip.Content>
 			</Tooltip.Root>
 		{/if}
@@ -146,7 +146,7 @@
 						onkeydown={(e) => e.key === 'Enter' && handleStop(e)}
 						role="button"
 						tabindex="0"
-						aria-label="Stop generation"
+						aria-label="生成を停止"
 					>
 						<Loader2 class="loading-icon h-3.5 w-3.5 animate-spin" />
 
@@ -155,7 +155,7 @@
 				</Tooltip.Trigger>
 
 				<Tooltip.Content>
-					<p>Stop generation</p>
+					<p>生成を停止</p>
 				</Tooltip.Content>
 			</Tooltip.Root>
 		{/if}
@@ -167,18 +167,18 @@
 		<div class="actions flex items-center">
 			<DropdownMenuActions
 				triggerIcon={MoreHorizontal}
-				triggerTooltip="More actions"
+				triggerTooltip="その他の操作"
 				bind:open={dropdownOpen}
 				actions={[
 					{
 						icon: Pencil,
-						label: 'Edit',
+						label: '編集',
 						onclick: handleEdit,
 						shortcut: ['shift', 'cmd', 'e']
 					},
 					{
 						icon: Download,
-						label: 'Export',
+						label: 'エクスポート',
 						onclick: (e: Event) => {
 							e.stopPropagation();
 							conversationsStore.downloadConversation(conversation.id);
@@ -187,7 +187,7 @@
 					},
 					{
 						icon: Trash2,
-						label: 'Delete',
+						label: '削除',
 						onclick: handleDelete,
 						variant: 'destructive',
 						shortcut: ['shift', 'cmd', 'd'],

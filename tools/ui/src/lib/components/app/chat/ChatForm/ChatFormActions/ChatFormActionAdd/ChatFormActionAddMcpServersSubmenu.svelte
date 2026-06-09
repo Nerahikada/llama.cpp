@@ -62,15 +62,15 @@
 		<DropdownMenu.SubTrigger class="flex cursor-pointer items-center gap-2">
 			<McpLogo class="h-4 w-4" />
 
-			<span>MCP Servers</span>
+			<span>MCP サーバー</span>
 		</DropdownMenu.SubTrigger>
 
 		<DropdownMenu.SubContent class="w-72 pt-0">
 			{#if hasMcpServers}
 				<DropdownMenuSearchable
-					placeholder="Search servers..."
+					placeholder="サーバーを検索..."
 					bind:searchValue={mcpSearchQuery}
-					emptyMessage="No servers found"
+					emptyMessage="サーバーが見つかりません"
 					isEmpty={filteredMcpServers.length === 0}
 				>
 					<div class="max-h-64 overflow-y-auto">
@@ -103,7 +103,7 @@
 										<span
 											class="shrink-0 rounded bg-destructive/15 px-1.5 py-0.5 text-xs text-destructive"
 										>
-											Error
+											エラー
 										</span>
 									{/if}
 								</div>
@@ -125,13 +125,13 @@
 						>
 							<Settings class="h-4 w-4" />
 
-							<span>Manage MCP Servers</span>
+							<span>MCP サーバーを管理</span>
 						</DropdownMenu.Item>
 					{/snippet}
 				</DropdownMenuSearchable>
 			{:else}
 				<div class="px-2 py-3 text-center text-sm text-muted-foreground">
-					No MCP servers configured
+					MCP サーバーが設定されていません
 				</div>
 
 				<DropdownMenu.Separator />
@@ -142,7 +142,7 @@
 				>
 					<Plus class="h-4 w-4" />
 
-					<span>Add MCP Servers</span>
+					<span>MCP サーバーを追加</span>
 				</DropdownMenu.Item>
 			{/if}
 		</DropdownMenu.SubContent>

@@ -25,10 +25,10 @@
 		class: className = '',
 		pairs,
 		onPairsChange,
-		keyPlaceholder = 'Key',
-		valuePlaceholder = 'Value',
-		addButtonLabel = 'Add',
-		emptyMessage = 'No items configured.',
+		keyPlaceholder = 'キー',
+		valuePlaceholder = '値',
+		addButtonLabel = '追加',
+		emptyMessage = '項目が設定されていません。',
 		sectionLabel,
 		sectionLabelOptional = true
 	}: Props = $props();
@@ -84,7 +84,7 @@
 			<span class="text-xs font-medium">
 				{sectionLabel}
 				{#if sectionLabelOptional}
-					<span class="text-muted-foreground">(optional)</span>
+					<span class="text-muted-foreground">(任意)</span>
 				{/if}
 			</span>
 		{/if}
@@ -130,7 +130,7 @@
 						type="button"
 						class="mt-1.5 shrink-0 cursor-pointer rounded-md p-1 text-muted-foreground hover:bg-destructive/10 hover:text-destructive"
 						onclick={() => removePair(index)}
-						aria-label="Remove item"
+						aria-label="項目を削除"
 					>
 						<Trash2 class="h-3.5 w-3.5" />
 					</button>

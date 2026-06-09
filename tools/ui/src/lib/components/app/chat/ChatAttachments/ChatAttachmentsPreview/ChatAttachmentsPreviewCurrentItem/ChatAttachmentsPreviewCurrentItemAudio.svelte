@@ -15,12 +15,12 @@
 
 		{#if audioSrc}
 			<audio controls class="mb-4 w-full" src={audioSrc}>
-				Your browser does not support the audio element.
+				お使いのブラウザは audio 要素に対応していません。
 			</audio>
 		{:else}
-			<p class="mb-4 text-white/70">Audio preview not available</p>
+			<p class="mb-4 text-white/70">音声プレビューを利用できません</p>
 		{/if}
 
-		<p class="text-sm text-white/50">{currentItem?.name || 'Audio'}</p>
+		<p class="text-sm text-white/50">{currentItem?.name || '音声'}</p>
 	</div>
 </div>

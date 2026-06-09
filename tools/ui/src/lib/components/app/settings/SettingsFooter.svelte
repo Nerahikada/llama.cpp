@@ -34,26 +34,25 @@
 		<Button variant="outline" onclick={handleResetClick}>
 			<RotateCcw class="h-3 w-3" />
 
-			Reset to default
+			デフォルトにリセット
 		</Button>
 	</div>
 
-	<Button onclick={handleSave}>Save settings</Button>
+	<Button onclick={handleSave}>設定を保存</Button>
 </div>
 
 <AlertDialog.Root bind:open={showResetDialog}>
 	<AlertDialog.Content>
 		<AlertDialog.Header>
-			<AlertDialog.Title>Reset Settings to Default</AlertDialog.Title>
+			<AlertDialog.Title>設定をデフォルトにリセット</AlertDialog.Title>
 			<AlertDialog.Description>
-				Are you sure you want to reset all settings to their default values? This will reset all
-				parameters to the values provided by the server's /props endpoint and remove all your custom
-				configurations.
+				すべての設定をデフォルト値にリセットしてもよろしいですか？すべてのパラメータがサーバーの
+				/props エンドポイントから提供される値にリセットされ、カスタム設定はすべて削除されます。
 			</AlertDialog.Description>
 		</AlertDialog.Header>
 		<AlertDialog.Footer>
-			<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-			<AlertDialog.Action onclick={handleConfirmReset}>Reset to Default</AlertDialog.Action>
+			<AlertDialog.Cancel>キャンセル</AlertDialog.Cancel>
+			<AlertDialog.Action onclick={handleConfirmReset}>デフォルトにリセット</AlertDialog.Action>
 		</AlertDialog.Footer>
 	</AlertDialog.Content>
 </AlertDialog.Root>

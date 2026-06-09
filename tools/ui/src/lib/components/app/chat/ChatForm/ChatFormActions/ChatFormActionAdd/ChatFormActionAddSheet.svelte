@@ -84,10 +84,10 @@
 
 		<Sheet.Content side="bottom" class="max-h-[85vh] gap-0 overflow-y-auto">
 			<Sheet.Header>
-				<Sheet.Title>Add to chat</Sheet.Title>
+				<Sheet.Title>チャットに追加</Sheet.Title>
 
 				<Sheet.Description class="sr-only">
-					Add files, system prompt or configure MCP servers
+					ファイルやシステムプロンプトを追加、または MCP サーバーを設定します
 				</Sheet.Description>
 			</Sheet.Header>
 
@@ -102,7 +102,7 @@
 
 						<File class="h-4 w-4 shrink-0" />
 
-						<span class="flex-1">Add files</span>
+						<span class="flex-1">ファイルを追加</span>
 					</Collapsible.Trigger>
 
 					<Collapsible.Content>
@@ -149,10 +149,10 @@
 
 						<McpLogo class="inline h-4 w-4 shrink-0" />
 
-						<span class="flex-1">MCP Servers</span>
+						<span class="flex-1">MCP サーバー</span>
 
 						<span class="text-xs text-muted-foreground">
-							{getEnabledMcpServers().length} server{getEnabledMcpServers().length !== 1 ? 's' : ''}
+							{getEnabledMcpServers().length} 件のサーバー
 						</span>
 					</Collapsible.Trigger>
 
@@ -190,7 +190,7 @@
 										<span
 											class="shrink-0 rounded bg-destructive/15 px-1.5 py-0.5 text-xs text-destructive"
 										>
-											Error
+											エラー
 										</span>
 									{:else}
 										<Switch
@@ -203,7 +203,7 @@
 
 							{#if getEnabledMcpServers().length === 0}
 								<div class="px-3 py-2 text-center text-sm text-muted-foreground">
-									No MCP servers configured
+									MCP サーバーが設定されていません
 								</div>
 							{/if}
 						</div>
@@ -221,10 +221,10 @@
 
 							<PencilRuler class="inline h-4 w-4 shrink-0" />
 
-							<span class="flex-1">Tools</span>
+							<span class="flex-1">ツール</span>
 
 							<span class="text-xs text-muted-foreground">
-								{toolsPanel.totalToolCount} tool{toolsPanel.totalToolCount !== 1 ? 's' : ''}
+								{toolsPanel.totalToolCount} 件のツール
 							</span>
 						</Collapsible.Trigger>
 
@@ -273,14 +273,14 @@
 				<button type="button" class={sheetItemClass} onclick={onSystemPromptClick}>
 					<MessageSquare class="h-4 w-4 shrink-0" />
 
-					<span>System Message</span>
+					<span>システムメッセージ</span>
 				</button>
 
 				{#if hasMcpPromptsSupport}
 					<button type="button" class={sheetItemClass} onclick={onMcpPromptClick}>
 						<Zap class="h-4 w-4 shrink-0" />
 
-						<span>MCP Prompt</span>
+						<span>MCP プロンプト</span>
 					</button>
 				{/if}
 
@@ -288,7 +288,7 @@
 					<button type="button" class={sheetItemClass} onclick={onMcpResourcesClick}>
 						<FolderOpen class="h-4 w-4 shrink-0" />
 
-						<span>MCP Resources</span>
+						<span>MCP リソース</span>
 					</button>
 				{/if}
 			</div>

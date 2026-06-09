@@ -126,7 +126,7 @@ export async function parseFilesToMessageExtras(
 
 					// Show toast notification to user
 					toast.warning(
-						'PDF setting changed: Non-vision model detected, PDFs will be processed as text instead of images.',
+						'PDF 設定を変更しました: 画像非対応モデルが検出されたため、PDF は画像ではなくテキストとして処理されます。',
 						{
 							duration: 5000
 						}
@@ -142,7 +142,7 @@ export async function parseFilesToMessageExtras(
 
 						// Show success toast for PDF image processing
 						toast.success(
-							`PDF "${file.name}" processed as ${images.length} images for vision model.`,
+							`PDF "${file.name}" を画像対応モデル用に ${images.length} 枚の画像として処理しました。`,
 							{
 								duration: 3000
 							}
@@ -180,7 +180,7 @@ export async function parseFilesToMessageExtras(
 					const content = await convertPDFToText(file.file);
 
 					// Show success toast for PDF text processing
-					toast.success(`PDF "${file.name}" processed as text content.`, {
+					toast.success(`PDF "${file.name}" をテキストコンテンツとして処理しました。`, {
 						duration: 3000
 					});
 

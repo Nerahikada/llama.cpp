@@ -33,24 +33,24 @@
 		<AlertDialog.Header>
 			<AlertDialog.Title class="flex items-center gap-2">
 				<AlertTriangle class="h-5 w-5 text-amber-500" />
-				Model Not Available
+				モデルが利用できません
 			</AlertDialog.Title>
 
 			<AlertDialog.Description>
-				The requested model could not be found. Select an available model to continue.
+				リクエストされたモデルが見つかりませんでした。続行するには利用可能なモデルを選択してください。
 			</AlertDialog.Description>
 		</AlertDialog.Header>
 
 		<div class="space-y-3">
 			<div class="rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-sm">
 				<p class="font-medium text-amber-600 dark:text-amber-400">
-					Requested: <code class="rounded bg-amber-500/20 px-1.5 py-0.5">{modelName}</code>
+					リクエスト: <code class="rounded bg-amber-500/20 px-1.5 py-0.5">{modelName}</code>
 				</p>
 			</div>
 
 			{#if availableModels.length > 0}
 				<div class="text-sm">
-					<p class="mb-2 font-medium text-muted-foreground">Select an available model:</p>
+					<p class="mb-2 font-medium text-muted-foreground">利用可能なモデルを選択:</p>
 					<div class="max-h-48 space-y-1 overflow-y-auto rounded-md border p-1">
 						{#each availableModels as model (model)}
 							<button
@@ -70,7 +70,7 @@
 		</div>
 
 		<AlertDialog.Footer>
-			<AlertDialog.Action onclick={() => handleOpenChange(false)}>Cancel</AlertDialog.Action>
+			<AlertDialog.Action onclick={() => handleOpenChange(false)}>キャンセル</AlertDialog.Action>
 		</AlertDialog.Footer>
 	</AlertDialog.Content>
 </AlertDialog.Root>

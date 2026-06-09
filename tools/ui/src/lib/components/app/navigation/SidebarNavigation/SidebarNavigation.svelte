@@ -186,7 +186,7 @@
 					onclick={() => sidebar.toggle()}
 				>
 					<X class="h-4 w-4" />
-					<span class="sr-only">Close sidebar</span>
+					<span class="sr-only">サイドバーを閉じる</span>
 				</Button>
 			</div>
 
@@ -202,7 +202,7 @@
 		<Sidebar.Group class="mt-2 h-[calc(100vh-21rem)] space-y-2 p-0 px-3">
 			{#if (filteredConversations.length > 0 && isSearchModeActive) || !isSearchModeActive}
 				<Sidebar.GroupLabel>
-					{isSearchModeActive ? 'Search results' : 'Recent conversations'}
+					{isSearchModeActive ? '検索結果' : '最近の会話'}
 				</Sidebar.GroupLabel>
 			{/if}
 
@@ -232,10 +232,10 @@
 						<div class="px-2 py-4 text-center">
 							<p class="mb-4 p-4 text-sm text-muted-foreground">
 								{searchQuery.length > 0
-									? 'No results found'
+									? '結果が見つかりません'
 									: isSearchModeActive
-										? 'Start typing to see results'
-										: 'No conversations yet'}
+										? '入力すると結果が表示されます'
+										: 'まだ会話がありません'}
 							</p>
 						</div>
 					{/if}
@@ -247,12 +247,12 @@
 
 <DialogConfirmation
 	bind:open={showDeleteDialog}
-	title="Delete Conversation"
+	title="会話を削除"
 	description={selectedConversation
-		? `Are you sure you want to delete "${selectedConversationNamePreview}"? This action cannot be undone and will permanently remove all messages in this conversation.`
+		? `"${selectedConversationNamePreview}" を削除してもよろしいですか？この操作は取り消せず、この会話のすべてのメッセージが完全に削除されます。`
 		: ''}
-	confirmText="Delete"
-	cancelText="Cancel"
+	confirmText="削除"
+	cancelText="キャンセル"
 	variant="destructive"
 	icon={Trash2}
 	onConfirm={handleConfirmDelete}
@@ -265,17 +265,17 @@
 		<div class="flex items-center gap-2 py-2">
 			<Checkbox id="delete-with-forks" bind:checked={deleteWithForks} />
 
-			<Label for="delete-with-forks" class="text-sm">Also delete all forked conversations</Label>
+			<Label for="delete-with-forks" class="text-sm">フォークされたすべての会話も削除する</Label>
 		</div>
 	{/if}
 </DialogConfirmation>
 
 <DialogConfirmation
 	bind:open={showEditDialog}
-	title="Edit Conversation Name"
+	title="会話名を編集"
 	description=""
-	confirmText="Save"
-	cancelText="Cancel"
+	confirmText="保存"
+	cancelText="キャンセル"
 	icon={Pencil}
 	onConfirm={handleConfirmEdit}
 	onCancel={() => {
@@ -292,7 +292,7 @@
 >
 	<Input
 		class="text-foreground"
-		placeholder="Enter a new name"
+		placeholder="新しい名前を入力"
 		type="text"
 		bind:value={editedName}
 	/>

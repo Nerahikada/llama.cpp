@@ -16,7 +16,7 @@
 <div class="flex flex-col gap-2">
 	<div class="mb-2 flex items-center gap-4">
 		<SearchInput
-			placeholder="Search resources..."
+			placeholder="リソースを検索..."
 			value={searchQuery}
 			onInput={(value) => onSearch?.(value)}
 		/>
@@ -27,7 +27,7 @@
 			class="h-8 w-8 p-0"
 			onclick={onRefresh}
 			disabled={isLoading}
-			title="Refresh resources"
+			title="リソースを更新"
 		>
 			{#if isLoading}
 				<Loader2 class="h-4 w-4 animate-spin" />
@@ -37,5 +37,5 @@
 		</Button>
 	</div>
 
-	<h3 class="text-sm font-medium">Available resources</h3>
+	<h3 class="text-sm font-medium">利用可能なリソース</h3>
 </div>

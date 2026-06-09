@@ -125,7 +125,7 @@
 </script>
 
 <svelte:head>
-	<title>{activeConversation()?.name || 'Chat'} - {APP_NAME}</title>
+	<title>{activeConversation()?.name || 'チャット'} - {APP_NAME}</title>
 </svelte:head>
 
 <DialogModelNotAvailable

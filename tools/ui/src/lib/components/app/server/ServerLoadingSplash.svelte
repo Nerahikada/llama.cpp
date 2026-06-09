@@ -8,7 +8,7 @@
 		message?: string;
 	}
 
-	let { class: className = '', message = 'Initializing connection to server...' }: Props = $props();
+	let { class: className = '', message = 'サーバーへの接続を初期化中...' }: Props = $props();
 </script>
 
 <div class="flex h-full items-center justify-center {className}">
@@ -18,7 +18,7 @@
 				<Server class="h-8 w-8 animate-pulse text-muted-foreground" />
 			</div>
 
-			<h2 class="mb-2 text-xl font-semibold">Connecting to Server</h2>
+			<h2 class="mb-2 text-xl font-semibold">サーバーに接続中</h2>
 
 			<p class="text-sm text-muted-foreground">
 				{message}

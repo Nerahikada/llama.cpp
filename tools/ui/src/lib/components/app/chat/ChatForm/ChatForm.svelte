@@ -72,7 +72,7 @@
 		class: className = '',
 		disabled = false,
 		isLoading = false,
-		placeholder = 'Type a message...',
+		placeholder = 'メッセージを入力...',
 		showMcpPromptButton = false,
 		showAddButton = true,
 		showModelSelector = true,
@@ -323,7 +323,7 @@
 		) {
 			event.preventDefault();
 
-			const textFile = new File([text], 'Pasted', {
+			const textFile = new File([text], '貼り付けたテキスト', {
 				type: MimeTypeText.PLAIN
 			});
 

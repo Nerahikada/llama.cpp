@@ -36,44 +36,45 @@ export interface AttachmentMenuItem {
 export const ATTACHMENT_FILE_ITEMS: AttachmentMenuItem[] = [
 	{
 		id: AttachmentMenuItemId.IMAGES,
-		label: 'Images',
+		label: '画像',
 		icon: FILE_TYPE_ICONS.image,
 		class: 'images-button',
 		enabledWhen: AttachmentItemEnabledWhen.HAS_VISION_MODALITY,
-		disabledTooltip: 'Image processing requires a vision model',
+		disabledTooltip: '画像の処理にはビジョンモデルが必要です',
 		action: AttachmentAction.FILE_UPLOAD
 	},
 	{
 		id: AttachmentMenuItemId.AUDIO,
-		label: 'Audio Files',
+		label: '音声ファイル',
 		icon: FILE_TYPE_ICONS.audio,
 		class: 'audio-button',
 		enabledWhen: AttachmentItemEnabledWhen.HAS_AUDIO_MODALITY,
-		disabledTooltip: 'Audio files processing requires an audio model',
+		disabledTooltip: '音声ファイルの処理には音声モデルが必要です',
 		action: AttachmentAction.FILE_UPLOAD
 	},
 	{
 		id: AttachmentMenuItemId.VIDEO,
-		label: 'Video Files',
+		label: '動画ファイル',
 		icon: FILE_TYPE_ICONS.video,
 		class: 'video-button',
 		enabledWhen: AttachmentItemEnabledWhen.HAS_VIDEO_MODALITY,
-		disabledTooltip: 'Video files processing requires a video model',
+		disabledTooltip: '動画ファイルの処理には動画モデルが必要です',
 		action: AttachmentAction.FILE_UPLOAD
 	},
 	{
 		id: AttachmentMenuItemId.TEXT,
-		label: 'Text Files',
+		label: 'テキストファイル',
 		icon: FILE_TYPE_ICONS.text,
 		enabledWhen: AttachmentItemEnabledWhen.ALWAYS,
 		action: AttachmentAction.FILE_UPLOAD
 	},
 	{
 		id: AttachmentMenuItemId.PDF,
-		label: 'PDF Files',
+		label: 'PDF ファイル',
 		icon: FILE_TYPE_ICONS.pdf,
 		enabledWhen: AttachmentItemEnabledWhen.ALWAYS,
-		disabledTooltip: 'PDFs will be converted to text. Image-based PDFs may not work properly.',
+		disabledTooltip:
+			'PDF はテキストに変換されます。画像ベースの PDF は正しく動作しない場合があります。',
 		hasEnabledTooltip: true,
 		action: AttachmentAction.FILE_UPLOAD
 	}
@@ -84,7 +85,7 @@ export const ATTACHMENT_EXTRA_ITEMS: AttachmentMenuItem[] = [];
 export const ATTACHMENT_PROMPT_ITEMS: AttachmentMenuItem[] = [
 	{
 		id: AttachmentMenuItemId.SYSTEM_MESSAGE,
-		label: 'System Message',
+		label: 'システムメッセージ',
 		icon: MessageSquare,
 		enabledWhen: AttachmentItemEnabledWhen.ALWAYS,
 		hasEnabledTooltip: true,
@@ -92,7 +93,7 @@ export const ATTACHMENT_PROMPT_ITEMS: AttachmentMenuItem[] = [
 	},
 	{
 		id: AttachmentMenuItemId.MCP_PROMPT,
-		label: 'MCP Prompt',
+		label: 'MCP プロンプト',
 		icon: Zap,
 		enabledWhen: AttachmentItemEnabledWhen.ALWAYS,
 		action: AttachmentAction.MCP_PROMPT_CLICK,
@@ -103,7 +104,7 @@ export const ATTACHMENT_PROMPT_ITEMS: AttachmentMenuItem[] = [
 export const ATTACHMENT_MCP_ITEMS: AttachmentMenuItem[] = [
 	{
 		id: AttachmentMenuItemId.MCP_RESOURCES,
-		label: 'MCP Resources',
+		label: 'MCP リソース',
 		icon: FolderOpen,
 		enabledWhen: AttachmentItemEnabledWhen.ALWAYS,
 		action: AttachmentAction.MCP_RESOURCES_CLICK,
@@ -111,4 +112,4 @@ export const ATTACHMENT_MCP_ITEMS: AttachmentMenuItem[] = [
 	}
 ];
 
-export const ATTACHMENT_TOOLTIP_TEXT = 'Add files, prompts, tools or MCP Servers';
+export const ATTACHMENT_TOOLTIP_TEXT = 'ファイル、プロンプト、ツール、または MCP サーバーを追加';

@@ -22,8 +22,8 @@ import type {
  */
 export async function copyToClipboard(
 	text: string,
-	successMessage = 'Copied to clipboard',
-	errorMessage = 'Failed to copy to clipboard'
+	successMessage = 'クリップボードにコピーしました',
+	errorMessage = 'クリップボードへのコピーに失敗しました'
 ): Promise<boolean> {
 	try {
 		// Try modern clipboard API first (secure contexts only)
@@ -68,8 +68,8 @@ export async function copyToClipboard(
  */
 export async function copyCodeToClipboard(
 	rawCode: string,
-	successMessage = 'Code copied to clipboard',
-	errorMessage = 'Failed to copy code'
+	successMessage = 'コードをクリップボードにコピーしました',
+	errorMessage = 'コードのコピーに失敗しました'
 ): Promise<boolean> {
 	return copyToClipboard(rawCode, successMessage, errorMessage);
 }

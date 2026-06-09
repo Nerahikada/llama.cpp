@@ -38,7 +38,7 @@
 >
 	{#if onclick}
 		<button
-			aria-label="Preview {name}"
+			aria-label="{name} をプレビュー"
 			class="block h-full w-full rounded-lg focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none"
 			{onclick}
 			type="button"
@@ -58,7 +58,7 @@
 				icon={X}
 				onclick={() => onRemove?.(id)}
 				stopPropagationOnClick
-				tooltip="Remove"
+				tooltip="削除"
 			/>
 		</div>
 	{/if}

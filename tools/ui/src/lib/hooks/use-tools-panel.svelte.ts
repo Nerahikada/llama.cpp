@@ -47,7 +47,7 @@ export function useToolsPanel(): UseToolsPanelReturn {
 		if (toolsStore.toolGroups.length > 0) return null;
 		// Tools endpoint is unreachable (404) — server started without --tools
 		if (toolsStore.isToolsEndpointUnreachable) {
-			return `To enable Built-In Tools you need to run llama-server with ${CLI_FLAGS.TOOLS} all or ${CLI_FLAGS.TOOLS} <name> flag. To see MCP Tools you need to add / enable MCP Server(s).`;
+			return `組み込みツールを有効にするには、llama-server を ${CLI_FLAGS.TOOLS} all または ${CLI_FLAGS.TOOLS} <name> フラグ付きで実行する必要があります。MCP ツールを表示するには、MCP サーバーを追加 / 有効化する必要があります。`;
 		}
 		// Other errors — return null so UI shows "Failed to load tools"
 		if (toolsStore.error) return null;

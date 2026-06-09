@@ -100,7 +100,7 @@
 		currentItem?.name ||
 			currentItem?.uploadedFile?.name ||
 			currentItem?.attachment?.name ||
-			'Unknown File'
+			'不明なファイル'
 	);
 	let isAudio = $derived(
 		currentItem ? isAudioFile(currentItem.attachment, currentItem.uploadedFile) : false

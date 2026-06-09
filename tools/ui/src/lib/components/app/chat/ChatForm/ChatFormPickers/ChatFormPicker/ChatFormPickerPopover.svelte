@@ -14,7 +14,7 @@
 	let {
 		class: className = '',
 		isOpen = $bindable(false),
-		srLabel = 'Open picker',
+		srLabel = 'ピッカーを開く',
 		onClose,
 		onKeydown,
 		children

@@ -624,7 +624,7 @@ class ChatStore {
 			).contextInfo;
 			this.showErrorDialog({
 				type: dialogType,
-				message: error instanceof Error ? error.message : 'Unknown error',
+				message: error instanceof Error ? error.message : '不明なエラー',
 				contextInfo
 			});
 		}

@@ -26,7 +26,7 @@
 		]}
 		{...props}
 	>
-		<span class="sr-only">Send</span>
+		<span class="sr-only">送信</span>
 		<ArrowUp class="h-12 w-12" />
 	</Button>
 {/snippet}

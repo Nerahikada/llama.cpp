@@ -48,7 +48,7 @@
 			bind:ref={searchInputRef}
 			onClose={handleSearchModeDeactivate}
 			onKeyDown={(e) => e.key === 'Escape' && handleSearchModeDeactivate()}
-			placeholder="Search conversations..."
+			placeholder="会話を検索..."
 			{isCancelAlwaysVisible}
 		/>
 	{:else}

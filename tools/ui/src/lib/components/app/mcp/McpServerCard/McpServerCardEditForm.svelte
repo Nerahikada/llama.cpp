@@ -17,12 +17,12 @@
 	let editUseProxy = $derived(serverUseProxy);
 
 	let urlError = $derived.by(() => {
-		if (!editUrl.trim()) return 'URL is required';
+		if (!editUrl.trim()) return 'URL は必須です';
 		try {
 			new URL(editUrl);
 			return null;
 		} catch {
-			return 'Invalid URL format';
+			return 'URL の形式が正しくありません';
 		}
 	});
 
@@ -41,7 +41,7 @@
 </script>
 
 <div class="space-y-4">
-	<p class="font-medium">Configure Server</p>
+	<p class="font-medium">サーバーを設定</p>
 
 	<McpServerForm
 		url={editUrl}
@@ -55,10 +55,10 @@
 	/>
 
 	<div class="flex items-center justify-end gap-2">
-		<Button variant="secondary" size="sm" onclick={onCancel}>Cancel</Button>
+		<Button variant="secondary" size="sm" onclick={onCancel}>キャンセル</Button>
 
 		<Button size="sm" onclick={handleSave} disabled={!canSave}>
-			{serverUrl.trim() ? 'Update' : 'Add'}
+			{serverUrl.trim() ? '更新' : '追加'}
 		</Button>
 	</div>
 </div>

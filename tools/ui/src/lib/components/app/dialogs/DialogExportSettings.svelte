@@ -32,20 +32,19 @@
 				{:else}
 					<Shield class="h-5 w-5 text-destructive" />
 				{/if}
-				Export Settings
+				設定をエクスポート
 			</AlertDialog.Title>
 
 			<AlertDialog.Description>
 				{#if includeSensitiveData}
 					<p class="text-amber-500">
-						Warning: This export will include sensitive data such as API keys and MCP server custom
-						headers (e.g., authorization tokens). Do not share this file with anyone you don't
-						trust.
+						警告: このエクスポートには、API キーや MCP サーバーのカスタムヘッダー (認証トークンなど)
+						といった機密データが含まれます。信頼できない相手とこのファイルを共有しないでください。
 					</p>
 				{:else}
 					<p>
-						Sensitive data (API keys, MCP server custom headers) will not be included in the export
-						to protect your credentials.
+						認証情報を保護するため、機密データ (API キー、MCP サーバーのカスタムヘッダー)
+						はエクスポートに含まれません。
 					</p>
 				{/if}
 			</AlertDialog.Description>
@@ -59,23 +58,23 @@
 				class="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 			>
 				{#if includeSensitiveData}
-					<span class="text-destructive">Include sensitive data (not recommended)</span>
+					<span class="text-destructive">機密データを含める (非推奨)</span>
 				{:else}
-					<span>Include sensitive data</span>
+					<span>機密データを含める</span>
 				{/if}
 			</Label>
 		</div>
 
 		<AlertDialog.Footer>
-			<AlertDialog.Cancel onclick={onCancel}>Cancel</AlertDialog.Cancel>
+			<AlertDialog.Cancel onclick={onCancel}>キャンセル</AlertDialog.Cancel>
 			<AlertDialog.Action
 				onclick={onConfirm}
 				class="bg-destructive text-white hover:bg-destructive/80"
 			>
 				{#if includeSensitiveData}
-					Export Anyway
+					このままエクスポート
 				{:else}
-					Export Without Sensitive Data
+					機密データを除いてエクスポート
 				{/if}
 			</AlertDialog.Action>
 		</AlertDialog.Footer>

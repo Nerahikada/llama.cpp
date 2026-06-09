@@ -44,17 +44,16 @@
 	{#if summary && summary.show && summary.items.length > 0}
 		<div class="mt-4 grid overflow-x-auto rounded-lg border border-border/50 bg-muted/30 p-4">
 			<h5 class="mb-2 text-sm font-medium">
-				{summary.verb}
-				{summary.items.length} conversation{summary.items.length === 1 ? '' : 's'}
+				{summary.items.length}件の会話を{summary.verb}
 			</h5>
 
 			<ul class="space-y-1 text-sm text-muted-foreground">
 				{#each summary.items.slice(0, 10) as conv (conv.id)}
-					<li class="truncate">• {conv.name || 'Untitled conversation'}</li>
+					<li class="truncate">• {conv.name || '無題の会話'}</li>
 				{/each}
 
 				{#if summary.items.length > 10}
-					<li class="italic">... and {summary.items.length - 10} more</li>
+					<li class="italic">... 他 {summary.items.length - 10} 件</li>
 				{/if}
 			</ul>
 		</div>

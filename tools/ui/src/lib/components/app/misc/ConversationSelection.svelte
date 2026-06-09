@@ -25,7 +25,7 @@
 
 	let filteredConversations = $derived(
 		conversations.filter((conv) => {
-			const name = conv.name || 'Untitled conversation';
+			const name = conv.name || '無題の会話';
 			return name.toLowerCase().includes(searchQuery.toLowerCase());
 		})
 	);
@@ -110,13 +110,13 @@
 </script>
 
 <div class="space-y-4">
-	<SearchInput bind:value={searchQuery} placeholder="Search conversations..." />
+	<SearchInput bind:value={searchQuery} placeholder="会話を検索..." />
 
 	<div class="flex items-center justify-between text-sm text-muted-foreground">
 		<span>
-			{selectedIds.size} of {conversations.length} selected
+			{conversations.length} 件中 {selectedIds.size} 件を選択中
 			{#if searchQuery}
-				({filteredConversations.length} shown)
+				({filteredConversations.length} 件表示)
 			{/if}
 		</span>
 	</div>
@@ -134,9 +134,9 @@
 							/>
 						</th>
 
-						<th class="p-3 text-left text-sm font-medium">Conversation Name</th>
+						<th class="p-3 text-left text-sm font-medium">会話名</th>
 
-						<th class="w-32 p-3 text-left text-sm font-medium">Messages</th>
+						<th class="w-32 p-3 text-left text-sm font-medium">メッセージ</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -144,9 +144,9 @@
 						<tr>
 							<td colspan="3" class="p-8 text-center text-sm text-muted-foreground">
 								{#if searchQuery}
-									No conversations found matching "{searchQuery}"
+									"{searchQuery}" に一致する会話が見つかりません
 								{:else}
-									No conversations available
+									利用可能な会話がありません
 								{/if}
 							</td>
 						</tr>
@@ -168,8 +168,8 @@
 								</td>
 
 								<td class="p-3 text-sm">
-									<div class="max-w-[17rem] truncate" title={conv.name || 'Untitled conversation'}>
-										{conv.name || 'Untitled conversation'}
+									<div class="max-w-[17rem] truncate" title={conv.name || '無題の会話'}>
+										{conv.name || '無題の会話'}
 									</div>
 								</td>
 
@@ -185,10 +185,10 @@
 	</div>
 
 	<div class="flex justify-end gap-2">
-		<Button variant="outline" onclick={handleCancel}>Cancel</Button>
+		<Button variant="outline" onclick={handleCancel}>キャンセル</Button>
 
 		<Button onclick={handleConfirm} disabled={selectedIds.size === 0}>
-			{mode === 'export' ? 'Export' : 'Import'} ({selectedIds.size})
+			{mode === 'export' ? 'エクスポート' : 'インポート'} ({selectedIds.size})
 		</Button>
 	</div>
 </div>

@@ -184,32 +184,32 @@ export class MCPService {
 				!config.useProxy
 			) {
 				hints.push(
-					'The page is running over HTTPS but the MCP server is HTTP. Browsers often block this as mixed content; enable the proxy or use HTTPS/WSS for the MCP server.'
+					'ページは HTTPS で実行されていますが、MCP サーバーは HTTP です。ブラウザは混在コンテンツとしてこれをブロックすることがよくあります。プロキシを有効にするか、MCP サーバーに HTTPS/WSS を使用してください。'
 				);
 			}
 
 			if (window.location.origin !== targetUrl.origin && !config.useProxy) {
 				hints.push(
-					'This is a cross-origin browser request. If the server is reachable from curl or Node but not from the browser, missing CORS headers are the most likely cause.'
+					'これはクロスオリジンのブラウザリクエストです。サーバーが curl や Node からは到達できるのにブラウザからは到達できない場合、CORS ヘッダーの欠如が最も考えられる原因です。'
 				);
 			}
 		}
 
 		if (headerNames.length > 0) {
 			hints.push(
-				`Custom request headers are configured (${headerNames.join(', ')}). That triggers a CORS preflight, so the server must allow OPTIONS and include the matching Access-Control-Allow-Headers response.`
+				`カスタムリクエストヘッダーが設定されています (${headerNames.join(', ')})。これにより CORS プリフライトがトリガーされるため、サーバーは OPTIONS を許可し、対応する Access-Control-Allow-Headers レスポンスを含める必要があります。`
 			);
 		}
 
 		if (config.credentials && config.credentials !== 'omit') {
 			hints.push(
-				'Credentials are enabled for this connection. Cross-origin credentialed requests need Access-Control-Allow-Credentials: true and cannot use a wildcard Access-Control-Allow-Origin.'
+				'この接続では認証情報が有効になっています。クロスオリジンの認証情報付きリクエストには Access-Control-Allow-Credentials: true が必要で、ワイルドカードの Access-Control-Allow-Origin は使用できません。'
 			);
 		}
 
 		if (message.includes('Failed to fetch')) {
 			hints.push(
-				'"Failed to fetch" is a browser-level network failure. Common causes are CORS rejection, mixed-content blocking, certificate/TLS errors, DNS failures, or nothing listening on the target port.'
+				'"Failed to fetch" はブラウザレベルのネットワーク障害です。よくある原因は、CORS の拒否、混在コンテンツのブロック、証明書/TLS エラー、DNS の失敗、または対象ポートで何もリッスンしていないことです。'
 			);
 		}
 
@@ -362,7 +362,7 @@ export class MCPService {
 		stopPhaseLogging: () => void;
 	} {
 		if (!config.url) {
-			throw new Error('MCP server configuration is missing url');
+			throw new Error('MCP サーバー設定に url がありません');
 		}
 
 		const useProxy = config.useProxy ?? false;
@@ -386,7 +386,7 @@ export class MCPService {
 		if (config.transport === MCPTransportType.WEBSOCKET) {
 			if (useProxy) {
 				throw new Error(
-					'WebSocket transport is not supported when using CORS proxy. Use HTTP transport instead.'
+					'CORS プロキシ使用時は WebSocket トランスポートはサポートされていません。代わりに HTTP トランスポートを使用してください。'
 				);
 			}
 
@@ -447,7 +447,9 @@ export class MCPService {
 				const httpMsg = httpError instanceof Error ? httpError.message : String(httpError);
 				const sseMsg = sseError instanceof Error ? sseError.message : String(sseError);
 
-				throw new Error(`Failed to create transport. StreamableHTTP: ${httpMsg}; SSE: ${sseMsg}`);
+				throw new Error(
+					`トランスポートの作成に失敗しました。StreamableHTTP: ${httpMsg}; SSE: ${sseMsg}`
+				);
 			}
 		}
 	}
@@ -516,7 +518,7 @@ export class MCPService {
 			MCPConnectionPhase.TRANSPORT_CREATING,
 			this.createLog(
 				MCPConnectionPhase.TRANSPORT_CREATING,
-				`Creating transport for ${serverConfig.url}`
+				`${serverConfig.url} のトランスポートを作成中`
 			)
 		);
 
@@ -536,7 +538,7 @@ export class MCPService {
 				console.log(`[MCPService][${serverName}] WebSocket closed, notifying for reconnection`);
 				onPhase?.(
 					MCPConnectionPhase.DISCONNECTED,
-					this.createLog(MCPConnectionPhase.DISCONNECTED, 'WebSocket connection closed')
+					this.createLog(MCPConnectionPhase.DISCONNECTED, 'WebSocket 接続が閉じられました')
 				);
 			};
 		}
@@ -544,7 +546,10 @@ export class MCPService {
 		// Phase: Transport ready
 		onPhase?.(
 			MCPConnectionPhase.TRANSPORT_READY,
-			this.createLog(MCPConnectionPhase.TRANSPORT_READY, `Transport ready (${transportType})`),
+			this.createLog(
+				MCPConnectionPhase.TRANSPORT_READY,
+				`トランスポート準備完了 (${transportType})`
+			),
 			{ transportType }
 		);
 
@@ -584,7 +589,7 @@ export class MCPService {
 				MCPConnectionPhase.ERROR,
 				this.createLog(
 					MCPConnectionPhase.ERROR,
-					`Protocol error: ${error.message}`,
+					`プロトコルエラー: ${error.message}`,
 					MCPLogLevel.ERROR,
 					{
 						error: this.summarizeError(error)
@@ -596,7 +601,7 @@ export class MCPService {
 		// Phase: Initializing
 		onPhase?.(
 			MCPConnectionPhase.INITIALIZING,
-			this.createLog(MCPConnectionPhase.INITIALIZING, 'Sending initialize request...')
+			this.createLog(MCPConnectionPhase.INITIALIZING, '初期化リクエストを送信中...')
 		);
 
 		try {
@@ -615,9 +620,7 @@ export class MCPService {
 				MCPConnectionPhase.ERROR,
 				this.createLog(
 					MCPConnectionPhase.ERROR,
-					`Connection failed during initialize: ${
-						error instanceof Error ? error.message : String(error)
-					}`,
+					`初期化中に接続に失敗しました: ${error instanceof Error ? error.message : String(error)}`,
 					MCPLogLevel.ERROR,
 					{
 						error: this.summarizeError(error),
@@ -653,7 +656,7 @@ export class MCPService {
 			MCPConnectionPhase.CAPABILITIES_EXCHANGED,
 			this.createLog(
 				MCPConnectionPhase.CAPABILITIES_EXCHANGED,
-				'Capabilities exchanged successfully',
+				'機能の交換に成功しました',
 				MCPLogLevel.INFO,
 				{
 					serverCapabilities,
@@ -671,7 +674,7 @@ export class MCPService {
 		// Phase: Listing tools
 		onPhase?.(
 			MCPConnectionPhase.LISTING_TOOLS,
-			this.createLog(MCPConnectionPhase.LISTING_TOOLS, 'Listing available tools...')
+			this.createLog(MCPConnectionPhase.LISTING_TOOLS, '利用可能なツールを取得中...')
 		);
 
 		if (import.meta.env.DEV && import.meta.env.VITE_DEBUG) {
@@ -696,7 +699,7 @@ export class MCPService {
 			MCPConnectionPhase.CONNECTED,
 			this.createLog(
 				MCPConnectionPhase.CONNECTED,
-				`Connection established with ${tools.length} tools (${connectionTimeMs}ms)`
+				`${tools.length} 個のツールで接続が確立されました (${connectionTimeMs}ms)`
 			)
 		);
 		if (import.meta.env.DEV && import.meta.env.VITE_DEBUG) {
@@ -870,7 +873,7 @@ export class MCPService {
 			const message = error instanceof Error ? error.message : String(error);
 
 			throw new Error(
-				`Tool "${params.name}" execution failed on server "${connection.serverName}": ${message}`,
+				`サーバー "${connection.serverName}" でツール "${params.name}" の実行に失敗しました: ${message}`,
 				{ cause: error instanceof Error ? error : undefined }
 			);
 		}

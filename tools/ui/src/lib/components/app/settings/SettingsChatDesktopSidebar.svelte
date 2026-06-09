@@ -15,7 +15,7 @@
 <div class="sticky top-0 hidden w-64 flex-col self-start bg-background pt-10 pb-4 md:flex">
 	<div class="flex items-center gap-2 pb-10">
 		<Settings class="h-6 w-6" />
-		<h1 class="text-2xl font-semibold">Settings</h1>
+		<h1 class="text-2xl font-semibold">設定</h1>
 	</div>
 	<nav class="space-y-1">
 		{#each sections as section (section.title)}

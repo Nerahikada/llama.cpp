@@ -16,7 +16,7 @@
 			<AlertTriangle class="h-4 w-4" />
 
 			<Alert.Title class="flex items-center justify-between">
-				<span>Server unavailable</span>
+				<span>サーバーに接続できません</span>
 
 				<button
 					onclick={() => serverStore.fetch()}
@@ -24,7 +24,7 @@
 					class="flex items-center gap-1.5 rounded-lg bg-destructive/20 px-2 py-1 text-xs font-medium hover:bg-destructive/30 disabled:opacity-50"
 				>
 					<RefreshCw class="h-3 w-3 {serverLoading() ? 'animate-spin' : ''}" />
-					{serverLoading() ? 'Retrying...' : 'Retry'}
+					{serverLoading() ? '再試行中...' : '再試行'}
 				</button>
 			</Alert.Title>
 

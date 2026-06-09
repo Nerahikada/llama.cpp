@@ -100,7 +100,7 @@
 						</div>
 						{#if displayedOverflow > 0}
 							<span class="shrink-0 text-xs text-muted-foreground/60"
-								>{displayedOverflow}+ chars</span
+								>{displayedOverflow}+ 文字</span
 							>
 						{/if}
 					</div>
@@ -116,7 +116,7 @@
 			>
 				<ChevronsUpDownIcon class="h-4 w-4" />
 
-				<span class="sr-only">Toggle content</span>
+				<span class="sr-only">コンテンツを切り替え</span>
 			</div>
 		</Collapsible.Trigger>
 

@@ -158,9 +158,9 @@
 
 	$effect(() => {
 		if (!hasModelSelected) {
-			submitTooltip = 'Please select a model first';
+			submitTooltip = '先にモデルを選択してください';
 		} else if (!isSelectedModelInCache) {
-			submitTooltip = 'Selected model is not available, please select another';
+			submitTooltip = '選択したモデルは利用できません。別のモデルを選択してください';
 		} else {
 			submitTooltip = '';
 		}

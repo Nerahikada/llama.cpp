@@ -22,13 +22,14 @@
 
 {#if siblingInfo && siblingInfo.totalSiblings > 1}
 	<div
-		aria-label="Message version {siblingInfo.currentIndex + 1} of {siblingInfo.totalSiblings}"
+		aria-label="メッセージバージョン {siblingInfo.totalSiblings} 件中 {siblingInfo.currentIndex +
+			1} 件目"
 		class="flex items-center gap-1 text-xs text-muted-foreground {className}"
 		role="navigation"
 	>
 		<ActionIcon
 			icon={ChevronLeft}
-			tooltip="Previous version"
+			tooltip="前のバージョン"
 			disabled={!hasPrevious}
 			class="h-5 w-5 p-0 {!hasPrevious ? '!cursor-not-allowed opacity-30' : ''}"
 			onclick={() => onNavigateToSibling?.(previousSiblingId!)}
@@ -40,7 +41,7 @@
 
 		<ActionIcon
 			icon={ChevronRight}
-			tooltip="Next version"
+			tooltip="次のバージョン"
 			disabled={!hasNext}
 			class="h-5 w-5 p-0 {!hasNext ? 'opacity-30' : ''}"
 			onclick={() => onNavigateToSibling?.(nextSiblingId!)}

@@ -112,10 +112,10 @@
 			if (content) {
 				templatePreviewContent = content;
 			} else {
-				templatePreviewError = 'Failed to read resource';
+				templatePreviewError = 'リソースの読み込みに失敗しました';
 			}
 		} catch (error) {
-			templatePreviewError = error instanceof Error ? error.message : 'Unknown error';
+			templatePreviewError = error instanceof Error ? error.message : '不明なエラー';
 		} finally {
 			templatePreviewLoading = false;
 		}
@@ -138,10 +138,10 @@
 					await mcpStore.attachResource(knownResource.uri);
 				}
 
-				toast.success(`Resource attached: ${knownResource.title || knownResource.name}`);
+				toast.success(`リソースを添付しました: ${knownResource.title || knownResource.name}`);
 			} else {
 				if (mcpResourceStore.isAttached(templatePreviewUri)) {
-					toast.info('Resource already attached');
+					toast.info('リソースはすでに添付されています');
 					handleOpenChange(false);
 					return;
 				}
@@ -155,7 +155,7 @@
 				const attachment = mcpResourceStore.addAttachment(resourceInfo);
 				mcpResourceStore.updateAttachmentContent(attachment.id, templatePreviewContent);
 
-				toast.success(`Resource attached: ${resourceInfo.name}`);
+				toast.success(`リソースを添付しました: ${resourceInfo.name}`);
 			}
 
 			handleOpenChange(false);
@@ -236,8 +236,8 @@
 
 			toast.success(
 				count === 1
-					? `Resource attached: ${resourcesToAttach[0].name}`
-					: `${count} resources attached`
+					? `リソースを添付しました: ${resourcesToAttach[0].name}`
+					: `${count} 件のリソースを添付しました`
 			);
 
 			handleOpenChange(false);
@@ -261,7 +261,7 @@
 			<Dialog.Title class="flex items-center gap-2">
 				<FolderOpen class="h-5 w-5" />
 
-				<span>MCP Resources</span>
+				<span>MCP リソース</span>
 
 				{#if totalCount > 0}
 					<span class="text-sm font-normal text-muted-foreground">({totalCount})</span>
@@ -269,7 +269,7 @@
 			</Dialog.Title>
 
 			<Dialog.Description>
-				Browse and attach resources from connected MCP servers to your chat context.
+				接続済みの MCP サーバーからリソースを参照し、チャットのコンテキストに添付します。
 			</Dialog.Description>
 		</Dialog.Header>
 
@@ -323,7 +323,7 @@
 										templatePreviewError = null;
 									}}
 								>
-									Try again
+									再試行
 								</Button>
 							</div>
 						{:else}
@@ -359,14 +359,14 @@
 					</div>
 				{:else}
 					<div class="flex h-full items-center justify-center text-sm text-muted-foreground">
-						Select a resource to preview
+						プレビューするリソースを選択してください
 					</div>
 				{/if}
 			</div>
 		</div>
 
 		<Dialog.Footer class="border-t border-border/30 px-6 py-4">
-			<Button variant="outline" onclick={() => handleOpenChange(false)}>Cancel</Button>
+			<Button variant="outline" onclick={() => handleOpenChange(false)}>キャンセル</Button>
 
 			{#if hasTemplateResult}
 				<Button onclick={handleAttachTemplateResource} disabled={isAttaching}>
@@ -376,7 +376,7 @@
 						<Plus class="mr-2 h-4 w-4" />
 					{/if}
 
-					Attach Resource
+					リソースを添付
 				</Button>
 			{:else}
 				<Button onclick={handleAttach} disabled={selectedResources.size === 0 || isAttaching}>
@@ -386,7 +386,7 @@
 						<Plus class="mr-2 h-4 w-4" />
 					{/if}
 
-					Attach {selectedResources.size > 0 ? `(${selectedResources.size})` : 'Resource'}
+					添付 {selectedResources.size > 0 ? `(${selectedResources.size})` : 'リソース'}
 				</Button>
 			{/if}
 		</Dialog.Footer>

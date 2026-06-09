@@ -51,7 +51,7 @@
 		style="bottom: {buttonBottom}; transform: translateY({show ? '0' : '2rem'}); opacity: {show
 			? 1
 			: 0};"
-		aria-label="Scroll to bottom"
+		aria-label="一番下までスクロール"
 	>
 		<ArrowDown class="h-4 w-4" />
 	</Button>

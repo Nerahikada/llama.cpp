@@ -15,11 +15,11 @@
 	}
 
 	let {
-		placeholder = 'Search...',
+		placeholder = '検索...',
 		searchValue = $bindable(''),
 		onSearchChange,
 		onSearchKeyDown,
-		emptyMessage = 'No items found',
+		emptyMessage = '項目が見つかりません',
 		isEmpty = false,
 		children,
 		footer

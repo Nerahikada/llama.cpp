@@ -86,7 +86,7 @@
 				<ActionIcon
 					iconSize="h-2.5 w-2.5"
 					icon={HeartOff}
-					tooltip="Remove from favorites"
+					tooltip="お気に入りから削除"
 					class="h-3 w-3 hover:text-foreground"
 					onclick={() => modelsStore.toggleFavorite(option.model)}
 				/>
@@ -94,7 +94,7 @@
 				<ActionIcon
 					iconSize="h-2.5 w-2.5"
 					icon={Heart}
-					tooltip="Add to favorites"
+					tooltip="お気に入りに追加"
 					class="h-3 w-3 hover:text-foreground"
 					onclick={() => modelsStore.toggleFavorite(option.model)}
 				/>
@@ -105,7 +105,7 @@
 				<ActionIcon
 					iconSize="h-2.5 w-2.5"
 					icon={Info}
-					tooltip="Model information"
+					tooltip="モデル情報"
 					class="h-3 w-3 hover:text-foreground"
 					onclick={() => onInfoClick(option.model)}
 				/>
@@ -122,7 +122,7 @@
 					<ActionIcon
 						iconSize="h-2.5 w-2.5"
 						icon={RotateCw}
-						tooltip="Retry loading model"
+						tooltip="モデルの読み込みを再試行"
 						class="h-3 w-3 text-red-500 hover:text-foreground"
 						onclick={() => modelsStore.loadModel(option.model)}
 						stopPropagationOnClick
@@ -137,7 +137,7 @@
 					<ActionIcon
 						iconSize="h-2.5 w-2.5"
 						icon={PowerOff}
-						tooltip="Unload model"
+						tooltip="モデルをアンロード"
 						class="h-3 w-3 text-red-500 hover:text-red-600"
 						onclick={(e) => {
 							e?.stopPropagation();
@@ -154,7 +154,7 @@
 					<ActionIcon
 						iconSize="h-2.5 w-2.5"
 						icon={PowerOff}
-						tooltip="Unload model"
+						tooltip="モデルをアンロード"
 						class="h-3 w-3 text-red-500 hover:text-red-600"
 						onclick={() => modelsStore.unloadModel(option.model)}
 						stopPropagationOnClick
@@ -169,7 +169,7 @@
 					<ActionIcon
 						iconSize="h-2.5 w-2.5"
 						icon={Power}
-						tooltip="Load model"
+						tooltip="モデルを読み込む"
 						class="h-3 w-3"
 						onclick={() => modelsStore.loadModel(option.model)}
 						stopPropagationOnClick

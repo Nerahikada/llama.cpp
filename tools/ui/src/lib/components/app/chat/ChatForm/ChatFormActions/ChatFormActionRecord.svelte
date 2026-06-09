@@ -33,7 +33,7 @@
 				onclick={onMicClick}
 				type="button"
 			>
-				<span class="sr-only">{isRecording ? 'Stop recording' : 'Start recording'}</span>
+				<span class="sr-only">{isRecording ? '録音を停止' : '録音を開始'}</span>
 
 				{#if isRecording}
 					<Square class="h-4 w-4 animate-pulse fill-white" />
@@ -45,7 +45,7 @@
 
 		{#if !hasAudioModality}
 			<Tooltip.Content>
-				<p>Current model does not support audio</p>
+				<p>現在のモデルは音声に対応していません</p>
 			</Tooltip.Content>
 		{/if}
 	</Tooltip.Root>

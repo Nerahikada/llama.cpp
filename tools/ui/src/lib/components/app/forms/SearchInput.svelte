@@ -16,7 +16,7 @@
 
 	let {
 		value = $bindable(''),
-		placeholder = 'Search...',
+		placeholder = '検索...',
 		onInput,
 		onClose,
 		onKeyDown,
@@ -67,7 +67,7 @@
 			type="button"
 			class="absolute top-1/2 right-3 -translate-y-1/2 transform cursor-pointer text-muted-foreground transition-colors hover:text-foreground"
 			onclick={handleClear}
-			aria-label={value ? 'Clear search' : 'Close'}
+			aria-label={value ? '検索をクリア' : '閉じる'}
 		>
 			<X class="h-4 w-4" />
 		</button>

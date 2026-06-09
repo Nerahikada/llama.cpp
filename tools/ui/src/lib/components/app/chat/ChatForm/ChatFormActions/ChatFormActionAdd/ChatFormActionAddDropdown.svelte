@@ -97,7 +97,7 @@
 				<DropdownMenu.SubTrigger class="flex cursor-pointer items-center gap-2">
 					<File class="h-4 w-4" />
 
-					<span>Add files</span>
+					<span>ファイルを追加</span>
 				</DropdownMenu.SubTrigger>
 
 				<DropdownMenu.SubContent class="w-48">
@@ -144,7 +144,7 @@
 			>
 				<MessageSquare class="h-4 w-4" />
 
-				<span>System Message</span>
+				<span>システムメッセージ</span>
 			</DropdownMenu.Item>
 
 			<ChatFormActionAddToolsSubmenu />
@@ -160,7 +160,7 @@
 				>
 					<Zap class="h-4 w-4" />
 
-					<span>MCP Prompt</span>
+					<span>MCP プロンプト</span>
 				</DropdownMenu.Item>
 			{/if}
 
@@ -171,7 +171,7 @@
 				>
 					<FolderOpen class="h-4 w-4" />
 
-					<span>MCP Resources</span>
+					<span>MCP リソース</span>
 				</DropdownMenu.Item>
 			{/if}
 		</DropdownMenu.Content>

@@ -735,7 +735,8 @@ class AgenticStore {
 					);
 					for (let j = i; j < normalizedCalls.length; j++) {
 						const remainingCall = normalizedCalls[j];
-						const interruptedContent = 'Tool execution was interrupted by a new user message.';
+						const interruptedContent =
+							'新しいユーザーメッセージによってツールの実行が中断されました。';
 						if (createToolResultMessage) {
 							await createToolResultMessage(remainingCall.id, interruptedContent);
 						}
@@ -774,7 +775,7 @@ class AgenticStore {
 				let toolSuccess = true;
 
 				if (permission === ToolPermissionDecision.DENY) {
-					result = 'Tool execution was denied by the user.';
+					result = 'ユーザーによってツールの実行が拒否されました。';
 					toolSuccess = false;
 				} else {
 					try {

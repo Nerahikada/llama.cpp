@@ -47,7 +47,7 @@
 <div class="grid gap-3">
 	<div>
 		<label for="server-url-{id}" class="mb-2 block text-xs font-medium">
-			Server URL <span class="text-destructive">*</span>
+			サーバー URL <span class="text-destructive">*</span>
 		</label>
 
 		<Input
@@ -80,16 +80,17 @@
 				/>
 
 				<span>
-					<span class="text-xs text-muted-foreground">Use llama-server proxy</span>
+					<span class="text-xs text-muted-foreground">llama-server プロキシを使用</span>
 
 					<br />
 
 					{#if !mcpStore.isProxyAvailable}
 						<span class="inline-flex gap-0.75 text-xs text-muted-foreground/60"
-							>(Run <pre>llama-server</pre>
-							with
+							>(
+							<pre>llama-server</pre>
+							を
 							<pre>{CLI_FLAGS.MCP_PROXY}</pre>
-							flag)</span
+							フラグ付きで実行してください)</span
 						>
 					{/if}
 				</span>
@@ -101,11 +102,11 @@
 		class="mt-2"
 		pairs={headerPairs}
 		onPairsChange={updateHeaderPairs}
-		keyPlaceholder="Header name"
-		valuePlaceholder="Value"
-		addButtonLabel="Add"
-		emptyMessage="No custom headers configured."
-		sectionLabel="Custom Headers"
+		keyPlaceholder="ヘッダー名"
+		valuePlaceholder="値"
+		addButtonLabel="追加"
+		emptyMessage="カスタムヘッダーは設定されていません。"
+		sectionLabel="カスタムヘッダー"
 		sectionLabelOptional
 	/>
 </div>

@@ -314,11 +314,11 @@
 		const allUnsupportedFiles = [...generallyUnsupported, ...unsupportedFiles];
 
 		if (allUnsupportedFiles.length > 0) {
-			const supportedTypes: string[] = ['text files', 'PDFs'];
+			const supportedTypes: string[] = ['テキストファイル', 'PDF'];
 
-			if (hasVisionModality) supportedTypes.push('images');
-			if (hasAudioModality) supportedTypes.push('audio files');
-			if (hasVideoModality) supportedTypes.push('video files');
+			if (hasVisionModality) supportedTypes.push('画像');
+			if (hasAudioModality) supportedTypes.push('音声ファイル');
+			if (hasVideoModality) supportedTypes.push('動画ファイル');
 
 			fileErrorData = {
 				generallyUnsupported,
@@ -388,7 +388,7 @@
 {:else}
 	<div
 		bind:this={chatScrollContainer}
-		aria-label="Chat interface with file drop zone"
+		aria-label="ファイルドロップゾーン付きのチャットインターフェース"
 		class="flex h-full flex-col overflow-y-auto px-4 md:px-6"
 		ondragenter={handleDragEnter}
 		ondragleave={handleDragLeave}
@@ -450,10 +450,10 @@
 
 <DialogConfirmation
 	bind:open={showDeleteDialog}
-	title="Delete Conversation"
-	description="Are you sure you want to delete this conversation? This action cannot be undone and will permanently remove all messages in this conversation."
-	confirmText="Delete"
-	cancelText="Cancel"
+	title="会話を削除"
+	description="この会話を削除してもよろしいですか？この操作は元に戻せず、この会話内のすべてのメッセージが完全に削除されます。"
+	confirmText="削除"
+	cancelText="キャンセル"
 	variant="destructive"
 	icon={Trash2}
 	onConfirm={handleDeleteConfirm}

@@ -334,7 +334,7 @@ class ModelsStore {
 			}
 		} catch (error) {
 			this.models = [];
-			this.error = error instanceof Error ? error.message : 'Failed to load models';
+			this.error = error instanceof Error ? error.message : 'モデルの読み込みに失敗しました';
 
 			throw error;
 		} finally {
@@ -655,7 +655,7 @@ class ModelsStore {
 
 			if (currentStatus === ServerModelStatus.FAILED) {
 				throw new Error(
-					`Model failed to ${expectedStatus === ServerModelStatus.LOADED ? 'load' : 'unload'}`
+					`モデルの${expectedStatus === ServerModelStatus.LOADED ? '読み込み' : 'アンロード'}に失敗しました`
 				);
 			}
 
@@ -664,7 +664,7 @@ class ModelsStore {
 				currentStatus === ServerModelStatus.UNLOADED &&
 				attempt > 2
 			) {
-				throw new Error('Model was unloaded unexpectedly during loading');
+				throw new Error('読み込み中にモデルが予期せずアンロードされました');
 			}
 
 			attempt++;
@@ -683,10 +683,10 @@ class ModelsStore {
 			await ModelsService.load(modelId);
 			await this.pollForModelStatus(modelId, ServerModelStatus.LOADED);
 			await this.updateModelModalities(modelId);
-			toast.success(`Model loaded: ${this.toDisplayName(modelId)}`);
+			toast.success(`モデルを読み込みました: ${this.toDisplayName(modelId)}`);
 		} catch (error) {
-			this.error = error instanceof Error ? error.message : 'Failed to load model';
-			toast.error(`Failed to load model: ${this.toDisplayName(modelId)}`);
+			this.error = error instanceof Error ? error.message : 'モデルの読み込みに失敗しました';
+			toast.error(`モデルの読み込みに失敗しました: ${this.toDisplayName(modelId)}`);
 			throw error;
 		} finally {
 			this.modelLoadingStates.set(modelId, false);
@@ -703,10 +703,10 @@ class ModelsStore {
 		try {
 			await ModelsService.unload(modelId);
 			await this.pollForModelStatus(modelId, ServerModelStatus.UNLOADED);
-			toast.info(`Model unloaded: ${this.toDisplayName(modelId)}`);
+			toast.info(`モデルをアンロードしました: ${this.toDisplayName(modelId)}`);
 		} catch (error) {
-			this.error = error instanceof Error ? error.message : 'Failed to unload model';
-			toast.error(`Failed to unload model: ${this.toDisplayName(modelId)}`);
+			this.error = error instanceof Error ? error.message : 'モデルのアンロードに失敗しました';
+			toast.error(`モデルのアンロードに失敗しました: ${this.toDisplayName(modelId)}`);
 			throw error;
 		} finally {
 			this.modelLoadingStates.set(modelId, false);
@@ -744,7 +744,7 @@ class ModelsStore {
 		try {
 			localStorage.setItem(FAVORITE_MODELS_LOCALSTORAGE_KEY, JSON.stringify([...next]));
 		} catch {
-			toast.error('Failed to save favorite models to local storage');
+			toast.error('お気に入りモデルのローカルストレージへの保存に失敗しました');
 		}
 	}
 
@@ -753,7 +753,7 @@ class ModelsStore {
 			const raw = localStorage.getItem(FAVORITE_MODELS_LOCALSTORAGE_KEY);
 			return raw ? new Set(JSON.parse(raw) as string[]) : new Set();
 		} catch {
-			toast.error('Failed to load favorite models from local storage');
+			toast.error('お気に入りモデルのローカルストレージからの読み込みに失敗しました');
 			return new Set();
 		}
 	}

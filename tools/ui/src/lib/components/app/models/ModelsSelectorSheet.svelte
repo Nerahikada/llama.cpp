@@ -55,10 +55,10 @@
 	{#if ms.loading && ms.options.length === 0 && ms.isRouter}
 		<div class="flex items-center gap-2 text-xs text-muted-foreground">
 			<Loader2 class="h-3.5 w-3.5 animate-spin" />
-			Loading models…
+			モデルを読み込み中...
 		</div>
 	{:else if ms.options.length === 0 && ms.isRouter}
-		<p class="text-xs text-muted-foreground">No models available.</p>
+		<p class="text-xs text-muted-foreground">利用可能なモデルがありません。</p>
 	{:else}
 		{@const selectedOption = ms.getDisplayOption()}
 
@@ -83,7 +83,7 @@
 				<Package class="h-3.5 w-3.5 shrink-0" />
 
 				{#if !selectedOption}
-					<span class="min-w-0 font-medium">Select model</span>
+					<span class="min-w-0 font-medium">モデルを選択</span>
 				{:else}
 					<ModelId
 						class="text-xs"
@@ -104,17 +104,17 @@
 			<Sheet.Root bind:open={sheetOpen} onOpenChange={handleSheetOpenChange}>
 				<Sheet.Content side="bottom" class="max-h-[85vh] gap-1">
 					<Sheet.Header>
-						<Sheet.Title>Select Model</Sheet.Title>
+						<Sheet.Title>モデルを選択</Sheet.Title>
 
 						<Sheet.Description class="sr-only">
-							Choose a model to use for the conversation
+							会話に使用するモデルを選択してください
 						</Sheet.Description>
 					</Sheet.Header>
 
 					<div class="flex flex-col gap-1 pb-4">
 						<div class="mb-3 px-4">
 							<SearchInput
-								placeholder="Search models..."
+								placeholder="モデルを検索..."
 								value={ms.searchTerm}
 								onInput={(v) => ms.setSearchTerm(v)}
 							/>
@@ -130,13 +130,15 @@
 									<span class="min-w-0 flex-1 truncate">
 										{selectedOption?.name || currentModel}
 									</span>
-									<span class="ml-2 text-xs whitespace-nowrap opacity-70">(not available)</span>
+									<span class="ml-2 text-xs whitespace-nowrap opacity-70">(利用不可)</span>
 								</button>
 								<div class="my-1 h-px bg-border"></div>
 							{/if}
 
 							{#if ms.filteredOptions.length === 0}
-								<p class="px-3 py-3 text-center text-sm text-muted-foreground">No models found.</p>
+								<p class="px-3 py-3 text-center text-sm text-muted-foreground">
+									モデルが見つかりません。
+								</p>
 							{/if}
 
 							<ModelsSelectorList

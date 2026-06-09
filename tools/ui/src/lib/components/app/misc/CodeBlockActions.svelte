@@ -19,13 +19,13 @@
 	<ActionIconCopyToClipboard
 		text={code}
 		canCopy={!disabled}
-		ariaLabel={disabled ? 'Code incomplete' : 'Copy code'}
+		ariaLabel={disabled ? 'コードが未完成です' : 'コードをコピー'}
 	/>
 
 	{#if showPreview}
 		<ActionIcon
 			icon={Eye}
-			tooltip={disabled ? 'Code incomplete' : 'Preview code'}
+			tooltip={disabled ? 'コードが未完成です' : 'コードをプレビュー'}
 			{disabled}
 			onclick={() => onPreview!(code, language)}
 		/>
