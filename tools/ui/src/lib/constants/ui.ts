@@ -4,7 +4,7 @@ import type { Component } from 'svelte';
 import { ROUTES } from './routes';
 
 export const FORK_TREE_DEPTH_PADDING = 8;
-export const SYSTEM_MESSAGE_PLACEHOLDER = 'System message';
+export const SYSTEM_MESSAGE_PLACEHOLDER = 'システムメッセージ';
 export const APP_NAME = import.meta.env.VITE_PUBLIC_APP_NAME || 'llama-ui';
 
 export const ICON_STRIP_TRANSITION_DURATION = 150;
@@ -20,17 +20,22 @@ export interface DesktopIconStripItem {
 }
 
 export const SIDEBAR_ACTIONS_ITEMS: DesktopIconStripItem[] = [
-	{ icon: SquarePen, tooltip: 'New chat', route: ROUTES.NEW_CHAT, keys: ['shift', 'cmd', 'o'] },
-	{ icon: Search, tooltip: 'Search', keys: ['cmd', 'k'] },
+	{
+		icon: SquarePen,
+		tooltip: '新しいチャット',
+		route: ROUTES.NEW_CHAT,
+		keys: ['shift', 'cmd', 'o']
+	},
+	{ icon: Search, tooltip: '検索', keys: ['cmd', 'k'] },
 	{
 		icon: McpLogo,
-		tooltip: 'MCP Servers',
+		tooltip: 'MCP サーバー',
 		route: ROUTES.MCP_SERVERS,
 		activeRouteId: '/mcp-servers'
 	},
 	{
 		icon: Settings,
-		tooltip: 'Settings',
+		tooltip: '設定',
 		route: ROUTES.SETTINGS,
 		activeRoutePrefix: '/settings'
 	}
