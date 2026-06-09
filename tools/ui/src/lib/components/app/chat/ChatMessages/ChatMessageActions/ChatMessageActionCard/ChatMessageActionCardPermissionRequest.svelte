@@ -19,11 +19,11 @@
 
 <ChatMessageActionCard icon={ShieldQuestion}>
 	{#snippet message()}
-		{#if serverLabel}
-			<span class="font-semibold">{serverLabel}</span> の
-		{/if}
-
 		<span class="font-semibold">{toolName}</span>
+
+		{#if serverLabel}
+			(<span class="font-semibold">{serverLabel}</span>)
+		{/if}
 
 		の使用を許可しますか？
 	{/snippet}

@@ -249,7 +249,7 @@
 	bind:open={showDeleteDialog}
 	title="会話を削除"
 	description={selectedConversation
-		? `"${selectedConversationNamePreview}" を削除してもよろしいですか？この操作は取り消せず、この会話のすべてのメッセージが完全に削除されます。`
+		? `"${selectedConversationNamePreview}" を削除してもよろしいですか？この操作は元に戻せず、この会話のすべてのメッセージが完全に削除されます。`
 		: ''}
 	confirmText="削除"
 	cancelText="キャンセル"

@@ -87,7 +87,7 @@
 				<Sheet.Title>チャットに追加</Sheet.Title>
 
 				<Sheet.Description class="sr-only">
-					ファイルやシステムプロンプトを追加、または MCP サーバーを設定します
+					ファイル、システムプロンプトの追加、MCP サーバーの設定
 				</Sheet.Description>
 			</Sheet.Header>
 

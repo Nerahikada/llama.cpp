@@ -21,11 +21,11 @@
 			{#if modality === ModelModality.VISION}
 				<Eye class="h-3 w-3" />
 
-				視覚 (画像)
+				ビジョン (画像)
 			{:else if modality === ModelModality.VIDEO}
 				<Video class="h-3 w-3" />
 
-				視覚 (動画)
+				ビジョン (動画)
 			{:else}
 				<Mic class="h-3 w-3" />
 

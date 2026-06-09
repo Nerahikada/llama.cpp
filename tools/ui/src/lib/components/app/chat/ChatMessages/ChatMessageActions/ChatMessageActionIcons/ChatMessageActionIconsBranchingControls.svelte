@@ -22,8 +22,7 @@
 
 {#if siblingInfo && siblingInfo.totalSiblings > 1}
 	<div
-		aria-label="メッセージバージョン {siblingInfo.totalSiblings} 件中 {siblingInfo.currentIndex +
-			1} 件目"
+		aria-label="メッセージバージョン {siblingInfo.currentIndex + 1} / {siblingInfo.totalSiblings}"
 		class="flex items-center gap-1 text-xs text-muted-foreground {className}"
 		role="navigation"
 	>

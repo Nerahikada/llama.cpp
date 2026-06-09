@@ -20,7 +20,7 @@
 
 	<p class="text-muted-foreground md:text-lg">
 		{serverStore.props?.modalities?.audio
-			? '音声を録音する、メッセージを入力する'
-			: 'メッセージを入力する'}、またはファイルをアップロードして始めましょう
+			? '音声を録音、メッセージを入力'
+			: 'メッセージを入力'}、またはファイルをアップロードして始めましょう
 	</p>
 </div>

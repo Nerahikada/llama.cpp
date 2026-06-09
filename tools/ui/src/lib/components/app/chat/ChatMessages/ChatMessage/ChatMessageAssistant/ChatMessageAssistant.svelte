@@ -214,7 +214,7 @@
 <div
 	class="text-md group w-full leading-7.5 {className}"
 	role="group"
-	aria-label="操作付きのアシスタントメッセージ"
+	aria-label="アシスタントメッセージ"
 >
 	{#if showProcessingInfoTop}
 		<div class="mt-6 w-full max-w-[48rem]" in:fade>

@@ -16,10 +16,10 @@
 <AlertDialog.Root bind:open>
 	<AlertDialog.Content>
 		<AlertDialog.Header>
-			<AlertDialog.Title>会話のタイトルを更新しますか?</AlertDialog.Title>
+			<AlertDialog.Title>会話のタイトルを更新しますか？</AlertDialog.Title>
 
 			<AlertDialog.Description>
-				最初のメッセージの内容に合わせて会話のタイトルを更新しますか?
+				最初のメッセージの内容に合わせて会話のタイトルを更新しますか？
 			</AlertDialog.Description>
 		</AlertDialog.Header>
 

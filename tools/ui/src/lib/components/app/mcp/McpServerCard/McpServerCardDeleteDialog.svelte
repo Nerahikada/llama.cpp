@@ -17,7 +17,7 @@
 			<AlertDialog.Title>サーバーを削除</AlertDialog.Title>
 
 			<AlertDialog.Description>
-				<strong>{displayName}</strong> を削除してもよろしいですか？この操作は取り消せません。
+				<strong>{displayName}</strong> を削除してもよろしいですか？この操作は元に戻せません。
 			</AlertDialog.Description>
 		</AlertDialog.Header>
 

@@ -231,7 +231,7 @@
 					<div
 						class="rounded bg-yellow-500/10 p-2 text-xs text-yellow-600 italic dark:text-yellow-400"
 					>
-						応答が途中で切り詰められました
+						応答が途中で中断されました
 					</div>
 				{/if}
 			</div>

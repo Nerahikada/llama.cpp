@@ -94,8 +94,8 @@ const SETTINGS_REGISTRY: Record<string, SettingsSectionEntry> = {
 			},
 			{
 				key: SETTINGS_KEYS.PASTE_LONG_TEXT_TO_FILE_LEN,
-				label: '長文をファイル化する文字数',
-				help: '長いテキストを貼り付けると、ファイルに変換されます。このパラメータの値を設定することでファイル化する文字数を制御できます。値が 0 の場合は無効になります。',
+				label: '長文をファイルに変換する文字数',
+				help: '長いテキストを貼り付けると、ファイルに変換されます。このパラメータの値を設定することでファイルに変換する文字数を制御できます。値が 0 の場合は無効になります。',
 				defaultValue: 2500,
 				type: SettingsFieldType.INPUT,
 				section: SETTINGS_SECTION_SLUGS.GENERAL,
@@ -284,8 +284,8 @@ const SETTINGS_REGISTRY: Record<string, SettingsSectionEntry> = {
 			},
 			{
 				key: SETTINGS_KEYS.FULL_HEIGHT_CODE_BLOCKS,
-				label: 'コードブロックを全高で表示',
-				help: '高さ制限を無視して、コードブロックを常に自然な全高で表示します。',
+				label: 'コードブロックの高さ制限を解除',
+				help: '高さ制限を無視して、コードブロックを常に本来の高さで表示します。',
 				defaultValue: false,
 				type: SettingsFieldType.CHECKBOX,
 				section: SETTINGS_SECTION_SLUGS.DISPLAY,
@@ -400,7 +400,7 @@ const SETTINGS_REGISTRY: Record<string, SettingsSectionEntry> = {
 			{
 				key: SETTINGS_KEYS.DYNATEMP_EXPONENT,
 				label: '動的温度の指数',
-				help: '温度サンプラーのアドオンです。最も確率の高いトークンに基づいて確率の再分配を滑らかにします。',
+				help: '温度サンプラーのアドオンです。最も確率の高いトークンに基づいて確率分布を調整します。',
 				defaultValue: undefined,
 				type: SettingsFieldType.INPUT,
 				section: SETTINGS_SECTION_SLUGS.SAMPLING,
@@ -644,8 +644,8 @@ const SETTINGS_REGISTRY: Record<string, SettingsSectionEntry> = {
 		settings: [
 			{
 				key: SETTINGS_KEYS.PRE_ENCODE_CONVERSATION,
-				label: '応答後に KV キャッシュを事前充填',
-				help: '各応答の後、会話を再送信してサーバーの KV キャッシュを事前に充填します。応答を読んでいる間にプロンプトがすでにエンコードされるため、次のターンが高速になります。',
+				label: '応答後に KV キャッシュを先読み',
+				help: '各応答の後、会話を再送信してサーバーの KV キャッシュを先読みします。応答を読んでいる間にプロンプトがエンコードされるため、次のターンが高速になります。',
 				defaultValue: false,
 				type: SettingsFieldType.CHECKBOX,
 				section: SETTINGS_SECTION_SLUGS.DEVELOPER

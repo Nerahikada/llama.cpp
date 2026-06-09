@@ -50,7 +50,7 @@
 			if (result) {
 				content = result;
 			} else {
-				error = 'リソースの内容を読み込めませんでした';
+				error = 'リソースの内容の読み込みに失敗しました';
 			}
 		} catch (e) {
 			error = e instanceof Error ? e.message : '不明なエラー';
