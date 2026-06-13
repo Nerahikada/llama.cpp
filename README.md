@@ -12,6 +12,9 @@
 
 LLM inference in C/C++
 
+> [!NOTE]
+> This fork ships a Japanese translation of the web UI. By default the build embeds the prebuilt (English) bundle; to compile the server with the translated UI, configure with `-DLLAMA_BUILD_UI=ON -DLLAMA_USE_PREBUILT_UI=OFF` (see [docs/build.md](docs/build.md)).
+
 ## Recent API changes
 
 - [Changelog for `libllama` API](https://github.com/ggml-org/llama.cpp/issues/9289)
