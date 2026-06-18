@@ -132,14 +132,18 @@
 
 	async function handleExportConfirm(selectedConversations: DatabaseConversation[]) {
 		try {
-			const allData: ExportedConversations = await Promise.all(
+			const allData: ExportedConversation[] = await Promise.all(
 				selectedConversations.map(async (conv) => {
 					const messages = await conversationsStore.getConversationMessages(conv.id);
 					return { conv: $state.snapshot(conv), messages: $state.snapshot(messages) };
 				})
 			);
 
-			conversationsStore.downloadConversationFile(allData);
+			if (allData.length === 1) {
+				conversationsStore.downloadConversationFile(allData[0]);
+			} else {
+				conversationsStore.downloadConversationsArchive(allData);
+			}
 
 			exportedConversations = selectedConversations;
 			showExportSummary = true;
@@ -156,37 +160,21 @@
 			const input = document.createElement('input');
 
 			input.type = HtmlInputType.FILE;
-			input.accept = FileExtensionText.JSON;
+			input.accept = `${FileExtensionText.JSON},${FileExtensionText.JSONL},${FileExtensionText.ZIP}`;
 
 			input.onchange = async (e) => {
 				const file = (e.target as HTMLInputElement)?.files?.[0];
 				if (!file) return;
 
 				try {
-					const text = await file.text();
-					const parsedData = JSON.parse(text);
-					let importedData: ExportedConversations;
+					const importedData = await conversationsStore.parseImportFile(file);
 
-					if (Array.isArray(parsedData)) {
-						importedData = parsedData;
-					} else if (
-						parsedData &&
-						typeof parsedData === 'object' &&
-						'conv' in parsedData &&
-						'messages' in parsedData
-					) {
-						// Single conversation object
-						importedData = [parsedData];
-					} else {
-						throw new Error(
-							'無効なファイル形式です: 会話の配列または単一の会話オブジェクトが必要です'
-						);
+					if (importedData.length === 0) {
+						throw new Error('ファイル内に会話が見つかりませんでした');
 					}
 
 					fullImportData = importedData;
-					availableConversations = importedData.map(
-						(item: { conv: DatabaseConversation; messages: DatabaseMessage[] }) => item.conv
-					);
+					availableConversations = importedData.map((item) => item.conv);
 					messageCountMap = createMessageCountMap(importedData);
 					showImportDialog = true;
 				} catch (err: unknown) {
@@ -258,7 +246,7 @@
 	<SettingsGroup title="会話">
 		<SettingsChatImportExportSection
 			title="エクスポート"
-			description="会話を JSON ファイルとしてダウンロードします。すべてのメッセージ、添付ファイル、会話履歴が含まれます。"
+			description="会話を JSONL ファイルの ZIP としてダウンロードします。すべてのメッセージ、添付ファイル、会話履歴が含まれます。"
 			IconComponent={Download}
 			buttonText="会話をエクスポート"
 			onclick={handleExportClick}
@@ -271,7 +259,7 @@
 
 		<SettingsChatImportExportSection
 			title="インポート"
-			description="以前にエクスポートした JSON ファイルから 1 つ以上の会話をインポートします。既存の会話とマージされます。"
+			description="以前にエクスポートした ZIP または JSONL ファイルから 1 つ以上の会話をインポートします。既存の会話とマージされます。"
 			IconComponent={Upload}
 			buttonText="会話をインポート"
 			onclick={handleImportClick}

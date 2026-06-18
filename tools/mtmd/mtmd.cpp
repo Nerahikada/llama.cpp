@@ -96,16 +96,15 @@ struct mtmd_image_tokens {
             // [BOI] [row0 tokens + newline] ... [row(ny-1) tokens + newline] [EOI]
             return (nx + 1) * ny + 2;
         }
-        // [QWEN_VIDEO] this logic is quite ugly, it's mostly to make qwen-vl temporal merge work, can be improved in the future
-        if (batch_f32.entries.size() == 1 || n_temporal_merge == 1) {
-            return nx * ny;
-        }
         uint32_t nz = batch_f32.entries.size();
-        // TODO: simplify this by repeating the last frame until it fits the temporal merge
-        if (nz % n_temporal_merge != 0) {
-            nz = nz / n_temporal_merge + 1;
-        } else {
-            nz = nz / n_temporal_merge;
+        if (n_temporal_merge > 1) {
+            // [QWEN_VIDEO] this logic is quite ugly, it's mostly to make qwen-vl temporal merge work, can be improved in the future
+            // TODO: simplify this by repeating the last frame until it fits the temporal merge
+            if (nz % n_temporal_merge != 0) {
+                nz = nz / n_temporal_merge + 1;
+            } else {
+                nz = nz / n_temporal_merge;
+            }
         }
         return nx * ny * nz;
     }
@@ -640,7 +639,7 @@ struct mtmd_context {
                 {
                     img_beg = "<image>";
                     img_end = "";
-                    image_preproc = std::make_unique<mtmd_image_preprocessor_llava_uhd>(ctx_v);
+                    image_preproc = std::make_unique<mtmd_image_preprocessor_granite>(ctx_v);
                 } break;
             default:
                 throw std::runtime_error(string_format("%s: unexpected vision projector type %d\n", __func__, proj));
@@ -1034,7 +1033,10 @@ struct mtmd_tokenizer {
     int32_t add_media(std::vector<const mtmd_bitmap *> & bitmaps) {
         GGML_ASSERT(!bitmaps.empty());
 
-        if (!bitmaps[0]->is_audio) {
+        // note: only one type of media is supported per call, caller should enforce this
+        const bool is_vision = !bitmaps[0]->is_audio;
+
+        if (is_vision) {
             // handle image
 
             if (!ctx->ctx_v) {
@@ -1086,31 +1088,9 @@ struct mtmd_tokenizer {
                 batch_f32.grid_y = tmp_batch.grid_y;
             }
 
-            // Annotate llava-next style tiles so clip_n_output_tokens accounts
-            // for per-tile newline injection.
-            if (ctx->proj_type_v() == PROJECTOR_TYPE_GRANITE4_VISION) {
-                if (batch_f32.entries.size() == 1) {
-                    // Single-tile (overview only): append one newline row.
-                    batch_f32.entries[0]->add_newline = true;
-                } else {
-                    // Multi-tile: overview gets no newline, grid tiles get one.
-                    batch_f32.entries[0]->add_newline = false;
-                    for (size_t i = 1; i < batch_f32.entries.size(); ++i) {
-                        batch_f32.entries[i]->add_newline = true;
-                    }
-                }
-            }
-
             // handle llava-uhd style preprocessing
             const bool has_tiling_grid = batch_f32.grid_x > 0 && batch_f32.grid_y > 0;
-            if (
-                ctx->slice_tmpl == MTMD_SLICE_TMPL_MINICPMV_2_5
-                || ctx->slice_tmpl == MTMD_SLICE_TMPL_MINICPMV_2_6
-                || ctx->slice_tmpl == MTMD_SLICE_TMPL_LLAMA4
-                || ctx->slice_tmpl == MTMD_SLICE_TMPL_IDEFICS3
-                || ctx->slice_tmpl == MTMD_SLICE_TMPL_STEP3VL
-                || (ctx->slice_tmpl == MTMD_SLICE_TMPL_LFM2 && has_tiling_grid)
-            ) {
+            if (has_tiling_grid) {
                 // [QWEN_VIDEO] we do not support "frame merging" for llama-uhd style, so no batching for now
                 GGML_ASSERT(bitmaps.size() == 1);
 
