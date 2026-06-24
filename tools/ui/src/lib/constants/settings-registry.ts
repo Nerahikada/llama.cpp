@@ -284,8 +284,8 @@ const SETTINGS_REGISTRY: Record<string, SettingsSectionEntry> = {
 			},
 			{
 				key: SETTINGS_KEYS.RENDER_THINKING_AS_MARKDOWN,
-				label: 'Render thinking as Markdown',
-				help: 'Render the reasoning/thinking block content as formatted Markdown instead of plain text.',
+				label: '思考を Markdown として表示',
+				help: '推論/思考ブロックの内容をプレーンテキストではなく整形済みの Markdown として表示します。',
 				defaultValue: true,
 				type: SettingsFieldType.CHECKBOX,
 				section: SETTINGS_SECTION_SLUGS.DISPLAY,
@@ -380,8 +380,8 @@ const SETTINGS_REGISTRY: Record<string, SettingsSectionEntry> = {
 			},
 			{
 				key: SETTINGS_KEYS.SHOW_BUILD_VERSION,
-				label: 'Show build version information',
-				help: 'Display the current build version in the bottom-right corner of the interface.',
+				label: 'ビルドバージョン情報を表示',
+				help: 'インターフェース右下に現在のビルドバージョンを表示します。',
 				defaultValue: false,
 				type: SettingsFieldType.CHECKBOX,
 				section: SETTINGS_SECTION_SLUGS.DISPLAY
@@ -712,8 +712,8 @@ const SETTINGS_REGISTRY: Record<string, SettingsSectionEntry> = {
 			},
 			{
 				key: SETTINGS_KEYS.JS_SANDBOX_ENABLED,
-				label: 'JavaScript sandbox tool',
-				help: 'Expose a run_javascript tool to the model. Code runs in a Web Worker inside a sandboxed iframe with an opaque origin, isolated from the WebUI and its API, with a hard timeout.',
+				label: 'JavaScript サンドボックスツール',
+				help: 'run_javascript ツールをモデルに公開します。コードは不透明なオリジンを持つサンドボックス化された iframe 内の Web Worker で実行され、WebUI とその API から隔離され、ハードタイムアウトが適用されます。',
 				defaultValue: false,
 				type: SettingsFieldType.CHECKBOX,
 				section: SETTINGS_SECTION_SLUGS.DEVELOPER

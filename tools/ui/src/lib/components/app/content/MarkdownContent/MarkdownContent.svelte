@@ -877,7 +877,7 @@
 					</div>
 				{:else}
 					<div class="mermaid-loading-placeholder">
-						<span class="mermaid-loading-text">Rendering svg...</span>
+						<span class="mermaid-loading-text">SVG を描画中...</span>
 					</div>
 				{/if}
 			</div>

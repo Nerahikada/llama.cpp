@@ -48,7 +48,7 @@
 
 <div
 	aria-label="ユーザーメッセージ"
-	class="group flex flex-col items-end gap-3 md:gap-2 {className}"
+	class="chat-message-user group flex flex-col items-end gap-3 md:gap-2 {className}"
 	role="group"
 >
 	{#if editCtx.isEditing}
