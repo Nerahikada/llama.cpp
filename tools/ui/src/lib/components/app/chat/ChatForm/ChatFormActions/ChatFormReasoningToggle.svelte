@@ -21,7 +21,7 @@
 	let thinkingEnabled = $derived(conversationsStore.getThinkingEnabled());
 	let currentEffort = $derived(conversationsStore.getReasoningEffort());
 	let isOff = $derived(!thinkingEnabled);
-	let tooltipText = $derived(thinkingEnabled ? `推論: ${currentEffort}` : '推論: 無効');
+	let tooltipText = $derived(thinkingEnabled ? `思考: ${currentEffort}` : '思考: 無効');
 	let subOpen = $state(false);
 
 	// Get conversation model from message history
