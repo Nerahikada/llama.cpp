@@ -72,7 +72,7 @@
 								? TOOL_SERVER_LABELS[ToolSource.CUSTOM]
 								: 'MCP ツール'}
 					<DropdownMenu.Item onclick={() => onDecision(ToolPermissionDecision.ALWAYS_SERVER)}>
-						{providerName} のすべてのツールを承認
+						{providerName} のすべてのツールを常に許可
 					</DropdownMenu.Item>
 				{/if}
 			</DropdownMenu.Content>

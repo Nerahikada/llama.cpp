@@ -145,7 +145,7 @@
 			onCheckedChange={setUseAuthorization}
 		/>
 
-		<span class="text-xs text-muted-foreground">Authorization</span>
+		<span class="text-xs text-muted-foreground">認証</span>
 	</label>
 
 	{#if showAuthorization}
@@ -154,7 +154,7 @@
 				id="bearer-token-{id}"
 				type="password"
 				autocomplete="off"
-				placeholder="Paste token here"
+				placeholder="トークンを貼り付け"
 				value={bearerToken}
 				oninput={(e) => updateBearerToken(e.currentTarget.value)}
 				class="pl-16"
