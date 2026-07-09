@@ -2,7 +2,7 @@
 	import { Clock, Gauge, WholeWord, BookOpenText, Sparkles, Wrench, Layers } from '@lucide/svelte';
 	import { ChatMessageStatisticsBadge } from '$lib/components/app';
 	import * as Tooltip from '$lib/components/ui/tooltip';
-	import { ChatMessageStatsView } from '$lib/enums';
+	import { ChatMessageStatsView, ChatMessageStatisticsMode } from '$lib/enums';
 	import type { ChatMessageAgenticTimings } from '$lib/types/chat';
 	import { formatPerformanceTime } from '$lib/utils';
 	import { MS_PER_SECOND, DEFAULT_PERFORMANCE_TIME } from '$lib/constants';
@@ -19,6 +19,7 @@
 		agenticTimings?: ChatMessageAgenticTimings;
 		onActiveViewChange?: (view: ChatMessageStatsView) => void;
 		hideSummary?: boolean;
+		mode?: ChatMessageStatisticsMode;
 	}
 
 	let {
@@ -31,19 +32,30 @@
 		initialView = ChatMessageStatsView.GENERATION,
 		agenticTimings,
 		onActiveViewChange,
-		hideSummary = false
+		hideSummary = false,
+		mode = ChatMessageStatisticsMode.SWITCHABLE
 	}: Props = $props();
 
-	let activeView: ChatMessageStatsView = $derived(initialView);
+	let isSwitchable = $derived(mode === ChatMessageStatisticsMode.SWITCHABLE);
+
+	let activeView: ChatMessageStatsView = $derived(
+		mode === ChatMessageStatisticsMode.READING
+			? ChatMessageStatsView.READING
+			: mode === ChatMessageStatisticsMode.GENERATION
+				? ChatMessageStatsView.GENERATION
+				: initialView
+	);
 	let hasAutoSwitchedToGeneration = $state(false);
 
 	$effect(() => {
-		onActiveViewChange?.(activeView);
+		if (isSwitchable) {
+			onActiveViewChange?.(activeView);
+		}
 	});
 
 	// In live mode: auto-switch to GENERATION tab when prompt processing completes
 	$effect(() => {
-		if (isLive) {
+		if (isLive && isSwitchable) {
 			// Auto-switch to generation tab only when prompt processing is done (once)
 			if (
 				!hasAutoSwitchedToGeneration &&
@@ -91,8 +103,7 @@
 			formattedPromptTime !== undefined
 	);
 
-	// In live mode, generation tab is disabled until we have generation stats
-	let isGenerationDisabled = $derived(isLive && !hasGenerationStats);
+	let isGenerationDisabled = $derived(isLive && isSwitchable && !hasGenerationStats);
 
 	let hasAgenticStats = $derived(agenticTimings !== undefined && agenticTimings.toolCallsCount > 0);
 
@@ -153,42 +164,44 @@
 {/snippet}
 
 <div class="inline-flex items-center text-xs text-muted-foreground">
-	<div class="inline-flex items-center rounded-sm bg-muted-foreground/15 p-0.5">
-		{#if hasPromptStats || isLive}
-			{@render viewButton({
-				view: ChatMessageStatsView.READING,
-				icon: BookOpenText,
-				label: '読み込み',
-				tooltipText: '読み込み（プロンプト処理）'
-			})}
-		{/if}
-
-		{@render viewButton({
-			view: ChatMessageStatsView.GENERATION,
-			icon: Sparkles,
-			label: '生成',
-			tooltipText: isGenerationDisabled ? '生成（トークンを待機中...）' : '生成（トークン出力）',
-			disabled: isGenerationDisabled
-		})}
-
-		{#if hasAgenticStats}
-			{@render viewButton({
-				view: ChatMessageStatsView.TOOLS,
-				icon: Wrench,
-				label: 'ツール',
-				tooltipText: 'ツール呼び出し'
-			})}
-
-			{#if !hideSummary}
+	{#if isSwitchable}
+		<div class="inline-flex items-center rounded-sm bg-muted-foreground/15 p-0.5">
+			{#if hasPromptStats || isLive}
 				{@render viewButton({
-					view: ChatMessageStatsView.SUMMARY,
-					icon: Layers,
-					label: 'サマリー',
-					tooltipText: 'エージェントのサマリー'
+					view: ChatMessageStatsView.READING,
+					icon: BookOpenText,
+					label: '読み込み',
+					tooltipText: '読み込み（プロンプト処理）'
 				})}
 			{/if}
-		{/if}
-	</div>
+
+			{@render viewButton({
+				view: ChatMessageStatsView.GENERATION,
+				icon: Sparkles,
+				label: '生成',
+				tooltipText: isGenerationDisabled ? '生成（トークンを待機中...）' : '生成（トークン出力）',
+				disabled: isGenerationDisabled
+			})}
+
+			{#if hasAgenticStats}
+				{@render viewButton({
+					view: ChatMessageStatsView.TOOLS,
+					icon: Wrench,
+					label: 'ツール',
+					tooltipText: 'ツール呼び出し'
+				})}
+
+				{#if !hideSummary}
+					{@render viewButton({
+						view: ChatMessageStatsView.SUMMARY,
+						icon: Layers,
+						label: 'サマリー',
+						tooltipText: 'エージェントのサマリー'
+					})}
+				{/if}
+			{/if}
+		</div>
+	{/if}
 
 	<div class="flex items-center gap-1 px-2">
 		{#if activeView === ChatMessageStatsView.GENERATION && hasGenerationStats}
@@ -254,7 +267,7 @@
 				value={formattedAgenticTotalTime}
 				tooltipLabel="合計時間（LLM + ツール）"
 			/>
-		{:else if hasPromptStats}
+		{:else if hasPromptStats && (mode === ChatMessageStatisticsMode.READING || isSwitchable)}
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={WholeWord}

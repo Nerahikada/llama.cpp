@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { ChevronDown, ShieldQuestion } from '@lucide/svelte';
 	import { ChatMessageActionCard } from '$lib/components/app';
-	import { Button } from '$lib/components/ui/button';
+	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import * as ButtonGroup from '$lib/components/ui/button-group';
+	import { cn } from '$lib/components/ui/utils';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { ToolSource, ToolPermissionDecision } from '$lib/enums';
 	import { TOOL_SERVER_LABELS } from '$lib/constants';
@@ -30,12 +31,11 @@
 
 	{#snippet actions()}
 		<DropdownMenu.Root>
-			<ButtonGroup.Root
-				class="overflow-hidden rounded-md bg-foreground text-white shadow-sm dark:bg-secondary dark:text-foreground"
-			>
+			<ButtonGroup.Root class="overflow-hidden rounded-md shadow-sm">
 				<Button
-					class="rounded-none! shadow-none!"
+					variant="secondary"
 					size="sm"
+					class="!rounded-r-none !shadow-none"
 					onclick={() => onDecision(ToolPermissionDecision.ONCE)}
 				>
 					今回のみ許可
@@ -43,10 +43,14 @@
 
 				<ButtonGroup.Separator />
 
-				<DropdownMenu.Trigger>
-					<Button size="sm" class="rounded-none! !ps-2 shadow-none!">
-						<ChevronDown class="h-3.5 w-3.5" />
-					</Button>
+				<DropdownMenu.Trigger
+					class={cn(
+						buttonVariants({ variant: 'secondary', size: 'sm' }),
+						'inline-flex cursor-pointer items-center !rounded-l-none !shadow-none !px-2'
+					)}
+					aria-label="More allow options"
+				>
+					<ChevronDown class="h-3.5 w-3.5" />
 				</DropdownMenu.Trigger>
 			</ButtonGroup.Root>
 
@@ -74,12 +78,7 @@
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 
-		<Button
-			variant="destructive"
-			size="sm"
-			class="text-destructive hover:text-destructive"
-			onclick={() => onDecision(ToolPermissionDecision.DENY)}
-		>
+		<Button variant="destructive" size="sm" onclick={() => onDecision(ToolPermissionDecision.DENY)}>
 			拒否
 		</Button>
 	{/snippet}
