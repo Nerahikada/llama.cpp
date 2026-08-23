@@ -214,9 +214,7 @@
 			// A conversation already in the database is left untouched, so the summary
 			// lists what was written and the toast accounts for the rest.
 			if (skipped.length > 0) {
-				toast.info(
-					`${skipped.length} 件の会話は既にライブラリにあるためスキップしました`
-				);
+				toast.info(`${skipped.length} 件の会話は既にライブラリにあるためスキップしました`);
 			}
 
 			importedConversations = imported;
@@ -269,7 +267,11 @@
 			IconComponent={Download}
 			buttonText="会話をエクスポート"
 			onclick={handleExportClick}
-			summary={{ items: exportedConversations, show: showExportSummary, verb: 'エクスポートしました' }}
+			summary={{
+				items: exportedConversations,
+				show: showExportSummary,
+				verb: 'エクスポートしました'
+			}}
 		/>
 
 		<SettingsChatImportExportSection
@@ -278,7 +280,11 @@
 			IconComponent={Upload}
 			buttonText="会話をインポート"
 			onclick={handleImportClick}
-			summary={{ items: importedConversations, show: showImportSummary, verb: 'インポートしました' }}
+			summary={{
+				items: importedConversations,
+				show: showImportSummary,
+				verb: 'インポートしました'
+			}}
 		/>
 
 		<SettingsChatImportExportSection

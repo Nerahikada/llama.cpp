@@ -92,7 +92,7 @@
 		class: className = '',
 		disabled = false,
 		isLoading = false,
-onAttachmentRemove,
+		onAttachmentRemove,
 		onFilesAdd,
 		onStop,
 		onSubmit,

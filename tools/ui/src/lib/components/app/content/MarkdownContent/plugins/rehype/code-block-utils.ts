@@ -58,7 +58,11 @@ export function createButton(
 /**
  * Creates a copy button element.
  */
-export function createCopyButton(id: string, idAttribute: string, title: string = 'コピー'): Element {
+export function createCopyButton(
+	id: string,
+	idAttribute: string,
+	title: string = 'コピー'
+): Element {
 	return createButton(CODE_BLOCK_CLASS.COPY_BTN, title, COPY_ICON_SVG, id, idAttribute);
 }
 

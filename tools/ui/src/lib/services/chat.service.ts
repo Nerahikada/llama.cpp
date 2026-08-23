@@ -1461,7 +1461,9 @@ export class ChatService {
 			const responseText = await response.text();
 
 			if (!responseText.trim()) {
-				const noResponseError = new Error('サーバーから応答がありませんでした。もう一度お試しください。');
+				const noResponseError = new Error(
+					'サーバーから応答がありませんでした。もう一度お試しください。'
+				);
 
 				throw noResponseError;
 			}
@@ -1492,7 +1494,9 @@ export class ChatService {
 			}
 
 			if (!content.trim() && !serializedToolCalls) {
-				const noResponseError = new Error('サーバーから応答がありませんでした。もう一度お試しください。');
+				const noResponseError = new Error(
+					'サーバーから応答がありませんでした。もう一度お試しください。'
+				);
 
 				throw noResponseError;
 			}

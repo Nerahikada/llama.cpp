@@ -19,7 +19,7 @@
 				<Lightbulb class="{ICON_CLASS_DEFAULT} shrink-0 text-muted-foreground" />
 			{/if}
 
-<span
+			<span
 				class="text-sm inline-flex gap-2 {!reasoning.thinkingEnabled
 					? 'text-muted-foreground'
 					: ''}"
@@ -55,7 +55,7 @@
 
 					{#if tokenLabel}
 						<span class="text-[11px] text-muted-foreground opacity-60">
-{tokenLabel}
+							{tokenLabel}
 						</span>
 					{/if}
 

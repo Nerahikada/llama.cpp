@@ -145,6 +145,7 @@
 		} catch (error) {
 			const errorMessage =
 				error instanceof Error ? error.message : 'プロンプトの実行中に不明なエラーが発生しました';
+
 			onPromptLoadError?.(placeholderId, errorMessage);
 		}
 	}

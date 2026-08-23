@@ -720,7 +720,8 @@ class AgenticStore {
 					);
 					for (let j = i; j < normalizedCalls.length; j++) {
 						const remainingCall = normalizedCalls[j];
-						const interruptedContent = '新しいユーザーメッセージによってツールの実行が中断されました。';
+						const interruptedContent =
+							'新しいユーザーメッセージによってツールの実行が中断されました。';
 
 						if (createToolResultMessage) {
 							await createToolResultMessage(remainingCall.id, interruptedContent);

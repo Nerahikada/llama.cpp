@@ -13,7 +13,9 @@
 		</Card.Header>
 
 		<Card.Content class="gap-6 grid px-5">
-			<p class="text-xs text-muted-foreground">新しいバージョンが利用可能です。再読み込みして更新してください。</p>
+			<p class="text-xs text-muted-foreground">
+				新しいバージョンが利用可能です。再読み込みして更新してください。
+			</p>
 
 			<Button
 				class="justify-self-end-safe"

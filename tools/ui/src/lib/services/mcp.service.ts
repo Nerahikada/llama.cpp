@@ -576,7 +576,9 @@ export class MCPService {
 				const httpMsg = httpError instanceof Error ? httpError.message : String(httpError);
 				const sseMsg = sseError instanceof Error ? sseError.message : String(sseError);
 
-				throw new Error(`トランスポートの作成に失敗しました。StreamableHTTP: ${httpMsg}; SSE: ${sseMsg}`);
+				throw new Error(
+					`トランスポートの作成に失敗しました。StreamableHTTP: ${httpMsg}; SSE: ${sseMsg}`
+				);
 			}
 		}
 	}
