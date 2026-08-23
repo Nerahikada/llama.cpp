@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { Download } from '@lucide/svelte';
+	import RotateCcwIcon from '@lucide/svelte/icons/rotate-ccw';
 	import ZoomInIcon from '@lucide/svelte/icons/zoom-in';
 	import ZoomOutIcon from '@lucide/svelte/icons/zoom-out';
-	import RotateCcwIcon from '@lucide/svelte/icons/rotate-ccw';
+	import { ICON_CLASS_DEFAULT } from '$lib/constants';
 
 	interface Props {
 		scale: number;
@@ -12,13 +13,15 @@
 		onResetView: () => void;
 	}
 
-	let { scale, svgHtml, onZoomIn, onZoomOut, onResetView }: Props = $props();
+	let { onResetView, onZoomIn, onZoomOut, scale, svgHtml }: Props = $props();
 
 	function downloadSvg() {
 		if (!svgHtml) return;
+
 		const blob = new Blob([svgHtml], { type: 'image/svg+xml' });
 		const url = URL.createObjectURL(blob);
 		const a = document.createElement('a');
+
 		a.href = url;
 		a.download = 'diagram.svg';
 		a.click();
@@ -36,7 +39,7 @@
 			title="縮小"
 			aria-label="縮小"
 		>
-			<ZoomOutIcon class="mermaid-preview-btn-icon h-4 w-4" />
+			<ZoomOutIcon class="mermaid-preview-btn-icon {ICON_CLASS_DEFAULT}" />
 		</button>
 		<span
 			class="mermaid-preview-zoom-label min-w-[3.5rem] px-0.5 text-center text-xs font-medium text-muted-foreground tabular-nums select-none"
@@ -48,7 +51,7 @@
 			title="拡大"
 			aria-label="拡大"
 		>
-			<ZoomInIcon class="mermaid-preview-btn-icon h-4 w-4" />
+			<ZoomInIcon class="mermaid-preview-btn-icon {ICON_CLASS_DEFAULT}" />
 		</button>
 		<div class="mermaid-preview-controls-separator mx-1 h-5 w-px bg-border/50"></div>
 
@@ -58,7 +61,7 @@
 			title="表示をリセット"
 			aria-label="表示をリセット"
 		>
-			<RotateCcwIcon class="mermaid-preview-btn-icon h-4 w-4" />
+			<RotateCcwIcon class="mermaid-preview-btn-icon {ICON_CLASS_DEFAULT}" />
 		</button>
 		<div class="mermaid-preview-controls-separator mx-1 h-5 w-px bg-border/50"></div>
 
@@ -68,7 +71,7 @@
 			title="SVG をダウンロード"
 			aria-label="SVG をダウンロード"
 		>
-			<Download class="mermaid-preview-btn-icon h-4 w-4" />
+			<Download class="mermaid-preview-btn-icon {ICON_CLASS_DEFAULT}" />
 		</button>
 	</div>
 </div>

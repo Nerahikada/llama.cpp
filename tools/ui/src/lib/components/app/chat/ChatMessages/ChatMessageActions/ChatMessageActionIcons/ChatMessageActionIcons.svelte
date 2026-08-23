@@ -1,38 +1,24 @@
 <script lang="ts">
-	import { Edit, Copy, RefreshCw, Trash2, ArrowRight, GitBranch } from '@lucide/svelte';
+	import { ArrowRight, Copy, Edit, GitBranch, RefreshCw, Trash2 } from '@lucide/svelte';
 	import {
 		ActionIcon,
 		ChatMessageActionIconsBranchingControls,
 		DialogConfirmation
 	} from '$lib/components/app';
-	import { Switch } from '$lib/components/ui/switch';
 	import { Checkbox } from '$lib/components/ui/checkbox';
 	import Input from '$lib/components/ui/input/input.svelte';
 	import Label from '$lib/components/ui/label/label.svelte';
+	import { Switch } from '$lib/components/ui/switch';
+	import { getChatMessageActionsContext, getChatMessageEditContext } from '$lib/contexts';
 	import { MessageRole } from '$lib/enums';
-	import { activeConversation } from '$lib/stores/conversations.svelte';
+	import { conversationsStore } from '$lib/stores';
 
 	interface Props {
 		role: MessageRole.USER | MessageRole.ASSISTANT;
 		justify: 'start' | 'end';
 		actionsPosition: 'left' | 'right';
-		siblingInfo?: ChatMessageSiblingInfo | null;
-		showDeleteDialog: boolean;
-		deletionInfo: {
-			totalCount: number;
-			userMessages: number;
-			assistantMessages: number;
-			messageTypes: string[];
-		} | null;
-		onCopy: () => void;
-		onEdit?: () => void;
 		onRegenerate?: () => void;
 		onContinue?: () => void;
-		onForkConversation?: (options: { name: string; includeAttachments: boolean }) => void;
-		onDelete: () => void;
-		onConfirmDelete: () => void;
-		onNavigateToSibling?: (siblingId: string) => void;
-		onShowDeleteDialogChange: (show: boolean) => void;
 		showRawOutputSwitch?: boolean;
 		rawOutputEnabled?: boolean;
 		onRawOutputToggle?: (enabled: boolean) => void;
@@ -40,36 +26,29 @@
 
 	let {
 		actionsPosition,
-		deletionInfo,
 		justify,
-		onCopy,
-		onEdit,
-		onConfirmDelete,
 		onContinue,
-		onDelete,
-		onForkConversation,
-		onNavigateToSibling,
-		onShowDeleteDialogChange,
+		onRawOutputToggle,
 		onRegenerate,
-		role,
-		siblingInfo = null,
-		showDeleteDialog,
-		showRawOutputSwitch = false,
 		rawOutputEnabled = false,
-		onRawOutputToggle
+		role,
+		showRawOutputSwitch = false
 	}: Props = $props();
+
+	const messageActions = getChatMessageActionsContext();
+	const editCtx = getChatMessageEditContext();
 
 	let showForkDialog = $state(false);
 	let forkName = $state('');
 	let forkIncludeAttachments = $state(true);
 
 	function handleConfirmDelete() {
-		onConfirmDelete();
-		onShowDeleteDialogChange(false);
+		messageActions.confirmDelete();
+		messageActions.setShowDeleteDialog(false);
 	}
 
 	function handleOpenForkDialog() {
-		const conv = activeConversation();
+		const conv = conversationsStore.activeConversation;
 
 		forkName = `${conv?.name ?? '会話'} のフォーク`;
 		forkIncludeAttachments = true;
@@ -77,7 +56,10 @@
 	}
 
 	function handleConfirmFork() {
-		onForkConversation?.({ name: forkName.trim(), includeAttachments: forkIncludeAttachments });
+		messageActions.forkConversation?.({
+			includeAttachments: forkIncludeAttachments,
+			name: forkName.trim()
+		});
 		showForkDialog = false;
 	}
 </script>
@@ -88,18 +70,16 @@
 			? 'left-0'
 			: 'right-0'} flex items-center gap-2 opacity-100 transition-opacity"
 	>
-		{#if siblingInfo && siblingInfo.totalSiblings > 1}
-			<ChatMessageActionIconsBranchingControls {siblingInfo} {onNavigateToSibling} />
+		{#if messageActions.siblingInfo && messageActions.siblingInfo.totalSiblings > 1}
+			<ChatMessageActionIconsBranchingControls />
 		{/if}
 
 		<div
 			class="pointer-events-auto inset-0 flex items-center gap-1 opacity-100 transition-all duration-150"
 		>
-			<ActionIcon icon={Copy} tooltip="コピー" onclick={onCopy} />
+			<ActionIcon icon={Copy} tooltip="コピー" onclick={messageActions.copy} />
 
-			{#if onEdit}
-				<ActionIcon icon={Edit} tooltip="編集" onclick={onEdit} />
-			{/if}
+			<ActionIcon icon={Edit} tooltip="編集" onclick={editCtx.startEdit} />
 
 			{#if role === MessageRole.ASSISTANT && onRegenerate}
 				<ActionIcon icon={RefreshCw} tooltip="再生成" onclick={() => onRegenerate()} />
@@ -109,11 +89,11 @@
 				<ActionIcon icon={ArrowRight} tooltip="続行" onclick={onContinue} />
 			{/if}
 
-			{#if onForkConversation}
+			{#if messageActions.forkConversation}
 				<ActionIcon icon={GitBranch} tooltip="会話をフォーク" onclick={handleOpenForkDialog} />
 			{/if}
 
-			<ActionIcon icon={Trash2} tooltip="削除" onclick={onDelete} />
+			<ActionIcon icon={Trash2} tooltip="削除" onclick={messageActions.requestDelete} />
 		</div>
 	</div>
 
@@ -129,19 +109,19 @@
 </div>
 
 <DialogConfirmation
-	bind:open={showDeleteDialog}
+	open={messageActions.showDeleteDialog}
 	title="メッセージを削除"
-	description={deletionInfo && deletionInfo.totalCount > 1
-		? `${deletionInfo.userMessages} 件のユーザーメッセージと ${deletionInfo.assistantMessages} 件のアシスタントの応答を含む ${deletionInfo.totalCount} 件のメッセージを削除します。このブランチ内のすべてのメッセージとその応答が完全に削除されます。この操作は元に戻せません。`
+	description={messageActions.deletionInfo && messageActions.deletionInfo.totalCount > 1
+		? `${messageActions.deletionInfo.userMessages} 件のユーザーメッセージと ${messageActions.deletionInfo.assistantMessages} 件のアシスタントの応答を含む ${messageActions.deletionInfo.totalCount} 件のメッセージを削除します。このブランチ内のすべてのメッセージとその応答が完全に削除されます。この操作は元に戻せません。`
 		: 'このメッセージを削除してもよろしいですか？この操作は元に戻せません。'}
-	confirmText={deletionInfo && deletionInfo.totalCount > 1
-		? `${deletionInfo.totalCount} 件のメッセージを削除`
+	confirmText={messageActions.deletionInfo && messageActions.deletionInfo.totalCount > 1
+		? `${messageActions.deletionInfo.totalCount} 件のメッセージを削除`
 		: '削除'}
 	cancelText="キャンセル"
 	variant="destructive"
 	icon={Trash2}
 	onConfirm={handleConfirmDelete}
-	onCancel={() => onShowDeleteDialogChange(false)}
+	onCancel={() => messageActions.setShowDeleteDialog(false)}
 />
 
 <DialogConfirmation

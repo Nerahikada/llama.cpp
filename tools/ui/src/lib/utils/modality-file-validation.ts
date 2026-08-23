@@ -3,9 +3,9 @@
  * Ensures only compatible file types are processed based on model capabilities
  */
 
-import { getFileTypeCategory } from '$lib/utils';
 import { FileTypeCategory } from '$lib/enums';
 import type { ModalityCapabilities } from '$lib/types';
+import { getFileTypeCategory } from '$lib/utils';
 
 /**
  * Check if a file type is supported by the given modalities
@@ -72,11 +72,11 @@ export function filterFilesByModalities(
 	const supportedFiles: File[] = [];
 	const unsupportedFiles: File[] = [];
 	const modalityReasons: Record<string, string> = {};
-
-	const { hasVision, hasAudio, hasVideo } = capabilities;
+	const { hasAudio, hasVideo, hasVision } = capabilities;
 
 	for (const file of files) {
 		const category = getFileTypeCategory(file.type);
+
 		let isSupported = true;
 		let reason = '';
 
@@ -86,6 +86,7 @@ export function filterFilesByModalities(
 					isSupported = false;
 					reason = '画像には画像対応モデルが必要です';
 				}
+
 				break;
 
 			case FileTypeCategory.AUDIO:
@@ -93,6 +94,7 @@ export function filterFilesByModalities(
 					isSupported = false;
 					reason = '音声ファイルには音声対応モデルが必要です';
 				}
+
 				break;
 
 			case FileTypeCategory.VIDEO:
@@ -100,6 +102,7 @@ export function filterFilesByModalities(
 					isSupported = false;
 					reason = '動画ファイルには動画対応モデルが必要です';
 				}
+
 				break;
 
 			case FileTypeCategory.TEXT:
@@ -121,7 +124,7 @@ export function filterFilesByModalities(
 		}
 	}
 
-	return { supportedFiles, unsupportedFiles, modalityReasons };
+	return { modalityReasons, supportedFiles, unsupportedFiles };
 }
 
 /**
@@ -138,32 +141,31 @@ export function generateModalityErrorMessage(
 ): string {
 	if (unsupportedFiles.length === 0) return '';
 
-	const { hasVision, hasAudio, hasVideo } = capabilities;
+	const { hasAudio, hasVideo, hasVision } = capabilities;
 
 	let message = '';
 
 	if (unsupportedFiles.length === 1) {
 		const file = unsupportedFiles[0];
 		const reason = modalityReasons[file.name];
+
 		message = `ファイル "${file.name}" をアップロードできません: ${reason}。`;
 	} else {
 		const fileNames = unsupportedFiles.map((f) => f.name).join(', ');
+
 		message = `以下のファイルをアップロードできません: ${fileNames}。`;
 	}
 
 	// Add helpful information about what is supported
 	const supportedTypes: string[] = ['テキストファイル', 'PDF'];
+
 	if (hasVision) supportedTypes.push('画像');
+
 	if (hasAudio) supportedTypes.push('音声ファイル');
+
 	if (hasVideo) supportedTypes.push('動画ファイル');
 
 	message += ` このモデルは次をサポートしています: ${supportedTypes.join('、')}。`;
 
 	return message;
 }
-
-/**
- * Generate file input accept string based on model modalities
- * @param capabilities - The modality capabilities to check against
- * @returns Accept string for HTML file input element
- */
