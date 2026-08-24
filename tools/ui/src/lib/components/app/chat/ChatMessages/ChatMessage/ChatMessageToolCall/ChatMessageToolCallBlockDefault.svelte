@@ -112,7 +112,7 @@
 												src={createBase64DataUrl(audioMimeType, line.media.base64Data)}
 												type={audioMimeType}
 											/>
-											お使いのブラウザは audio 要素をサポートしていません。
+											お使いのブラウザは audio 要素に対応していません。
 										</audio>
 									</div>
 								{:else}

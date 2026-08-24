@@ -1601,7 +1601,7 @@ export class ChatService {
 		try {
 			const errorText = await response.text();
 			const errorData: ApiErrorResponse = JSON.parse(errorText);
-			const message = errorData.error?.message || 'Unknown server error';
+			const message = errorData.error?.message || '不明なサーバーエラー';
 			const error = new Error(message) as Error & {
 				contextInfo?: { n_prompt_tokens: number; n_ctx: number };
 			};

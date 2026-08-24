@@ -183,12 +183,12 @@
 				onkeydown={handleCheckboxKeydown}
 				role="checkbox"
 				aria-checked={isSelected}
-				aria-label={isSelected ? `Deselect ${conversation.name}` : `Select ${conversation.name}`}
+				aria-label={isSelected ? `${conversation.name} の選択を解除` : `${conversation.name} を選択`}
 				tabindex="-1"
 			>
 				<Checkbox
 					checked={isSelected}
-					aria-label={isSelected ? `Deselect ${conversation.name}` : `Select ${conversation.name}`}
+					aria-label={isSelected ? `${conversation.name} の選択を解除` : `${conversation.name} を選択`}
 				/>
 			</div>
 		{/if}

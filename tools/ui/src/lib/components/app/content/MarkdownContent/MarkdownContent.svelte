@@ -913,7 +913,7 @@
 						<ActionIconCopyToClipboard
 							text={incompleteCodeBlock.code}
 							canCopy={false}
-							ariaLabel="図が未完成"
+							ariaLabel="図が未完成です"
 						/>
 					</div>
 				</div>

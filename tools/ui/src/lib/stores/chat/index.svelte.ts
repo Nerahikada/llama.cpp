@@ -735,7 +735,7 @@ class ChatStore implements ChatStreamHost, ChatFlowsHost {
 
 			this.showErrorDialog({
 				contextInfo,
-				message: error instanceof Error ? error.message : 'Unknown error',
+				message: error instanceof Error ? error.message : '不明なエラー',
 				type: dialogType
 			});
 		}

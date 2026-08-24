@@ -178,7 +178,7 @@ export function useProcessingState(): UseProcessingStateReturn {
 		}
 
 		if (stateToUse.speculative) {
-			details.push('Speculative decoding enabled');
+			details.push('投機的デコードが有効');
 		}
 
 		return details;
@@ -229,7 +229,7 @@ export function useProcessingState(): UseProcessingStateReturn {
 		}
 
 		if (stateToUse.speculative) {
-			details.push('Speculative decoding enabled');
+			details.push('投機的デコードが有効');
 		}
 
 		return details;

@@ -103,9 +103,9 @@
 	function subtitleFor(errorMessage?: string): string | undefined {
 		if (showSpinner) return undefined;
 
-		if (errorMessage) return 'failed';
+		if (errorMessage) return 'エラー';
 
-		if (isStreamingCall && !isStreaming) return 'incomplete';
+		if (isStreamingCall && !isStreaming) return '中断';
 
 		return undefined;
 	}

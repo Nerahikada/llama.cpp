@@ -69,8 +69,8 @@ export function useAttachmentMenu(
 
 	function getSystemMessageTooltip(): string {
 		return !page.params.id
-			? 'Add custom system message for a new conversation'
-			: 'Inject custom system message at the beginning of the conversation';
+			? '新しい会話用のカスタムシステムメッセージを追加'
+			: '会話の先頭にカスタムシステムメッセージを挿入';
 	}
 
 	return {

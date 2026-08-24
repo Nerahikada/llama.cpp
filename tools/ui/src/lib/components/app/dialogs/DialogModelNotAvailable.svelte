@@ -39,14 +39,14 @@
 			</AlertDialog.Title>
 
 			<AlertDialog.Description>
-				リクエストされたモデルが見つかりませんでした。続行するには利用可能なモデルを選択してください。
+				指定されたモデルが見つかりませんでした。続行するには利用可能なモデルを選択してください。
 			</AlertDialog.Description>
 		</AlertDialog.Header>
 
 		<div class="space-y-3">
 			<div class="rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-sm">
 				<p class="font-medium text-amber-600 dark:text-amber-400">
-					リクエスト: <code class="rounded bg-amber-500/20 px-1.5 py-0.5">{modelName}</code>
+					指定されたモデル: <code class="rounded bg-amber-500/20 px-1.5 py-0.5">{modelName}</code>
 				</p>
 			</div>
 

@@ -161,7 +161,7 @@
 
 	<div class="mb-4">
 		<label for="server-name-{id}" class="mb-2 block text-xs font-medium select-none">
-			Display name
+			表示名
 		</label>
 
 		<Input

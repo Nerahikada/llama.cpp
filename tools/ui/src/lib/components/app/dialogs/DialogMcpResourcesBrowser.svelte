@@ -383,7 +383,7 @@
 						<Plus class="mr-2 {ICON_CLASS_DEFAULT}" />
 					{/if}
 
-					添付 {selectedResources.size > 0 ? `(${selectedResources.size})` : 'リソース'}
+					{selectedResources.size > 0 ? `添付 (${selectedResources.size})` : 'リソースを添付'}
 				</Button>
 			{/if}
 		</Dialog.Footer>

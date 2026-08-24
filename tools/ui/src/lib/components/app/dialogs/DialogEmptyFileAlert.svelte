@@ -42,7 +42,7 @@
 			</div>
 
 			<div>
-				<div class="mb-2 font-medium">発生した内容:</div>
+				<div class="mb-2 font-medium">詳細:</div>
 
 				<ul class="list-inside list-disc space-y-1 text-muted-foreground">
 					<li>空のファイルは処理できず、AI モデルに送信できません</li>

@@ -87,7 +87,7 @@
 					const data = JSON.parse(text);
 
 					if (!data || typeof data !== 'object' || !data.config) {
-						toast.error('無効な設定ファイルです: config がありません');
+						toast.error('無効な設定ファイルです。config フィールドがありません');
 
 						return;
 					}
@@ -192,7 +192,7 @@
 					const message = err instanceof Error ? err.message : '不明なエラー';
 
 					console.error('Failed to parse file:', err);
-					alert(`ファイルの解析に失敗しました: ${message}`);
+					alert(`ファイルの解析に失敗しました。${message}`);
 				}
 			};
 
@@ -214,7 +214,7 @@
 			// A conversation already in the database is left untouched, so the summary
 			// lists what was written and the toast accounts for the rest.
 			if (skipped.length > 0) {
-				toast.info(`${skipped.length} 件の会話は既にライブラリにあるためスキップしました`);
+				toast.info(`${skipped.length} 件の会話は既に存在するためスキップしました`);
 			}
 
 			importedConversations = imported;

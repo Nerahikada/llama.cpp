@@ -51,14 +51,14 @@ export function useChatScreenFileUpload(options: UseChatScreenFileUploadOptions)
 		const allUnsupportedFiles = [...generallyUnsupported, ...unsupportedFiles];
 
 		if (allUnsupportedFiles.length > 0) {
-			const supportedTypes: string[] = ['text files', 'PDFs'];
+			const supportedTypes: string[] = ['テキストファイル', 'PDF'];
 			const caps = options.capabilities();
 
-			if (caps.hasVision) supportedTypes.push('images');
+			if (caps.hasVision) supportedTypes.push('画像');
 
-			if (caps.hasAudio) supportedTypes.push('audio files');
+			if (caps.hasAudio) supportedTypes.push('音声ファイル');
 
-			if (caps.hasVideo) supportedTypes.push('video files');
+			if (caps.hasVideo) supportedTypes.push('動画ファイル');
 
 			fileErrorData = {
 				generallyUnsupported,

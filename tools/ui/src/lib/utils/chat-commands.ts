@@ -14,7 +14,7 @@ export function getChatCommands(options: ChatCommandsOptions): ChatFormCommand[]
 	return [
 		{
 			action: ChatFormCommandAction.PROMPT,
-			description: 'Insert an MCP prompt',
+			description: 'MCP プロンプトを挿入',
 			disabled: !options.hasPrompts(),
 			name: 'prompt'
 		},
@@ -27,7 +27,7 @@ export function getChatCommands(options: ChatCommandsOptions): ChatFormCommand[]
 		},
 		{
 			action: ChatFormCommandAction.MODEL,
-			description: 'Select model',
+			description: 'モデルを選択',
 			disabled: !options.showModelSelector,
 			name: 'model'
 		}

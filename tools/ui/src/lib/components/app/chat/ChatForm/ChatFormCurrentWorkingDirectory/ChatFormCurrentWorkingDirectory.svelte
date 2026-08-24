@@ -244,7 +244,7 @@
 			} else {
 				// keep the previous cwd and fail visibly instead of committing a
 				// bare leaf name that would resolve against the server cwd
-				searchError = `Could not resolve "${handle.name}" to a server path`;
+				searchError = `"${handle.name}" をサーバー上のパスに解決できませんでした`;
 			}
 		} catch (err) {
 			// user cancelled - silently ignore; other errors are logged
