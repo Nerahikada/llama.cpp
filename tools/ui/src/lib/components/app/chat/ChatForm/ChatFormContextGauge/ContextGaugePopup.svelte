@@ -63,7 +63,7 @@
 	>
 		<div class="flex flex-col gap-2">
 			<div class="flex items-center gap-2">
-				<span class="font-medium">Context</span>
+				<span class="font-medium">コンテキスト</span>
 				<span class="text-muted-foreground">·</span>
 				<span class="font-mono text-muted-foreground">
 					{formatParameters(gauge.contextUsed)}
@@ -89,14 +89,14 @@
 
 				<div class="flex justify-between text-xs text-muted-foreground">
 					<span>
-						<span class={colorLevelTextClass(gauge.colorLevel)}>{gauge.contextPercent}%</span> used
+						<span class={colorLevelTextClass(gauge.colorLevel)}>{gauge.contextPercent}%</span> 使用中
 					</span>
 					<span>
-						{formatParameters(gauge.contextAvailable ?? 0)} remaining
+						残り {formatParameters(gauge.contextAvailable ?? 0)}
 					</span>
 				</div>
 			{:else}
-				<div class="text-xs text-muted-foreground">No context info available</div>
+				<div class="text-xs text-muted-foreground">コンテキスト情報を取得できません</div>
 			{/if}
 
 			{#if gauge.hasAnyUsage}

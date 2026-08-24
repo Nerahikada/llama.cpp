@@ -118,7 +118,7 @@ export async function processFilesToChatUploaded(
 							label: 'PDF を画像として有効化',
 							onClick: () => {
 								settingsStore.updateConfig(SETTINGS_KEYS.PDF_AS_IMAGE, true);
-								toast.success('PDF を画像として解析する設定を有効にしました!', {
+								toast.success('PDF を画像として解析する設定を有効にしました。', {
 									duration: 3000
 								});
 							}

@@ -23,12 +23,12 @@
 	{#snippet titleSnippet()}
 		{#if fileGlobMeta}
 			<span class="text-muted-foreground"
-				>{fileGlobMeta.include === '**' ? 'List files' : 'Search files'}&nbsp;</span
+				>{fileGlobMeta.include === '**' ? 'ファイル一覧' : 'ファイル検索'}&nbsp;</span
 			>
 			{#if fileGlobMeta.include !== '**'}
 				<span class="font-mono">{fileGlobMeta.include}</span>
 			{/if}
-			<span class="text-muted-foreground">&nbsp;in&nbsp;</span>
+			<span class="text-muted-foreground">&nbsp;の中で&nbsp;</span>
 			<span class="font-mono" title={fileGlobMeta.path}
 				>{abbreviateHome(fileGlobMeta.path, home)}</span
 			>
@@ -38,7 +38,7 @@
 	{#snippet children(meta, ctx)}
 		{#if ctx.isPending}
 			<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">
-				Searching...
+				検索中...
 			</div>
 		{:else if meta?.errorMessage}
 			<div
@@ -54,12 +54,12 @@
 				{/each}
 			</div>
 			<div class="mt-1.5 text-xs text-muted-foreground/70 italic">
-				Total matches: <span class="font-mono">{meta.totalMatches ?? meta.matches.length}</span>
+				一致件数: <span class="font-mono">{meta.totalMatches ?? meta.matches.length}</span>
 			</div>
 		{:else}
-			<div class="text-xs text-muted-foreground/70 italic">No matches</div>
+			<div class="text-xs text-muted-foreground/70 italic">一致なし</div>
 			<div class="mt-1.5 text-xs text-muted-foreground/70 italic">
-				Total matches: <span class="font-mono">{meta?.totalMatches ?? 0}</span>
+				一致件数: <span class="font-mono">{meta?.totalMatches ?? 0}</span>
 			</div>
 		{/if}
 	{/snippet}

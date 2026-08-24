@@ -44,7 +44,7 @@
 <div
 	role="button"
 	tabindex="0"
-	aria-label="Context usage"
+	aria-label="コンテキスト使用量"
 	data-context-gauge-trigger
 	class="flex h-5 w-5 cursor-default items-center justify-center"
 	onclick={gaugeTriggerClick}

@@ -19,11 +19,11 @@
 
 <ToolCallBlock {section} {open} {isStreaming} meta={readFileMeta} {onToggle}>
 	{#snippet titleSnippet()}
-		<span class="text-muted-foreground">Read file </span>
+		<span class="text-muted-foreground">ファイルを読み込み </span>
 		<span class="font-mono">{readFileMeta?.fileName}</span>
 		{#if readFileMeta?.lineRange}
 			<span class="text-muted-foreground"
-				>&nbsp;(lines {readFileMeta.lineRange.start}-{readFileMeta.lineRange.end})</span
+				>&nbsp;({readFileMeta.lineRange.start}-{readFileMeta.lineRange.end} 行目)</span
 			>
 		{/if}
 	{/snippet}
@@ -37,7 +37,7 @@
 			/>
 		{:else}
 			<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">
-				Waiting for file content...
+				ファイル内容を待機中...
 			</div>
 		{/if}
 	{/snippet}

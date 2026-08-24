@@ -120,14 +120,14 @@
 
 	const emptyMessage = $derived.by(() => {
 		if (fileSearchKey === null) {
-			return 'File search is unavailable on this server (started without --tools)';
+			return 'このサーバーではファイル検索を利用できません（--tools フラグなしで起動されています）';
 		}
 
 		if (!fileSearchEnabled) {
-			return 'File search is disabled - enable "Search files" in Settings > Tools to use @-mentions';
+			return 'ファイル検索が無効です - @メンションを使うには [設定] > [ツール] で「ファイル検索」を有効化してください';
 		}
 
-		return searchError ? `Search failed - ${searchError}` : 'No matching files or folders';
+		return searchError ? `検索に失敗しました - ${searchError}` : '一致するファイルまたはフォルダがありません';
 	});
 
 	const showTooltip = $derived(!deviceStore.isMobile);
@@ -202,7 +202,7 @@
 		tabindex={-1}
 		aria-hidden="true"
 	>
-		<span class="sr-only">Open file mention picker</span>
+		<span class="sr-only">ファイルメンションピッカーを開く</span>
 	</Popover.Trigger>
 
 	<Popover.Content

@@ -349,7 +349,7 @@ class ModelsStore implements ModelPropsHost, ModelStatusHost {
 		try {
 			localStorage.setItem(FAVORITE_MODELS_LOCALSTORAGE_KEY, JSON.stringify([...next]));
 		} catch {
-			toast.error('Failed to save favorite models to local storage');
+			toast.error('お気に入りモデルの保存に失敗しました');
 		}
 	}
 
@@ -404,7 +404,7 @@ class ModelsStore implements ModelPropsHost, ModelStatusHost {
 
 			return raw ? new Set(JSON.parse(raw) as string[]) : new Set();
 		} catch {
-			toast.error('Failed to load favorite models from local storage');
+			toast.error('お気に入りモデルの読み込みに失敗しました');
 
 			return new Set();
 		}

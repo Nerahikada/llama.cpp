@@ -45,7 +45,7 @@
 
 <ToolCallBlock {section} {open} {isStreaming} meta={readMediaMeta} {onToggle}>
 	{#snippet titleSnippet()}
-		<span class="text-muted-foreground">Read media </span>
+		<span class="text-muted-foreground">メディアを読み込み </span>
 		<span class="font-mono">{readMediaMeta?.fileName}</span>
 	{/snippet}
 
@@ -53,7 +53,7 @@
 		{#if section.toolResult}
 			{#if !mediaAttachment}
 				<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">
-					Media attachment not found in message extras
+					メッセージ添付にメディアが見つかりません
 				</div>
 			{:else if mediaAttachment.type === AttachmentType.AUDIO}
 				<div class="mt-2">
@@ -62,7 +62,7 @@
 							src={createBase64DataUrl(audioMimeType, mediaAttachment.base64Data)}
 							type={audioMimeType}
 						/>
-						Your browser does not support the audio element.
+						お使いのブラウザは audio 要素をサポートしていません。
 					</audio>
 				</div>
 			{:else}
@@ -79,7 +79,7 @@
 			{#if readMediaMeta?.sizeBytes || readMediaMeta?.mimeType}
 				<div class="mt-2 flex gap-4 text-xs text-muted-foreground">
 					{#if readMediaMeta?.sizeBytes}
-						<span>Size: {readMediaMeta.sizeBytes} bytes</span>
+						<span>サイズ: {readMediaMeta.sizeBytes} バイト</span>
 					{/if}
 					{#if readMediaMeta?.mimeType}
 						<span>MIME: {readMediaMeta.mimeType}</span>
@@ -92,7 +92,7 @@
 			{/if}
 		{:else}
 			<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">
-				Waiting for media data...
+				メディアデータを待機中...
 			</div>
 		{/if}
 	{/snippet}

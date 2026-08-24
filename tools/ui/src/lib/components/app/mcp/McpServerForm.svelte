@@ -43,7 +43,7 @@
 		headers,
 		id = 'server',
 		name = '',
-		namePlaceholder = 'Name reported by the server',
+		namePlaceholder = 'サーバーから返される名前',
 		onHeadersChange,
 		onNameChange,
 		onUrlChange,

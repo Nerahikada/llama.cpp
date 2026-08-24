@@ -41,9 +41,11 @@
 	// heading read as a live progress indicator rather than a completed
 	// retrospective.
 	const title = $derived.by(() => {
-		const verb = showSpinner ? 'Searching' : 'Searched';
+		if (showSpinner) {
+			return query ? `Web を検索中: "${query}"` : 'Web を検索中';
+		}
 
-		return query ? `${verb} web for "${query}"` : `${verb} web`;
+		return query ? `Web を検索: "${query}"` : 'Web を検索';
 	});
 
 	function hideBrokenIcon(event: Event) {
@@ -162,9 +164,9 @@
 	{:else if showSpinner}
 		<div class="text-muted-foreground/70 flex items-center gap-2 py-1 text-xs italic">
 			<Loader2 class="h-3 w-3 animate-spin" />
-			<span>Searching...</span>
+			<span>検索中...</span>
 		</div>
 	{:else}
-		<div class="text-muted-foreground/70 py-1 text-xs italic">No results</div>
+		<div class="text-muted-foreground/70 py-1 text-xs italic">結果なし</div>
 	{/if}
 </CollapsibleContentBlock>

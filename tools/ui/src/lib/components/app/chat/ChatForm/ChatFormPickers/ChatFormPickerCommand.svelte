@@ -104,7 +104,7 @@
 <ChatFormPickerPopover
 	bind:isOpen
 	class={className}
-	srLabel="Open command picker"
+	srLabel="コマンドピッカーを開く"
 	{onClose}
 	onKeydown={handleKeydown}
 >
@@ -114,7 +114,7 @@
 		selectedIndex={nav.hoveredIndex}
 		showSearchInput={false}
 		searchQuery={query ?? ''}
-		emptyMessage="No matching command"
+		emptyMessage="一致するコマンドがありません"
 		itemKey={(command) => command.name}
 		scrollTrigger={nav.scrollTrigger}
 	>

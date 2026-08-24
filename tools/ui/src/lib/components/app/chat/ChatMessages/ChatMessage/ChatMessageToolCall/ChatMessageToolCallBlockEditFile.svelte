@@ -25,12 +25,12 @@
 
 <ToolCallBlock {section} {open} {isStreaming} meta={editFileMeta} {onToggle}>
 	{#snippet titleSnippet()}
-		<span class="text-muted-foreground">Edit file </span>
+		<span class="text-muted-foreground">ファイルを編集 </span>
 		<span class="font-mono" title={editFileMeta?.filePath}
 			>{abbreviateHome(editFileMeta?.filePath ?? '', home)}</span
 		>
 		{#if editFileMeta?.errorMessage}
-			<span class="ml-1 text-xs italic text-muted-foreground/70">(failed)</span>
+			<span class="ml-1 text-xs italic text-muted-foreground/70">(失敗)</span>
 		{/if}
 	{/snippet}
 
@@ -46,7 +46,7 @@
 			{#each editDiffs as diffLines, ei (ei)}
 				<div class={ei === 0 ? '' : 'mt-3'}>
 					<div class="mb-1.5 text-xs text-muted-foreground/70 italic">
-						Edit {ei + 1}&nbsp;of&nbsp;{meta.edits.length}
+						編集 {ei + 1}&nbsp;/&nbsp;{meta.edits.length}
 					</div>
 					<div class="diff-block" style:max-height={MAX_HEIGHT_CODE_BLOCK}>
 						<div class="diff-pre">
@@ -67,11 +67,11 @@
 					{meta.resultMessage}{meta.editsApplied != null ? RESULT_STAT_SEPARATOR : ''}{/if}
 				{#if meta.editsApplied != null}
 					<span class="font-mono">{meta.editsApplied}</span>
-					{meta.editsApplied === 1 ? 'edit' : 'edits'}&nbsp;applied
+					件の編集を適用
 				{/if}
 			</div>
 		{:else}
-			<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">No edits</div>
+			<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">編集はありません</div>
 		{/if}
 	{/snippet}
 </ToolCallBlock>

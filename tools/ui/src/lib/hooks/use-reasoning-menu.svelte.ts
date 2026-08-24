@@ -83,13 +83,13 @@ export function useReasoningMenu(): UseReasoningMenuReturn {
 			return thinkingEnabled;
 		},
 		tokenLabel(level: ReasoningEffortLevel): string | null {
-			if (level.value === ReasoningEffort.DEFAULT) return 'Model default';
+			if (level.value === ReasoningEffort.DEFAULT) return 'モデルの既定値';
 
 			const tokens = REASONING_EFFORT_TOKENS[level.value];
 
 			if (tokens === undefined) return null;
 
-			return tokens === -1 ? 'Unlimited' : `Max ${tokens.toLocaleString()} tokens`;
+			return tokens === -1 ? '無制限' : `最大 ${tokens.toLocaleString()} トークン`;
 		}
 	};
 }

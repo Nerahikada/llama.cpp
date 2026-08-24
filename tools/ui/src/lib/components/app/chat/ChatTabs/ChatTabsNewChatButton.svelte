@@ -17,7 +17,7 @@
 				{...props}
 				class="backdrop-blur-lg flex h-8 w-8 mr-4 shrink-0 cursor-pointer items-center justify-center rounded-md transition-colors hover:bg-foreground/5"
 				{onclick}
-				aria-label="New chat"
+				aria-label="新しいチャット"
 			>
 				<Plus class="{ICON_CLASS_DEFAULT} opacity-40 transition-opacity group-hover:opacity-100" />
 			</button>
@@ -25,6 +25,6 @@
 	</Tooltip.Trigger>
 
 	<Tooltip.Content>
-		<p>New chat</p>
+		<p>新しいチャット</p>
 	</Tooltip.Content>
 </Tooltip.Root>

@@ -48,7 +48,7 @@
 						buttonVariants({ size: 'sm', variant: 'secondary' }),
 						'inline-flex cursor-pointer items-center !rounded-l-none !shadow-none !px-2'
 					)}
-					aria-label="More allow options"
+					aria-label="その他の許可オプション"
 				>
 					<ChevronDown class="h-3.5 w-3.5" />
 				</DropdownMenu.Trigger>

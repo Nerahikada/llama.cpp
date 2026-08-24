@@ -108,7 +108,7 @@
 								<Lightbulb class="{ICON_CLASS_DEFAULT} shrink-0 text-muted-foreground" />
 							{/if}
 
-							<span class="flex-1">Reasoning</span>
+							<span class="flex-1">推論</span>
 
 							<span class="text-xs capitalize text-muted-foreground">
 								{reasoning.currentEffort}

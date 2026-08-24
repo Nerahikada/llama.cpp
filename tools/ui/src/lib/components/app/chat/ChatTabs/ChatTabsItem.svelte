@@ -83,7 +83,7 @@
 						{...props}
 						class="stop-button relative z-10 flex h-5 w-5 shrink-0 cursor-pointer items-center justify-center rounded-sm text-muted-foreground transition-colors hover:text-foreground"
 						onclick={(e) => handleActionClick(e, () => onStop?.(tab.id, e))}
-						aria-label="Stop generation"
+						aria-label="生成を停止"
 					>
 						<Loader2
 							class="loading-icon {ICON_CLASS_SM} animate-spin transition-opacity duration-300 {contentOpacity}"
@@ -97,7 +97,7 @@
 			</Tooltip.Trigger>
 
 			<Tooltip.Content>
-				<p>Stop generation</p>
+				<p>生成を停止</p>
 			</Tooltip.Content>
 		</Tooltip.Root>
 	{/if}
@@ -120,7 +120,7 @@
 						contentOpacity
 					)}
 					onclick={(e) => handleActionClick(e, () => onClose?.(tab.id))}
-					aria-label="Close tab"
+					aria-label="タブを閉じる"
 				>
 					<X class={ICON_CLASS_SM} />
 				</button>
@@ -128,7 +128,7 @@
 		</Tooltip.Trigger>
 
 		<Tooltip.Content>
-			<p>Close tab</p>
+			<p>タブを閉じる</p>
 		</Tooltip.Content>
 	</Tooltip.Root>
 </div>

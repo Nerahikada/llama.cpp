@@ -249,7 +249,7 @@
 				actions={[
 					{
 						icon: conversation.pinned ? PinOff : Pin,
-						label: conversation.pinned ? 'Unpin' : 'Pin',
+						label: conversation.pinned ? 'ピン留め解除' : 'ピン留め',
 						onclick: (e: Event) => {
 							e.stopPropagation();
 							handleTogglePin();
@@ -272,7 +272,7 @@
 					},
 					{
 						icon: ListChecks,
-						label: 'Select',
+						label: '選択',
 						onclick: handleEnterSelectionMode
 					},
 					{

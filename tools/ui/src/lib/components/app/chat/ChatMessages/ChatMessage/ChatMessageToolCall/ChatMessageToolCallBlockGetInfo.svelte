@@ -53,14 +53,14 @@
 <div class="text-muted-foreground flex items-center gap-2 py-1.5">
 	<Info class="text-muted-foreground/60 h-3.5 w-3.5 shrink-0" />
 	{#if showSpinner}
-		<span class="text-foreground/80 text-sm font-medium">Runtime info</span>
+		<span class="text-foreground/80 text-sm font-medium">ランタイム情報</span>
 		<Loader2 class="text-muted-foreground/70 h-3 w-3 animate-spin" />
 	{:else if infoMeta.errorMessage}
-		<span class="text-foreground/80 text-sm font-medium">Runtime info&nbsp;</span>
+		<span class="text-foreground/80 text-sm font-medium">ランタイム情報&nbsp;</span>
 		<span class="text-red-600 text-xs italic dark:text-red-400">-&nbsp;{infoMeta.errorMessage}</span
 		>
 	{:else if infoMeta.os || infoMeta.cwd}
-		<span class="text-foreground/80 text-sm font-medium">Runtime info&nbsp;</span>
+		<span class="text-foreground/80 text-sm font-medium">ランタイム情報&nbsp;</span>
 		{#if infoMeta.os}
 			<span class="font-mono text-foreground/90 text-sm">{infoMeta.os}</span>
 		{/if}
@@ -68,6 +68,6 @@
 			<span class="font-mono text-foreground/90 text-sm" title={infoMeta.cwd}>{cwdDisplay}</span>
 		{/if}
 	{:else}
-		<span class="text-foreground/80 text-sm font-medium">Runtime info</span>
+		<span class="text-foreground/80 text-sm font-medium">ランタイム情報</span>
 	{/if}
 </div>

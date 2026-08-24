@@ -68,8 +68,8 @@
 	);
 	const searchUnavailableMessage = $derived(
 		fileSearchKey === null
-			? 'File search is unavailable on this server - type a full path and press Enter'
-			: 'File search is disabled - type a full path and press Enter, or enable "Search files" in Settings > Tools'
+			? 'このサーバーではファイル検索を利用できません - フルパスを入力して Enter を押してください'
+			: 'ファイル検索が無効です - フルパスを入力して Enter を押すか、[設定] > [ツール] で「ファイル検索」を有効化してください'
 	);
 
 	let searchInputRef: HTMLInputElement | null = $state(null);
@@ -346,7 +346,7 @@
 		tabindex={-1}
 		aria-hidden="true"
 	>
-		<span class="sr-only">Open working directory picker</span>
+		<span class="sr-only">作業ディレクトリピッカーを開く</span>
 	</Popover.Trigger>
 
 	<Popover.Content
@@ -364,7 +364,7 @@
 			<SearchInput
 				bind:ref={searchInputRef}
 				bind:value={query}
-				placeholder="Choose working directory"
+				placeholder="作業ディレクトリを選択"
 				onClose={closePicker}
 				class="w-full"
 			/>
@@ -391,7 +391,7 @@
 					onclick={browseNative}
 				>
 					<FolderOpen class="size-4 shrink-0 text-muted-foreground" />
-					<span>Browse</span>
+					<span>参照</span>
 				</button>
 			{/if}
 
@@ -399,7 +399,7 @@
 				<div class="-mx-2 my-2 h-px bg-border/20" aria-hidden="true"></div>
 
 				<span class="px-2 py-1.5 font-mono text-[10px]">
-					Searching in:
+					検索対象:
 
 					<span class="truncate text-muted-foreground/70" title={searchScope}
 						>{abbreviateHome(searchScope, homeBase)}</span

@@ -234,7 +234,7 @@
 					<div class={exitBadgeClass}>
 						{#if execShellExitStatus.timedOut}
 							<AlertTriangle class="h-3 w-3" />
-							<span>timed out</span>
+							<span>タイムアウト</span>
 							<span class="exit-sep">&middot;</span>
 							<span>exit {execShellExitStatus.code}</span>
 						{:else if execShellExitStatus.code === 0}

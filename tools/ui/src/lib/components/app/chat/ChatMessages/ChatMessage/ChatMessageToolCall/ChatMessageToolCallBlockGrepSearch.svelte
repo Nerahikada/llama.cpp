@@ -22,9 +22,9 @@
 <ToolCallBlock {section} {open} {isStreaming} meta={grepMeta} {onToggle}>
 	{#snippet titleSnippet()}
 		{#if grepMeta}
-			<span class="text-muted-foreground">Search for&nbsp;</span>
+			<span class="text-muted-foreground">検索:&nbsp;</span>
 			<span class="font-mono">{grepMeta.pattern}</span>
-			<span class="text-muted-foreground">&nbsp;in&nbsp;</span>
+			<span class="text-muted-foreground">&nbsp;の中で&nbsp;</span>
 			<span class="font-mono" title={grepMeta.path}>{abbreviateHome(grepMeta.path, home)}</span>
 		{/if}
 	{/snippet}
@@ -32,7 +32,7 @@
 	{#snippet children(meta, ctx)}
 		{#if ctx.isPending}
 			<div class="rounded bg-muted/20 p-2 text-xs text-muted-foreground/70 italic">
-				Searching...
+				検索中...
 			</div>
 		{:else if meta?.errorMessage}
 			<div
@@ -55,15 +55,15 @@
 				{/each}
 			</div>
 			<div class="mt-1.5 text-xs text-muted-foreground/70 italic">
-				Total matches: <span class="font-mono">{meta.totalMatches ?? meta.matches.length}</span>
+				一致件数: <span class="font-mono">{meta.totalMatches ?? meta.matches.length}</span>
 				{#if meta.showLineNumbers}
-					&nbsp;<span class="italic">(with line numbers)</span>
+					&nbsp;<span class="italic">(行番号付き)</span>
 				{/if}
 			</div>
 		{:else}
-			<div class="text-xs text-muted-foreground/70 italic">No matches</div>
+			<div class="text-xs text-muted-foreground/70 italic">一致なし</div>
 			<div class="mt-1.5 text-xs text-muted-foreground/70 italic">
-				Total matches: <span class="font-mono">{meta?.totalMatches ?? 0}</span>
+				一致件数: <span class="font-mono">{meta?.totalMatches ?? 0}</span>
 			</div>
 		{/if}
 	{/snippet}

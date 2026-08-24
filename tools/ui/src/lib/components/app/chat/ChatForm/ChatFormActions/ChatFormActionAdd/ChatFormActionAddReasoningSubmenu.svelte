@@ -24,7 +24,7 @@
 					? 'text-muted-foreground'
 					: ''}"
 			>
-				思考
+				推論
 
 				<span class="capitalize text-muted-foreground">
 					{reasoning.currentEffort}

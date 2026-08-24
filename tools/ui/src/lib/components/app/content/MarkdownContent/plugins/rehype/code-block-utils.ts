@@ -84,7 +84,7 @@ export function createPreviewButton(
 export function createToggleSourceButton(
 	id: string,
 	idAttribute: string,
-	title: string = 'Toggle source'
+	title: string = 'ソースの表示切り替え'
 ): Element {
 	return createButton(TOGGLE_SOURCE_BTN_CLASS, title, CODE_ICON_SVG, id, idAttribute, {
 		'aria-pressed': 'false'

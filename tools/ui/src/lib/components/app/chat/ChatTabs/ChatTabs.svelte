@@ -84,7 +84,7 @@
 	class="group sticky pl-1 top-0 z-10 hidden md:block chat-tabs-fade transition-[padding] duration-200 ease-in-out pt-3.25 {uiStore.isSidebarExpanded
 		? CHAT_TABS_MAX_WIDTH.EXPANDED_SIDEBAR
 		: CHAT_TABS_MAX_WIDTH.COLLAPSED_SIDEBAR}"
-	aria-label="Open conversations"
+	aria-label="会話一覧"
 >
 	<div class="relative">
 		<ScrollCarousel

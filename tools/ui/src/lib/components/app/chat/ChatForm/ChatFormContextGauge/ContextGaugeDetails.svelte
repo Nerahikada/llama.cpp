@@ -39,7 +39,7 @@
 	<Collapsible.Trigger
 		class="flex w-full cursor-pointer items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
 	>
-		<span>Token usage details</span>
+		<span>トークン使用量の詳細</span>
 
 		<ChevronDown
 			class={'ml-auto h-3 w-3 transition-transform' + (gaugePopup.detailsOpen ? ' rotate-180' : '')}
@@ -50,22 +50,22 @@
 		{#if hasCumulative}
 			<div>
 				<h3 class="text-[11px] font-medium uppercase tracking-wide text-muted-foreground/70 mb-2">
-					Across all turns
+					全ターン累計
 				</h3>
 
 				<div class="flex flex-col gap-2">
 					{#if cumulativeRead > 0}
 						<ContextGaugeDetailRow
-							label="Prompt tokens evaluated"
+							label="評価済みプロンプトトークン"
 							value={`${cumulativeRead.toLocaleString()} tok`}
 							subtitle={cumulativeCacheTotal > 0
-								? `${cumulativeCacheTotal.toLocaleString()} reused from KV cache`
+								? `${cumulativeCacheTotal.toLocaleString()} を KV キャッシュから再利用`
 								: undefined}
 						/>
 					{/if}
 					{#if cumulativeOutput > 0}
 						<ContextGaugeDetailRow
-							label="Tokens generated"
+							label="生成トークン数"
 							value={`${cumulativeOutput.toLocaleString()} tok`}
 						/>
 					{/if}
@@ -76,30 +76,30 @@
 		{#if hasCurrent}
 			<div>
 				<h3 class="text-[11px] font-medium uppercase tracking-wide text-muted-foreground/70 mb-2">
-					This turn · KV cache
+					今回のターン · KV キャッシュ
 				</h3>
 
 				<div class="flex flex-col gap-2">
 					{#if currentRead > 0}
 						<ContextGaugeDetailRow
-							label="Prompt"
+							label="プロンプト"
 							value={`${currentRead.toLocaleString()} tok`}
 							subtitle={currentCache > 0
-								? `${currentFresh.toLocaleString()} fresh + ${currentCache.toLocaleString()} cached`
+								? `新規 ${currentFresh.toLocaleString()} + キャッシュ ${currentCache.toLocaleString()}`
 								: undefined}
 						/>
 					{/if}
 
 					{#if currentOutput > 0}
 						<ContextGaugeDetailRow
-							label="Generated"
+							label="生成"
 							value={`${currentOutput.toLocaleString()} tok`}
 						/>
 					{/if}
 
 					<div class="pt-1 mt-0.5 border-t border-border/30">
 						<div class="flex justify-between">
-							<span class="text-muted-foreground">KV cache total</span>
+							<span class="text-muted-foreground">KV キャッシュ合計</span>
 							<span class="font-mono font-medium">{kvTotal.toLocaleString()} tok</span>
 						</div>
 					</div>
@@ -110,7 +110,7 @@
 		{#if averageTokensPerSecond !== null}
 			<div class="pt-1.5 mt-1 border-t border-border/30">
 				<ContextGaugeDetailRow
-					label="Avg speed"
+					label="平均速度"
 					value={`${averageTokensPerSecond.toFixed(1)}${STATS_UNITS.TOKENS_PER_SECOND}`}
 				/>
 			</div>

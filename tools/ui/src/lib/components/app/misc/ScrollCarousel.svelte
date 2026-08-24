@@ -91,7 +91,7 @@
 		)}
 		{...isCenter ? { disabled: !carousel.canScrollLeft } : {}}
 		onclick={scrollLeft}
-		aria-label="Scroll left"
+		aria-label="左にスクロール"
 	>
 		<ChevronLeft class={ICON_CLASS_DEFAULT} />
 	</button>
@@ -124,7 +124,7 @@
 		)}
 		{...isCenter ? { disabled: !carousel.canScrollRight } : {}}
 		onclick={scrollRight}
-		aria-label="Scroll right"
+		aria-label="右にスクロール"
 	>
 		<ChevronRight class={ICON_CLASS_DEFAULT} />
 	</button>

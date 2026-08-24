@@ -86,7 +86,7 @@
 			)}
 		/>
 
-		<span class="sr-only">Toggle content</span>
+		<span class="sr-only">内容の表示切り替え</span>
 	</Collapsible.Trigger>
 
 	<Collapsible.Content>

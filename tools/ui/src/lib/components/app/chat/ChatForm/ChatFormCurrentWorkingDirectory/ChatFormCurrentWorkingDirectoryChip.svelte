@@ -57,8 +57,8 @@
 		>
 			<ActionIcon
 				icon={X}
-				tooltip="Reset working directory"
-				ariaLabel="Reset working directory"
+				tooltip="作業ディレクトリをリセット"
+				ariaLabel="作業ディレクトリをリセット"
 				{disabled}
 				onclick={onClear}
 				iconSize="h-3 w-3"

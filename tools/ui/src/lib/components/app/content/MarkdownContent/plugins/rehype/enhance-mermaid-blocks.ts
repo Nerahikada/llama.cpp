@@ -80,9 +80,9 @@ export const rehypeEnhanceMermaidBlocks: Plugin<[], Root> = () => {
 			};
 
 			const actions = [
-				createCopyButton(mermaidId, MERMAID_ID_ATTR, 'Copy mermaid syntax'),
-				createToggleSourceButton(mermaidId, MERMAID_ID_ATTR, 'Toggle mermaid source'),
-				createPreviewButton(mermaidId, MERMAID_ID_ATTR, 'Preview diagram')
+				createCopyButton(mermaidId, MERMAID_ID_ATTR, 'mermaid ソースをコピー'),
+				createToggleSourceButton(mermaidId, MERMAID_ID_ATTR, 'mermaid ソースの表示切り替え'),
+				createPreviewButton(mermaidId, MERMAID_ID_ATTR, '図をプレビュー')
 			];
 			const header = createBlockHeader(MERMAID_LANGUAGE, mermaidId, MERMAID_ID_ATTR, actions);
 			const preservedCode = (node.data as DiagramPreData | undefined)?.sourceCode;

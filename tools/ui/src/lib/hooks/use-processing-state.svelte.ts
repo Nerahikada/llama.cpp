@@ -96,22 +96,22 @@ export function useProcessingState(): UseProcessingStateReturn {
 
 	function getProcessingMessage(): string {
 		if (!processingState) {
-			return 'Processing...';
+			return '処理中...';
 		}
 
 		switch (processingState.status) {
 			case 'initializing':
-				return 'Initializing...';
+				return '初期化中...';
 			case 'preparing':
 				if (processingState.progressPercent !== undefined) {
-					return `Processing (${processingState.progressPercent}%)`;
+					return `処理中 (${processingState.progressPercent}%)`;
 				}
 
-				return 'Preparing response...';
+				return '応答を準備中...';
 			case 'generating':
 				return '';
 			default:
-				return 'Processing...';
+				return '処理中...';
 		}
 	}
 
@@ -254,10 +254,10 @@ export function useProcessingState(): UseProcessingStateReturn {
 		if (eta !== undefined) {
 			const etaSecs = Math.ceil(eta);
 
-			return `Processing ${percent}% (ETA: ${etaSecs}s)`;
+			return `処理中 ${percent}% (残り ${etaSecs} 秒)`;
 		}
 
-		return `Processing ${percent}%`;
+		return `処理中 ${percent}%`;
 	}
 
 	/**
