@@ -17,6 +17,9 @@
 
 </div>
 
+> [!NOTE]
+> This fork ships a Japanese translation of the web UI. By default the build embeds the prebuilt (English) bundle; to compile the server with the translated UI, configure with `-DLLAMA_BUILD_UI=ON -DLLAMA_USE_PREBUILT_UI=OFF` (see [docs/build.md](docs/build.md)).
+
 ## Quick start
 
 A few options to get `llama.cpp` installed on your machine:
