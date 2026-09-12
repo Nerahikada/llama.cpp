@@ -23,12 +23,12 @@
 </script>
 
 <svelte:head>
-	<title>Error {status} - {APP_NAME}</title>
+	<title>エラー {status} - {APP_NAME}</title>
 </svelte:head>
 
 {#if isApiKeyError}
 	<ServerErrorSplash
-		error={error?.message || 'Access denied - check server permissions'}
+		error={error?.message || 'アクセスが拒否されました - サーバーの権限を確認してください'}
 		onRetry={handleRetry}
 		showRetry={false}
 		showTroubleshooting={false}
@@ -56,10 +56,10 @@
 					</svg>
 				</div>
 
-				<h1 class="mb-2 text-2xl font-bold">Error {status}</h1>
+				<h1 class="mb-2 text-2xl font-bold">エラー {status}</h1>
 
 				<p class="text-muted-foreground">
-					{error?.message || 'Something went wrong'}
+					{error?.message || '問題が発生しました'}
 				</p>
 			</div>
 
@@ -67,7 +67,7 @@
 				class="rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
 				onclick={() => goto(ROUTES.START)}
 			>
-				Go Home
+				ホームへ
 			</button>
 		</div>
 	</div>

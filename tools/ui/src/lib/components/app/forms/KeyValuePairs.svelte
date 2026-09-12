@@ -23,15 +23,15 @@
 	}
 
 	let {
-		addButtonLabel = 'Add',
+		addButtonLabel = '追加',
 		class: className = '',
-		emptyMessage = 'No items configured.',
-		keyPlaceholder = 'Key',
+		emptyMessage = '項目が設定されていません。',
+		keyPlaceholder = 'キー',
 		onPairsChange,
 		pairs,
 		sectionLabel,
 		sectionLabelOptional = true,
-		valuePlaceholder = 'Value'
+		valuePlaceholder = '値'
 	}: Props = $props();
 
 	// Pre-allocate the ref array so `bind:ref={keyInputRefs[index]}` never reads `undefined`
@@ -107,7 +107,7 @@
 			<span class="text-xs font-medium select-none">
 				{sectionLabel}
 				{#if sectionLabelOptional}
-					<span class="text-muted-foreground">(optional)</span>
+					<span class="text-muted-foreground">(任意)</span>
 				{/if}
 			</span>
 		{/if}
@@ -152,7 +152,7 @@
 					></textarea>
 
 					<button
-						aria-label="Remove item"
+						aria-label="項目を削除"
 						class="mt-1.5 shrink-0 cursor-pointer rounded-md p-1 text-muted-foreground hover:bg-destructive/10 hover:text-destructive"
 						onclick={() => removePair(index)}
 						type="button"

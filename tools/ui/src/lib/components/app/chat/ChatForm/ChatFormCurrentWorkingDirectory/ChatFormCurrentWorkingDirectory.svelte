@@ -71,8 +71,8 @@
 	);
 	const searchUnavailableMessage = $derived(
 		fileSearchKey === null
-			? 'File search is unavailable on this server - type a full path and press Enter'
-			: 'File search is disabled - type a full path and press Enter, or enable "Search files" in Settings > Tools'
+			? 'このサーバーではファイル検索を利用できません - フルパスを入力して Enter を押してください'
+			: 'ファイル検索が無効です - フルパスを入力して Enter を押すか、[設定] > [ツール] で「ファイル検索」を有効化してください'
 	);
 
 	let searchInputRef: HTMLInputElement | null = $state(null);
@@ -247,7 +247,7 @@
 			} else {
 				// keep the previous cwd and fail visibly instead of committing a
 				// bare leaf name that would resolve against the server cwd
-				searchError = `Could not resolve "${handle.name}" to a server path`;
+				searchError = `"${handle.name}" をサーバー上のパスに解決できませんでした`;
 			}
 		} catch (err) {
 			// user cancelled - silently ignore; other errors are logged
@@ -349,7 +349,7 @@
 		class="pointer-events-none absolute inset-0 opacity-0"
 		tabindex={-1}
 	>
-		<span class="sr-only">Open working directory picker</span>
+		<span class="sr-only">作業ディレクトリピッカーを開く</span>
 	</Popover.Trigger>
 
 	<Popover.Content
@@ -369,7 +369,7 @@
 				bind:value={query}
 				class="w-full"
 				onClose={closePicker}
-				placeholder="Choose working directory"
+				placeholder="作業ディレクトリを選択"
 			/>
 
 			{#if !fileSearchEnabled}
@@ -395,7 +395,7 @@
 				>
 					<FolderOpen class="size-4 shrink-0 text-muted-foreground" />
 
-					<span>Browse</span>
+					<span>参照</span>
 				</button>
 			{/if}
 
@@ -403,7 +403,7 @@
 				<div aria-hidden="true" class="-mx-2 my-2 h-px bg-border/20"></div>
 
 				<span class="px-2 py-1.5 font-mono text-[10px]">
-					Searching in:
+					検索対象:
 
 					<span class="truncate text-muted-foreground/70" title={searchScope}
 						>{abbreviateHome(searchScope, homeBase)}</span

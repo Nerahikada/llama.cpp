@@ -123,7 +123,7 @@ export class MCPHealthCheckManager {
 		if (!trimmedUrl) {
 			this.setState(server.id, {
 				logs: [],
-				message: 'Please enter a server URL first.',
+				message: '先にサーバー URL を入力してください。',
 				status: HealthCheckStatus.ERROR
 			});
 
@@ -201,7 +201,7 @@ export class MCPHealthCheckManager {
 				await MCPService.disconnect(connection);
 			}
 		} catch (error) {
-			const message = error instanceof Error ? error.message : 'Unknown error occurred';
+			const message = error instanceof Error ? error.message : '不明なエラーが発生しました';
 
 			if (logs.at(-1)?.phase !== MCPConnectionPhase.ERROR) {
 				logs.push(createConnectionErrorLog(message));

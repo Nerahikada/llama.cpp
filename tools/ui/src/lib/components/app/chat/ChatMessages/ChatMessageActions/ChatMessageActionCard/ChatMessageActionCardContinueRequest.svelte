@@ -12,11 +12,11 @@
 
 <ChatMessageActionCard icon={RotateCw}>
 	{#snippet message()}
-		Agentic turn limit reached. Continue?
+		エージェントのターン上限に達しました。続行しますか？
 	{/snippet}
 
 	{#snippet actions()}
-		<Button onclick={() => onDecision(true)} size="sm">Continue</Button>
+		<Button onclick={() => onDecision(true)} size="sm">続行</Button>
 
 		<Button
 			class="text-destructive hover:text-destructive"
@@ -24,7 +24,7 @@
 			size="sm"
 			variant="destructive"
 		>
-			Stop
+			停止
 		</Button>
 	{/snippet}
 </ChatMessageActionCard>

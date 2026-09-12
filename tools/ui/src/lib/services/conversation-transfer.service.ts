@@ -150,7 +150,7 @@ export class ConversationTransferService {
 		}
 
 		throw new Error(
-			'Invalid file format: expected array of conversations or single conversation object'
+			'ファイル形式が正しくありません。会話の配列または単一の会話オブジェクトが必要です'
 		);
 	}
 
@@ -184,7 +184,7 @@ export class ConversationTransferService {
 				sessions.push(current);
 			} else if (record.type === SessionRecordType.MESSAGE) {
 				if (!current) {
-					throw new Error('Invalid JSONL: message record before any session record');
+					throw new Error('不正な JSONL: セッションレコードより前にメッセージレコードがあります');
 				}
 
 				const message = record.message as DatabaseMessage;

@@ -307,7 +307,7 @@ export class MCPService {
 			const handshakeDeadline = new Promise<never>((_, reject) => {
 				handshakeTimer = setTimeout(() => {
 					void transport.close().catch(() => {});
-					reject(new Error(`Connection timed out after ${Math.round(handshakeTimeoutMs / 1000)}s`));
+					reject(new Error(`${Math.round(handshakeTimeoutMs / 1000)} 秒後に接続がタイムアウトしました`));
 				}, handshakeTimeoutMs);
 			});
 
@@ -465,7 +465,7 @@ export class MCPService {
 		stopPhaseLogging: () => void;
 	} {
 		if (!config.url) {
-			throw new Error('MCP server configuration is missing url');
+			throw new Error('MCP サーバー設定に url がありません');
 		}
 
 		const useProxy = config.useProxy ?? false;
@@ -489,7 +489,7 @@ export class MCPService {
 		if (config.transport === MCPTransportType.WEBSOCKET) {
 			if (useProxy) {
 				throw new Error(
-					'WebSocket transport is not supported when using CORS proxy. Use HTTP transport instead.'
+					'CORS プロキシ使用時は WebSocket トランスポートはサポートされていません。代わりに HTTP トランスポートを使用してください。'
 				);
 			}
 
@@ -576,7 +576,9 @@ export class MCPService {
 				const httpMsg = httpError instanceof Error ? httpError.message : String(httpError);
 				const sseMsg = sseError instanceof Error ? sseError.message : String(sseError);
 
-				throw new Error(`Failed to create transport. StreamableHTTP: ${httpMsg}; SSE: ${sseMsg}`);
+				throw new Error(
+					`トランスポートの作成に失敗しました。StreamableHTTP: ${httpMsg}; SSE: ${sseMsg}`
+				);
 			}
 		}
 	}

@@ -159,7 +159,7 @@ class MCPStore implements McpHealthHost {
 			if (content) {
 				mcpResourceStore.updateAttachmentContent(attachment.id, content);
 			} else {
-				mcpResourceStore.updateAttachmentError(attachment.id, 'Failed to read resource');
+				mcpResourceStore.updateAttachmentError(attachment.id, 'リソースの読み取りに失敗しました');
 			}
 		} catch (error) {
 			const message = error instanceof Error ? error.message : String(error);
@@ -563,7 +563,7 @@ class MCPStore implements McpHealthHost {
 	): Promise<GetPromptResult> {
 		const connection = this.connections.get(serverName);
 
-		if (!connection) throw new Error(`Server "${serverName}" not found for prompt "${promptName}"`);
+		if (!connection) throw new Error(`プロンプト「${promptName}」に対するサーバー「${serverName}」が見つかりません`);
 
 		return MCPService.getPrompt(connection, promptName, args);
 	}
@@ -1228,7 +1228,7 @@ class MCPStore implements McpHealthHost {
 		if (successCount === 0 && serverEntries.length > 0) {
 			this.updateState({
 				connectedServers: [],
-				error: 'All MCP server connections failed',
+				error: 'すべての MCP サーバー接続に失敗しました',
 				isInitializing: false,
 				toolCount: 0
 			});

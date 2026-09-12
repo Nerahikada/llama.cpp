@@ -72,10 +72,10 @@
 
 		<Sheet.Content class="max-h-[85vh] gap-0 overflow-y-auto" side="bottom">
 			<Sheet.Header>
-				<Sheet.Title>Add to chat</Sheet.Title>
+				<Sheet.Title>チャットに追加</Sheet.Title>
 
 				<Sheet.Description class="sr-only">
-					Add files, system prompt or configure MCP servers
+					ファイル、システムプロンプトの追加、MCP サーバーの設定
 				</Sheet.Description>
 			</Sheet.Header>
 
@@ -100,7 +100,7 @@
 								<Lightbulb class="{ICON_CLASS_DEFAULT} shrink-0 text-muted-foreground" />
 							{/if}
 
-							<span class="flex-1">Reasoning</span>
+							<span class="flex-1">推論</span>
 
 							<span class="text-xs capitalize text-muted-foreground">
 								{reasoning.currentEffort}
@@ -149,7 +149,7 @@
 
 						<File class="{ICON_CLASS_DEFAULT} shrink-0" />
 
-						<span class="flex-1">Add files</span>
+						<span class="flex-1">ファイルを追加</span>
 					</Collapsible.Trigger>
 
 					<Collapsible.Content>
@@ -193,7 +193,7 @@
 				>
 					<MessageSquare class="{ICON_CLASS_DEFAULT} shrink-0" />
 
-					<span>System Message</span>
+					<span>システムメッセージ</span>
 				</button>
 
 				{#if toolsPanel.totalToolCount > 0}
@@ -207,10 +207,10 @@
 
 							<PencilRuler class="inline {ICON_CLASS_DEFAULT} shrink-0" />
 
-							<span class="flex-1">Tools</span>
+							<span class="flex-1">ツール</span>
 
 							<span class="text-xs text-muted-foreground">
-								{toolsPanel.totalToolCount} tool{toolsPanel.totalToolCount !== 1 ? 's' : ''}
+								{toolsPanel.totalToolCount} 件のツール
 							</span>
 						</Collapsible.Trigger>
 
@@ -238,7 +238,7 @@
 				>
 					<McpLogo class="inline {ICON_CLASS_DEFAULT} shrink-0" />
 
-					<span>MCP Servers</span>
+					<span>MCP サーバー</span>
 				</button>
 			</div>
 		</Sheet.Content>

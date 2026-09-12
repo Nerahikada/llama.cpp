@@ -169,8 +169,8 @@
 			{#if hasPromptStats || isLive}
 				{@render viewButton({
 					icon: BookOpenText,
-					label: 'Reading',
-					tooltipText: 'Processing',
+					label: '読み込み',
+					tooltipText: '読み込み（プロンプト処理）',
 					view: ChatMessageStatsView.READING
 				})}
 			{/if}
@@ -178,24 +178,24 @@
 			{@render viewButton({
 				disabled: isGenerationDisabled,
 				icon: Sparkles,
-				label: 'Generation',
-				tooltipText: isGenerationDisabled ? 'Waiting for tokens...' : 'Generation',
+				label: '生成',
+				tooltipText: isGenerationDisabled ? '生成（トークンを待機中...）' : '生成（トークン出力）',
 				view: ChatMessageStatsView.GENERATION
 			})}
 
 			{#if hasAgenticStats}
 				{@render viewButton({
 					icon: Wrench,
-					label: 'Tools',
-					tooltipText: 'Tool calls',
+					label: 'ツール',
+					tooltipText: 'ツール呼び出し',
 					view: ChatMessageStatsView.TOOLS
 				})}
 
 				{#if !hideSummary}
 					{@render viewButton({
 						icon: Layers,
-						label: 'Summary',
-						tooltipText: 'Agentic summary',
+						label: 'サマリー',
+						tooltipText: 'エージェントのサマリー',
 						view: ChatMessageStatsView.SUMMARY
 					})}
 				{/if}
@@ -208,84 +208,84 @@
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={WholeWord}
-				tooltipLabel="Generated tokens"
-				value="{predictedTokens?.toLocaleString()} tokens"
+				tooltipLabel="生成されたトークン"
+				value="{predictedTokens?.toLocaleString()} トークン"
 			/>
 
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Clock}
-				tooltipLabel="Generation time"
+				tooltipLabel="生成時間"
 				value={formattedTime}
 			/>
 
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Gauge}
-				tooltipLabel="Generation speed"
+				tooltipLabel="生成速度"
 				value="{tokensPerSecond.toFixed(2)} t/s"
 			/>
 		{:else if activeView === ChatMessageStatsView.TOOLS && hasAgenticStats}
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Wrench}
-				tooltipLabel="Tool calls executed"
-				value="{agenticTimings!.toolCallsCount} calls"
+				tooltipLabel="実行されたツール呼び出し"
+				value="{agenticTimings!.toolCallsCount} 回"
 			/>
 
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Clock}
-				tooltipLabel="Tool execution time"
+				tooltipLabel="ツール実行時間"
 				value={formattedAgenticToolsTime}
 			/>
 
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Gauge}
-				tooltipLabel="Tool execution rate"
+				tooltipLabel="ツール実行レート"
 				value="{agenticToolsPerSecond.toFixed(2)} calls/s"
 			/>
 		{:else if activeView === ChatMessageStatsView.SUMMARY && hasAgenticStats}
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Layers}
-				tooltipLabel="Agentic turns (LLM calls)"
-				value="{agenticTimings!.turns} turns"
+				tooltipLabel="エージェントのターン（LLM 呼び出し）"
+				value="{agenticTimings!.turns} ターン"
 			/>
 
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={WholeWord}
-				tooltipLabel="Total tokens generated"
-				value="{agenticTimings!.llm.predicted_n.toLocaleString()} tokens"
+				tooltipLabel="生成されたトークンの合計"
+				value="{agenticTimings!.llm.predicted_n.toLocaleString()} トークン"
 			/>
 
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Clock}
-				tooltipLabel="Total time (LLM + tools)"
+				tooltipLabel="合計時間（LLM + ツール）"
 				value={formattedAgenticTotalTime}
 			/>
 		{:else if hasPromptStats && (mode === ChatMessageStatisticsMode.READING || isSwitchable)}
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={WholeWord}
-				tooltipLabel="Prompt tokens"
-				value="{promptTokens} tokens"
+				tooltipLabel="プロンプトのトークン"
+				value="{promptTokens} トークン"
 			/>
 
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Clock}
-				tooltipLabel="Prompt processing time"
+				tooltipLabel="プロンプト処理時間"
 				value={formattedPromptTime ?? '0s'}
 			/>
 
 			<ChatMessageStatisticsBadge
 				class="bg-transparent"
 				icon={Gauge}
-				tooltipLabel="Prompt processing speed"
+				tooltipLabel="プロンプト処理速度"
 				value="{promptTokensPerSecond!.toFixed(2)} tokens/s"
 			/>
 		{/if}

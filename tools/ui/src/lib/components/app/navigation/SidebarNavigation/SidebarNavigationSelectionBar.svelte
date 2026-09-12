@@ -56,35 +56,35 @@
 	const pinTooltip = $derived(
 		hasSelection
 			? pinStateIsMixed
-				? 'Unavailable for mixed state selection'
+				? '混在した選択状態では利用できません'
 				: someSelectedPinned
 					? selectedCount === 1
-						? 'Unpin'
-						: 'Unpin all'
+						? 'ピン留めを解除'
+						: 'すべてのピン留めを解除'
 					: selectedCount === 1
-						? 'Pin'
-						: 'Pin all'
-			: 'Pin'
+						? 'ピン留め'
+						: 'すべてピン留め'
+			: 'ピン留め'
 	);
 
 	const pinDisabled = $derived(!hasSelection || pinStateIsMixed);
 </script>
 
 <div
-	aria-label="Bulk actions for selected conversations"
+	aria-label="選択した会話への一括操作"
 	class="flex items-center gap-1.5 rounded-xl border border-border/50 bg-background/50 px-2 py-1.5 shadow-sm backdrop-blur-xl {className}"
 	role="toolbar"
 >
 	<label class="flex min-w-0 cursor-pointer items-center gap-2">
 		<Checkbox
-			aria-label={isMasterChecked ? 'Deselect all' : 'Select all'}
+			aria-label={isMasterChecked ? 'すべての選択を解除' : 'すべて選択'}
 			checked={isMasterChecked}
 			indeterminate={isMasterIndeterminate}
 			onCheckedChange={onSelectAllToggle}
 		/>
 
 		<span class="truncate text-xs font-medium text-muted-foreground">
-			{selectedCount} / {visibleCount} selected
+			{selectedCount} / {visibleCount} 件選択中
 		</span>
 	</label>
 
@@ -104,7 +104,7 @@
 		/>
 
 		<ActionIcon
-			ariaLabel="Export selected"
+			ariaLabel="選択項目をエクスポート"
 			class="h-7 w-7 rounded-md bg-transparent backdrop-blur-none hover:bg-accent! {hasSelection
 				? 'opacity-100'
 				: 'opacity-40'}"
@@ -113,12 +113,12 @@
 			iconSize="h-3.5 w-3.5"
 			onclick={onBulkExport}
 			size="sm"
-			tooltip={hasSelection ? 'Export' : 'Export'}
+			tooltip={hasSelection ? 'エクスポート' : 'エクスポート'}
 			tooltipSide={TooltipSide.TOP}
 		/>
 
 		<ActionIcon
-			ariaLabel="Delete selected"
+			ariaLabel="選択項目を削除"
 			class="h-7 w-7 rounded-md bg-transparent backdrop-blur-none hover:bg-destructive/10! dark:hover:bg-destructive/20! disabled:hover:bg-transparent {hasSelection
 				? 'opacity-100'
 				: 'opacity-40'}"
@@ -127,20 +127,20 @@
 			iconSize="h-3.5 w-3.5 text-destructive"
 			onclick={handleDeleteClick}
 			size="sm"
-			tooltip="Delete selected"
+			tooltip="選択項目を削除"
 			tooltipSide={TooltipSide.TOP}
 		/>
 
 		<div aria-hidden="true" class="mx-1 h-4 w-px bg-border"></div>
 
 		<ActionIcon
-			ariaLabel="Exit bulk selection mode"
+			ariaLabel="一括選択モードを終了"
 			class="h-7 w-7 rounded-md bg-transparent backdrop-blur-none hover:bg-accent!"
 			icon={X}
 			iconSize="h-3.5 w-3.5"
 			onclick={onClose}
 			size="sm"
-			tooltip="Exit bulk selection mode"
+			tooltip="一括選択モードを終了"
 			tooltipSide={TooltipSide.TOP}
 		/>
 	</div>
@@ -148,16 +148,12 @@
 
 <DialogConfirmation
 	bind:open={showDeleteDialog}
-	cancelText="Cancel"
-	confirmText={selectedCount === 1 ? 'Delete' : `Delete ${selectedCount}`}
-	description="This action cannot be undone. The selected conversation{selectedCount === 1
-		? ''
-		: 's'} and {selectedCount === 1
-		? 'its'
-		: 'their'} messages will be permanently removed, including any forks."
+	cancelText="キャンセル"
+	confirmText={selectedCount === 1 ? '削除' : `${selectedCount} 件を削除`}
+	description="この操作は取り消せません。選択した会話とそのメッセージ、フォークを含めてすべて完全に削除されます。"
 	icon={Trash2}
 	onCancel={handleDeleteCancel}
 	onConfirm={handleDeleteConfirm}
-	title="Delete {selectedCount} conversation{selectedCount === 1 ? '' : 's'}"
+	title="{selectedCount} 件の会話を削除"
 	variant="destructive"
 />

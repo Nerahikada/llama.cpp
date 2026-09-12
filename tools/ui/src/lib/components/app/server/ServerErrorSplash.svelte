@@ -87,9 +87,9 @@
 				apiKeyState = 'error';
 
 				if (response.status === 401 || response.status === 403) {
-					apiKeyError = 'Invalid API key - please check and try again';
+					apiKeyError = 'API キーが無効です。確認してもう一度お試しください';
 				} else {
-					apiKeyError = `Authentication failed (${response.status})`;
+					apiKeyError = `認証に失敗しました (${response.status})`;
 				}
 
 				// Reset to idle state after showing error (don't reload UI)
@@ -103,12 +103,12 @@
 
 			if (error instanceof Error) {
 				if (error.message.includes('fetch')) {
-					apiKeyError = 'Cannot connect to server - check if server is running';
+					apiKeyError = 'サーバーに接続できません。サーバーが起動しているか確認してください';
 				} else {
 					apiKeyError = error.message;
 				}
 			} else {
-				apiKeyError = 'Connection error - please try again';
+				apiKeyError = '接続エラーです。もう一度お試しください';
 			}
 
 			// Reset to idle state after showing error (don't reload UI)
@@ -134,7 +134,7 @@
 				<AlertTriangle class="h-8 w-8 text-destructive" />
 			</div>
 
-			<h2 class="mb-2 text-xl font-semibold">Server Connection Error</h2>
+			<h2 class="mb-2 text-xl font-semibold">サーバー接続エラー</h2>
 
 			<p class="mb-4 text-sm text-muted-foreground">
 				{error}
@@ -145,7 +145,7 @@
 			<div in:fly={{ delay: 200, duration: 300, y: 10 }} class="mb-4">
 				<Button class="w-full" onclick={handleShowApiKeyInput} variant="outline">
 					<Key class={ICON_CLASS_DEFAULT} />
-					Enter API Key
+					API キーを入力
 				</Button>
 			</div>
 		{/if}
@@ -153,7 +153,7 @@
 		{#if showApiKeyInput}
 			<div in:fly={{ delay: 200, duration: 300, y: 10 }} class="mb-4 space-y-3 text-left">
 				<div class="space-y-2">
-					<Label class="text-sm font-medium" for="api-key-input">API Key</Label>
+					<Label class="text-sm font-medium" for="api-key-input">API キー</Label>
 
 					<div class="relative">
 						<Input
@@ -167,7 +167,7 @@
 							disabled={apiKeyState === 'validating'}
 							id="api-key-input"
 							onkeydown={handleApiKeyKeydown}
-							placeholder="Enter your API key..."
+							placeholder="API キーを入力..."
 							type="password"
 						/>
 
@@ -200,7 +200,7 @@
 
 					{#if apiKeyState === 'success'}
 						<p in:fly={{ duration: 200, y: -10 }} class="text-sm text-green-600">
-							✓ API key validated successfully! Connecting...
+							✓ API キーの検証に成功しました。接続中...
 						</p>
 					{/if}
 				</div>
@@ -215,11 +215,11 @@
 					>
 						{#if apiKeyState === 'validating'}
 							<RefreshCw class="{ICON_CLASS_DEFAULT} animate-spin" />
-							Validating...
+							検証中...
 						{:else if apiKeyState === 'success'}
-							Success!
+							成功しました
 						{:else}
-							Save & Retry
+							保存して再試行
 						{/if}
 					</Button>
 
@@ -233,7 +233,7 @@
 						}}
 						variant="outline"
 					>
-						Cancel
+						キャンセル
 					</Button>
 				</div>
 			</div>
@@ -245,11 +245,11 @@
 					{#if isServerLoading}
 						<RefreshCw class="{ICON_CLASS_DEFAULT} animate-spin" />
 
-						Connecting...
+						接続中...
 					{:else}
 						<RefreshCw class={ICON_CLASS_DEFAULT} />
 
-						Retry Connection
+						接続を再試行
 					{/if}
 				</Button>
 			</div>
@@ -259,18 +259,18 @@
 			<div in:fly={{ delay: 400, duration: 300, y: 10 }} class="mt-4 text-left">
 				<details class="text-sm">
 					<summary class="cursor-pointer text-muted-foreground hover:text-foreground">
-						Troubleshooting
+						トラブルシューティング
 					</summary>
 
 					<div class="mt-2 space-y-3 text-xs text-muted-foreground">
 						<div class="space-y-2">
-							<p class="mb-4 font-medium">Start the llama-server:</p>
+							<p class="mb-4 font-medium">llama-server を起動してください:</p>
 
 							<div class="rounded bg-muted/50 px-2 py-1 font-mono text-xs">
 								<p>llama-server -hf ggml-org/gemma-3-4b-it-GGUF</p>
 							</div>
 
-							<p>or</p>
+							<p>または</p>
 
 							<div class="rounded bg-muted/50 px-2 py-1 font-mono text-xs">
 								<p class="mt-1">llama-server -m locally-stored-model.gguf</p>
@@ -278,11 +278,11 @@
 						</div>
 
 						<ul class="list-disc space-y-1 pl-4">
-							<li>Check that the server is accessible at the correct URL</li>
+							<li>サーバーが正しい URL でアクセス可能か確認してください</li>
 
-							<li>Verify your network connection</li>
+							<li>ネットワーク接続を確認してください</li>
 
-							<li>Check server logs for any error messages</li>
+							<li>サーバーのログにエラーメッセージがないか確認してください</li>
 						</ul>
 					</div>
 				</details>

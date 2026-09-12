@@ -50,7 +50,7 @@
 	function handleOpenForkDialog() {
 		const conv = conversationsStore.activeConversation;
 
-		forkName = `Fork of ${conv?.name ?? 'Conversation'}`;
+		forkName = `${conv?.name ?? '会話'} のフォーク`;
 		forkIncludeAttachments = true;
 		showForkDialog = true;
 	}
@@ -77,29 +77,29 @@
 		<div
 			class="pointer-events-auto inset-0 flex items-center gap-1 opacity-100 transition-all duration-150"
 		>
-			<ActionIcon icon={Copy} onclick={messageActions.copy} tooltip="Copy" />
+			<ActionIcon icon={Copy} onclick={messageActions.copy} tooltip="コピー" />
 
-			<ActionIcon icon={Edit} onclick={editCtx.startEdit} tooltip="Edit" />
+			<ActionIcon icon={Edit} onclick={editCtx.startEdit} tooltip="編集" />
 
 			{#if role === MessageRole.ASSISTANT && onRegenerate}
-				<ActionIcon icon={RefreshCw} onclick={() => onRegenerate()} tooltip="Regenerate" />
+				<ActionIcon icon={RefreshCw} onclick={() => onRegenerate()} tooltip="再生成" />
 			{/if}
 
 			{#if role === MessageRole.ASSISTANT && onContinue}
-				<ActionIcon icon={ArrowRight} onclick={onContinue} tooltip="Continue" />
+				<ActionIcon icon={ArrowRight} onclick={onContinue} tooltip="続行" />
 			{/if}
 
 			{#if messageActions.forkConversation}
-				<ActionIcon icon={GitBranch} onclick={handleOpenForkDialog} tooltip="Fork conversation" />
+				<ActionIcon icon={GitBranch} onclick={handleOpenForkDialog} tooltip="会話をフォーク" />
 			{/if}
 
-			<ActionIcon icon={Trash2} onclick={messageActions.requestDelete} tooltip="Delete" />
+			<ActionIcon icon={Trash2} onclick={messageActions.requestDelete} tooltip="削除" />
 		</div>
 	</div>
 
 	{#if showRawOutputSwitch}
 		<div class="flex items-center gap-2">
-			<span class="text-xs text-muted-foreground">Show raw output</span>
+			<span class="text-xs text-muted-foreground">生の出力を表示</span>
 
 			<Switch
 				checked={rawOutputEnabled}
@@ -110,40 +110,40 @@
 </div>
 
 <DialogConfirmation
-	cancelText="Cancel"
+	cancelText="キャンセル"
 	confirmText={messageActions.deletionInfo && messageActions.deletionInfo.totalCount > 1
-		? `Delete ${messageActions.deletionInfo.totalCount} Messages`
-		: 'Delete'}
+		? `${messageActions.deletionInfo.totalCount} 件のメッセージを削除`
+		: '削除'}
 	description={messageActions.deletionInfo && messageActions.deletionInfo.totalCount > 1
-		? `This will delete ${messageActions.deletionInfo.totalCount} messages including: ${messageActions.deletionInfo.userMessages} user message${messageActions.deletionInfo.userMessages > 1 ? 's' : ''} and ${messageActions.deletionInfo.assistantMessages} assistant response${messageActions.deletionInfo.assistantMessages > 1 ? 's' : ''}. All messages in this branch and their responses will be permanently removed. This action cannot be undone.`
-		: 'Are you sure you want to delete this message? This action cannot be undone.'}
+		? `${messageActions.deletionInfo.userMessages} 件のユーザーメッセージと ${messageActions.deletionInfo.assistantMessages} 件のアシスタントの応答を含む ${messageActions.deletionInfo.totalCount} 件のメッセージを削除します。このブランチ内のすべてのメッセージとその応答が完全に削除されます。この操作は元に戻せません。`
+		: 'このメッセージを削除してもよろしいですか？この操作は元に戻せません。'}
 	icon={Trash2}
 	onCancel={() => messageActions.setShowDeleteDialog(false)}
 	onConfirm={handleConfirmDelete}
 	open={messageActions.showDeleteDialog}
-	title="Delete Message"
+	title="メッセージを削除"
 	variant="destructive"
 />
 
 <DialogConfirmation
 	bind:open={showForkDialog}
-	cancelText="Cancel"
-	confirmText="Fork"
-	description="Create a new conversation branching from this message."
+	cancelText="キャンセル"
+	confirmText="フォーク"
+	description="このメッセージから分岐した新しい会話を作成します。"
 	icon={GitBranch}
 	onCancel={() => (showForkDialog = false)}
 	onConfirm={handleConfirmFork}
-	title="Fork Conversation"
+	title="会話をフォーク"
 >
 	<div class="flex flex-col gap-4 py-2">
 		<div class="flex flex-col gap-2">
-			<Label for="fork-name">Title</Label>
+			<Label for="fork-name">タイトル</Label>
 
 			<Input
 				bind:value={forkName}
 				class="text-foreground"
 				id="fork-name"
-				placeholder="Enter fork name"
+				placeholder="フォーク名を入力"
 				type="text"
 			/>
 		</div>
@@ -158,7 +158,7 @@
 			/>
 
 			<Label class="cursor-pointer text-sm font-normal" for="fork-attachments">
-				Include all attachments
+				すべての添付ファイルを含める
 			</Label>
 		</div>
 	</div>

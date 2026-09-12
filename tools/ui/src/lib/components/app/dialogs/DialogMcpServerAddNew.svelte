@@ -70,14 +70,14 @@
 	});
 
 	let newServerUrlError = $derived.by(() => {
-		if (!newServerUrl.trim()) return 'URL is required';
+		if (!newServerUrl.trim()) return 'URL は必須です';
 
 		try {
 			new URL(newServerUrl);
 
 			return null;
 		} catch {
-			return 'Invalid URL format';
+			return 'URL の形式が正しくありません';
 		}
 	});
 	let newServerHeaderPairsValid = $derived(
@@ -246,16 +246,16 @@
 <Dialog.Root onOpenChange={handleOpenChange} {open}>
 	<Dialog.Content class="max-w-2xl!">
 		<Dialog.Header>
-			<Dialog.Title class="select-none">Add New MCP Server</Dialog.Title>
+			<Dialog.Title class="select-none">新しいサーバーを追加</Dialog.Title>
 		</Dialog.Header>
 
 		{#if recommendationsToShow.length > 0}
 			<div class="space-y-3 pt-2">
 				<div class="flex items-center justify-between gap-3">
-					<h3 class="text-sm font-medium">Recommended Servers</h3>
+					<h3 class="text-sm font-medium">おすすめのサーバー</h3>
 
 					<Button class="text-muted-foreground" onclick={handleDismissAll} size="sm" variant="ghost"
-						>Dismiss</Button
+						>非表示</Button
 					>
 				</div>
 
@@ -292,11 +292,11 @@
 
 			<Dialog.Footer>
 				<Button onclick={() => handleOpenChange(false)} size="sm" variant="secondary">
-					Cancel
+					キャンセル
 				</Button>
 
-				<Button aria-label="Save" disabled={!canSave} size="sm" type="submit" variant="default">
-					Add
+				<Button aria-label="保存" disabled={!canSave} size="sm" type="submit" variant="default">
+					追加
 				</Button>
 			</Dialog.Footer>
 		</form>

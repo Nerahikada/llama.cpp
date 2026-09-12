@@ -85,7 +85,7 @@
 
 		<div class="flex items-center justify-end gap-1">
 			<ActionIconCopyToClipboard
-				ariaLabel="Copy content"
+				ariaLabel="内容をコピー"
 				canCopy={!!extra.content}
 				text={extra.content}
 			/>
@@ -95,7 +95,7 @@
 				disabled={!extra.content}
 				onclick={handleDownload}
 				size="sm"
-				title="Download content"
+				title="内容をダウンロード"
 				variant="ghost"
 			>
 				<Download class="h-3.5 w-3.5" />
@@ -119,7 +119,7 @@
 				<pre
 					class="max-h-[70vh] overflow-auto rounded-md border bg-muted/30 p-4 font-mono text-sm break-words whitespace-pre-wrap">{extra.content}</pre>
 			{:else}
-				<div class="py-8 text-center text-sm text-muted-foreground">No content available</div>
+				<div class="py-8 text-center text-sm text-muted-foreground">利用可能な内容がありません</div>
 			{/if}
 		</div>
 	</Dialog.Content>

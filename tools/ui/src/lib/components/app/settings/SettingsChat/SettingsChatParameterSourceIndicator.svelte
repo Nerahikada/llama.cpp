@@ -15,5 +15,5 @@
 >
 	<Wrench class="mr-1 h-3 w-3" />
 
-	Custom
+	カスタム
 </Badge>

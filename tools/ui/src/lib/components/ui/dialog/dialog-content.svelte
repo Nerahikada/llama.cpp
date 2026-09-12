@@ -40,7 +40,7 @@
 			>
 				<XIcon />
 
-				<span class="sr-only">Close</span>
+				<span class="sr-only">閉じる</span>
 			</DialogPrimitive.Close>
 		{/if}
 	</DialogPrimitive.Content>

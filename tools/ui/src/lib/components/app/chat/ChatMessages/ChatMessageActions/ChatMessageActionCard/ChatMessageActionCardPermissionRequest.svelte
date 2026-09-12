@@ -20,8 +20,13 @@
 
 <ChatMessageActionCard icon={ShieldQuestion}>
 	{#snippet message()}
-		Allow use of <span class="font-semibold">{toolName}</span>{#if serverLabel}
-			&nbsp;from <span class="font-semibold">{serverLabel}</span>{/if}?
+		<span class="font-semibold">{toolName}</span>
+
+		{#if serverLabel}
+			(<span class="font-semibold">{serverLabel}</span>)
+		{/if}
+
+		の使用を許可しますか？
 	{/snippet}
 
 	{#snippet actions()}
@@ -33,13 +38,13 @@
 					size="sm"
 					variant="secondary"
 				>
-					Allow once
+					今回のみ許可
 				</Button>
 
 				<ButtonGroup.Separator />
 
 				<DropdownMenu.Trigger
-					aria-label="More allow options"
+					aria-label="その他の許可オプション"
 					class={cn(
 						buttonVariants({ size: 'sm', variant: 'secondary' }),
 						'inline-flex cursor-pointer items-center !rounded-l-none !shadow-none !px-2'
@@ -51,13 +56,13 @@
 
 			<DropdownMenu.Content align="start" class="min-w-[8rem]">
 				<DropdownMenu.Item onclick={() => onDecision(ToolPermissionDecision.ALWAYS)}>
-					Always allow <pre>{toolName}</pre>
-					tool
+					<pre>{toolName}</pre>
+					ツールを常に許可
 				</DropdownMenu.Item>
 
 				{#if serverLabel}
 					<DropdownMenu.Item onclick={() => onDecision(ToolPermissionDecision.ALWAYS_SERVER)}>
-						Always allow all tools from {serverLabel}
+						{serverLabel} のすべてのツールを常に許可
 					</DropdownMenu.Item>
 				{:else}
 					{@const source = toolsStore.getToolSource(toolName)}
@@ -66,16 +71,16 @@
 							? TOOL_SERVER_LABELS[ToolSource.SERVER]
 							: source === ToolSource.CUSTOM
 								? TOOL_SERVER_LABELS[ToolSource.CUSTOM]
-								: 'MCP Tools'}
+								: 'MCP ツール'}
 					<DropdownMenu.Item onclick={() => onDecision(ToolPermissionDecision.ALWAYS_SERVER)}>
-						Approve all tools from {providerName}
+						{providerName} のすべてのツールを承認
 					</DropdownMenu.Item>
 				{/if}
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 
 		<Button onclick={() => onDecision(ToolPermissionDecision.DENY)} size="sm" variant="destructive">
-			Deny
+			拒否
 		</Button>
 	{/snippet}
 </ChatMessageActionCard>

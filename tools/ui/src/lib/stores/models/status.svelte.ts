@@ -78,11 +78,11 @@ export class ModelStatusManager {
 		try {
 			await ModelsService.load(modelId);
 			await reachedLoaded;
-			toast.success(`Model loaded: ${this.host.toDisplayName(modelId)}`);
+			toast.success(`モデルを読み込みました: ${this.host.toDisplayName(modelId)}`);
 		} catch (error) {
 			this.rejectStatus(modelId, error instanceof Error ? error : new Error('load failed'));
-			this.host.error = error instanceof Error ? error.message : 'Failed to load model';
-			toast.error(`Failed to load model: ${this.host.toDisplayName(modelId)}`);
+			this.host.error = error instanceof Error ? error.message : 'モデルの読み込みに失敗しました';
+			toast.error(`モデルの読み込みに失敗しました: ${this.host.toDisplayName(modelId)}`);
 
 			throw error;
 		} finally {
@@ -121,11 +121,11 @@ export class ModelStatusManager {
 		try {
 			await ModelsService.unload(modelId);
 			await reachedUnloaded;
-			toast.info(`Model unloaded: ${this.host.toDisplayName(modelId)}`);
+			toast.info(`モデルをアンロードしました: ${this.host.toDisplayName(modelId)}`);
 		} catch (error) {
 			this.rejectStatus(modelId, error instanceof Error ? error : new Error('unload failed'));
-			this.host.error = error instanceof Error ? error.message : 'Failed to unload model';
-			toast.error(`Failed to unload model: ${this.host.toDisplayName(modelId)}`);
+			this.host.error = error instanceof Error ? error.message : 'モデルのアンロードに失敗しました';
+			toast.error(`モデルのアンロードに失敗しました: ${this.host.toDisplayName(modelId)}`);
 
 			throw error;
 		} finally {

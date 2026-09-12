@@ -18,9 +18,9 @@
 	}
 
 	let {
-		cancelText = 'Cancel',
+		cancelText = 'キャンセル',
 		children,
-		confirmText = 'Confirm',
+		confirmText = '確認',
 		description,
 		icon,
 		onCancel,

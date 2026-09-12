@@ -62,16 +62,16 @@
 						<Plus />
 					</Empty.Media>
 
-					<Empty.Title>Add your first MCP server</Empty.Title>
+					<Empty.Title>最初の MCP サーバーを追加</Empty.Title>
 
-					<Empty.Description>Connect a remote MCP server by URL.</Empty.Description>
+					<Empty.Description>URL でリモート MCP サーバーに接続します。</Empty.Description>
 				</Empty.Header>
 
 				<Empty.Content>
 					<Button onclick={() => (isAddingServer = true)} size="sm">
 						<Plus />
 
-						Add New Server
+						新しいサーバーを追加
 					</Button>
 				</Empty.Content>
 			</Empty.Root>
@@ -114,16 +114,16 @@
 							<Plus />
 						</Empty.Media>
 
-						<Empty.Title>Add another MCP server</Empty.Title>
+						<Empty.Title>別の MCP サーバーを追加</Empty.Title>
 
-						<Empty.Description>Connect a remote MCP server by URL.</Empty.Description>
+						<Empty.Description>URL でリモート MCP サーバーに接続します。</Empty.Description>
 					</Empty.Header>
 
 					<Empty.Content>
 						<Button onclick={() => (isAddingServer = true)} size="sm">
 							<Plus />
 
-							Add New Server
+							新しいサーバーを追加
 						</Button>
 					</Empty.Content>
 				</Empty.Root>

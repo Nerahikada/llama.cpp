@@ -33,9 +33,9 @@ export const MODALITY_ICONS = {
 } as const;
 
 export const MODALITY_LABELS = {
-	[ModelModality.AUDIO]: 'Audio',
-	[ModelModality.VIDEO]: 'Video',
-	[ModelModality.VISION]: 'Vision'
+	[ModelModality.AUDIO]: '音声',
+	[ModelModality.VIDEO]: '動画',
+	[ModelModality.VISION]: '画像'
 } as const;
 
 /** Maps an input ModelModality to the boolean flag it drives on the ModelModalities type */
@@ -53,7 +53,7 @@ export const CAPABILITY_ICONS: Record<ModelCapability, Component> = {
 } as const;
 
 export const CAPABILITY_LABELS: Record<ModelCapability, string> = {
-	[ModelCapability.REASONING]: 'Reasoning'
+	[ModelCapability.REASONING]: '推論'
 } as const;
 
 /** Maps a ModelCapability to the boolean flag it drives on the ModelCapabilities type */

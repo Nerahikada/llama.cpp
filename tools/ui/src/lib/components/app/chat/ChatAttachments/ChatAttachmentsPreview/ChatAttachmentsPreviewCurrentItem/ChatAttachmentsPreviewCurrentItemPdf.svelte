@@ -69,10 +69,10 @@
 			if (file) {
 				pdfImages = await convertPDFToImage(file);
 			} else {
-				throw new Error('No PDF file available for conversion');
+				throw new Error('変換可能な PDF ファイルがありません');
 			}
 		} catch (error) {
-			pdfImagesError = error instanceof Error ? error.message : 'Failed to load PDF images';
+			pdfImagesError = error instanceof Error ? error.message : 'PDF 画像の読み込みに失敗しました';
 		} finally {
 			pdfImagesLoading = false;
 		}
@@ -93,7 +93,7 @@
 		variant={pdfViewMode === PdfViewMode.TEXT ? 'default' : 'outline'}
 	>
 		<FileText class="mr-1 {ICON_CLASS_DEFAULT}" />
-		Text
+		テキスト
 	</Button>
 
 	<Button
@@ -109,7 +109,7 @@
 		{:else}
 			<Eye class="mr-1 {ICON_CLASS_DEFAULT}" />
 		{/if}
-		Pages
+		ページ
 	</Button>
 </div>
 
@@ -117,20 +117,20 @@
 	<Alert.Root class="mb-4 max-w-4xl">
 		<Info class={ICON_CLASS_DEFAULT} />
 
-		<Alert.Title>Preview only</Alert.Title>
+		<Alert.Title>プレビューのみ</Alert.Title>
 
 		<Alert.Description>
 			<span class="inline-flex">
-				The selected model does not support vision. Only the extracted
+				選択中のモデルはビジョンに対応していません。抽出された
 				<!-- svelte-ignore a11y_click_events_have_key_events -->
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<span
 					class="mx-1 cursor-pointer underline"
 					onclick={() => (pdfViewMode = PdfViewMode.TEXT)}
 				>
-					text
+					テキスト
 				</span>
-				will be sent to the model.
+				のみがモデルに送信されます。
 			</span>
 		</Alert.Description>
 	</Alert.Root>
@@ -143,7 +143,7 @@
 				class="mx-auto mb-4 h-8 w-8 animate-spin rounded-full border-4 border-white border-t-transparent"
 			></div>
 
-			<p class="text-white/70">Converting PDF to images...</p>
+			<p class="text-white/70">PDF を画像に変換しています...</p>
 		</div>
 	</div>
 {:else if pdfImagesError}
@@ -151,16 +151,16 @@
 		<div class="text-center">
 			<FileText class="mx-auto mb-4 h-16 w-16 text-white/50" />
 
-			<p class="mb-4 text-white/70">Failed to load PDF images</p>
+			<p class="mb-4 text-white/70">PDF 画像の読み込みに失敗しました</p>
 
 			<p class="text-sm text-white/50">{pdfImagesError}</p>
 		</div>
 	</div>
 {:else if pdfImages.length > 0}
 	{#each pdfImages as image, index (image)}
-		<p class="mb-2 text-sm text-white/50">Page {index + 1}</p>
+		<p class="mb-2 text-sm text-white/50">{index + 1} ページ</p>
 
-		<img alt="PDF Page {index + 1}" class="mx-auto max-w-[85vw] rounded-lg shadow-lg" src={image} />
+		<img alt="PDF {index + 1} ページ" class="mx-auto max-w-[85vw] rounded-lg shadow-lg" src={image} />
 
 		<div class="h-4"></div>
 	{/each}
@@ -169,7 +169,7 @@
 		<div class="text-center">
 			<FileText class="mx-auto mb-4 h-16 w-16 text-white/50" />
 
-			<p class="text-white/70">No PDF pages available</p>
+			<p class="text-white/70">表示できる PDF ページがありません</p>
 		</div>
 	</div>
 {/if}

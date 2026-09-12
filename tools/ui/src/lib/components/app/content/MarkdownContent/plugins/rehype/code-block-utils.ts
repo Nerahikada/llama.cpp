@@ -58,7 +58,11 @@ export function createButton(
 /**
  * Creates a copy button element.
  */
-export function createCopyButton(id: string, idAttribute: string, title: string = 'Copy'): Element {
+export function createCopyButton(
+	id: string,
+	idAttribute: string,
+	title: string = 'コピー'
+): Element {
 	return createButton(CODE_BLOCK_CLASS.COPY_BTN, title, COPY_ICON_SVG, id, idAttribute);
 }
 
@@ -68,7 +72,7 @@ export function createCopyButton(id: string, idAttribute: string, title: string 
 export function createPreviewButton(
 	id: string,
 	idAttribute: string,
-	title: string = 'Preview'
+	title: string = 'プレビュー'
 ): Element {
 	return createButton(CODE_BLOCK_CLASS.PREVIEW_BTN, title, PREVIEW_ICON_SVG, id, idAttribute);
 }
@@ -80,7 +84,7 @@ export function createPreviewButton(
 export function createToggleSourceButton(
 	id: string,
 	idAttribute: string,
-	title: string = 'Toggle source'
+	title: string = 'ソースの表示切り替え'
 ): Element {
 	return createButton(TOGGLE_SOURCE_BTN_CLASS, title, CODE_ICON_SVG, id, idAttribute, {
 		'aria-pressed': 'false'

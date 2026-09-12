@@ -72,7 +72,7 @@
 	);
 
 	const recentEmptyMessage = $derived(
-		searchQuery.length > 0 ? 'No results found' : 'No conversations yet'
+		searchQuery.length > 0 ? '結果が見つかりません' : 'まだ会話がありません'
 	);
 </script>
 
@@ -102,7 +102,7 @@
 				>
 					<Pin class="h-3.5 w-3.5" />
 
-					<span>Pinned</span>
+					<span>ピン留め</span>
 				</div>
 			</div>
 
@@ -141,7 +141,7 @@
 				<div
 					class="text-muted-foreground flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium"
 				>
-					Recent conversations
+					最近の会話
 				</div>
 			{/if}
 

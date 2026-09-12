@@ -17,7 +17,7 @@
 		isOpen = $bindable(false),
 		onClose,
 		onKeydown,
-		srLabel = 'Open picker'
+		srLabel = 'ピッカーを開く'
 	}: Props = $props();
 </script>
 

@@ -61,9 +61,9 @@ export const rehypeEnhanceSvgBlocks: Plugin<[], Root> = () => {
 			};
 
 			const actions = [
-				createCopyButton(svgId, SVG.ID_ATTR, 'Copy svg source'),
-				createToggleSourceButton(svgId, SVG.ID_ATTR, 'Toggle svg source'),
-				createPreviewButton(svgId, SVG.ID_ATTR, 'Preview svg')
+				createCopyButton(svgId, SVG.ID_ATTR, 'SVG ソースをコピー'),
+				createToggleSourceButton(svgId, SVG.ID_ATTR, 'SVG ソースの表示切り替え'),
+				createPreviewButton(svgId, SVG.ID_ATTR, 'SVG をプレビュー')
 			];
 			const header = createBlockHeader(SVG.LANGUAGE, svgId, SVG.ID_ATTR, actions);
 			const preservedCode = (node.data as DiagramPreData | undefined)?.sourceCode;

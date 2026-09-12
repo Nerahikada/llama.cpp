@@ -2,10 +2,10 @@
 export const NEW_CHAT_TAB_ID = 'new-chat';
 
 /** Label shown for the new-chat sentinel tab. */
-export const NEW_CHAT_LABEL = 'New chat';
+export const NEW_CHAT_LABEL = '新しいチャット';
 
 /** Fallback label for conversations without an auto-generated title. */
-export const UNNAMED_CHAT_LABEL = 'Chat';
+export const UNNAMED_CHAT_LABEL = 'チャット';
 
 /**
  * Tab bar max width so it stays clear of the sidebar strip. The expanded strip

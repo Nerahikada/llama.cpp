@@ -94,20 +94,20 @@
 						class="w-full {isCustomRealTime ? 'pr-8' : ''}"
 						oninput={(e) => onConfigChange(field.key, e.currentTarget.value)}
 						placeholder={currentModelParams[field.key] != null
-							? `Default: ${normalizeFloatingPoint(currentModelParams[field.key])}`
+							? `デフォルト: ${normalizeFloatingPoint(currentModelParams[field.key])}`
 							: (field.placeholder ?? '')}
 						value={currentValue}
 					/>
 
 					{#if isCustomRealTime}
 						<button
-							aria-label="Reset to default"
+							aria-label="デフォルトにリセット"
 							class="absolute top-1/2 right-2 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded transition-colors hover:bg-muted"
 							onclick={() => {
 								settingsStore.resetParameterToServerDefault(field.key);
 								onConfigChange(field.key, '');
 							}}
-							title="Reset to default"
+							title="デフォルトにリセット"
 							type="button"
 						>
 							<RotateCcw class="h-3 w-3" />
@@ -155,7 +155,7 @@
 						/>
 
 						<Label class="cursor-pointer text-sm font-normal" for="showSystemMessage">
-							Show system message in conversations
+							会話にシステムメッセージを表示
 						</Label>
 					</div>
 				{/if}
@@ -207,19 +207,19 @@
 									<IconComponent class={ICON_CLASS_DEFAULT} />
 								{/if}
 
-								{selectedOption?.label || `Select ${field.label.toLowerCase()}`}
+								{selectedOption?.label || `${field.label}を選択`}
 							</div>
 						</Select.Trigger>
 
 						{#if isCustomRealTime}
 							<button
-								aria-label="Reset to default"
+								aria-label="デフォルトにリセット"
 								class="absolute top-1/2 right-8 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded transition-colors hover:bg-muted"
 								onclick={() => {
 									settingsStore.resetParameterToServerDefault(field.key);
 									onConfigChange(field.key, '');
 								}}
-								title="Reset to default"
+								title="デフォルトにリセット"
 								type="button"
 							>
 								<RotateCcw class="h-3 w-3" />

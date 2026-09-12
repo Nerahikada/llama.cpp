@@ -23,7 +23,7 @@
 				? 'text-muted-foreground'
 				: ''}"
 		>
-			Reasoning
+			推論
 
 			<span class="capitalize text-muted-foreground">
 				{reasoning.currentEffort}
@@ -65,7 +65,7 @@
 						</Tooltip.Trigger>
 
 						<Tooltip.Content side="left">
-							<p>Maximum reasoning effort with extended context usage</p>
+							<p>拡張コンテキストを使用した最大の推論エフォート</p>
 						</Tooltip.Content>
 					</Tooltip.Root>
 				{/if}

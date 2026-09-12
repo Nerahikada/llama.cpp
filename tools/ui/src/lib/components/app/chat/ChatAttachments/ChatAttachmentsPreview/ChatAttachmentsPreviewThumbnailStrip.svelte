@@ -38,7 +38,7 @@
 			{#each items as item, index (item.id)}
 				<button
 					{...{ [UI_DATA_ATTRS.THUMBNAIL_INDEX]: index }}
-					aria-label={`Go to ${item.name}`}
+					aria-label={`${item.name} へ移動`}
 					class={[
 						'relative flex-shrink-0 cursor-pointer overflow-hidden rounded border-2 bg-black/80 backdrop-blur-sm transition-all hover:opacity-90',
 						index === currentIndex ? 'border-white' : 'border-transparent opacity-60',

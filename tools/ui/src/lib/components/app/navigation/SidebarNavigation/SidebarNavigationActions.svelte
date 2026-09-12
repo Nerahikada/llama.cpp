@@ -98,7 +98,7 @@
 			bind:value={searchQuery}
 			onClose={handleSearchModeDeactivate}
 			onKeyDown={(e) => e.key === 'Escape' && handleSearchModeDeactivate()}
-			placeholder="Search conversations..."
+			placeholder="会話を検索..."
 		/>
 	</div>
 {:else if isExpandedMode || isOnMobile}

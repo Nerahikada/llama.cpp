@@ -163,12 +163,12 @@ class ConversationsStore implements ConversationsPreferencesHost {
 
 			toast.success(
 				idsToRemove.size === 1
-					? 'Conversation deleted'
-					: `${idsToRemove.size} conversations deleted`
+					? '会話を削除しました'
+					: `${idsToRemove.size} 件の会話を削除しました`
 			);
 		} catch (error) {
 			console.error('Failed to bulk delete conversations:', error);
-			toast.error('Failed to delete conversations');
+			toast.error('会話の削除に失敗しました');
 		}
 	}
 
@@ -184,7 +184,7 @@ class ConversationsStore implements ConversationsPreferencesHost {
 			const exported = await this.getConversationsForExport(convIds);
 
 			if (exported.length === 0) {
-				toast.error('No conversations to export');
+				toast.error('エクスポートする会話がありません');
 
 				return;
 			}
@@ -193,12 +193,12 @@ class ConversationsStore implements ConversationsPreferencesHost {
 
 			toast.success(
 				exported.length === 1
-					? 'Conversation exported'
-					: `${exported.length} conversations exported`
+					? '会話をエクスポートしました'
+					: `${exported.length} 件の会話をエクスポートしました`
 			);
 		} catch (error) {
 			console.error('Failed to bulk export conversations:', error);
-			toast.error('Failed to export conversations');
+			toast.error('会話のエクスポートに失敗しました');
 		}
 	}
 
@@ -227,12 +227,12 @@ class ConversationsStore implements ConversationsPreferencesHost {
 
 			toast.success(
 				convIds.length === 1
-					? 'Conversation pin toggled'
-					: `Updated pin state for ${convIds.length} conversations`
+					? '会話のピン留めを切り替えました'
+					: `${convIds.length} 件の会話のピン留めを更新しました`
 			);
 		} catch (error) {
 			console.error('Failed to bulk toggle pin:', error);
-			toast.error('Failed to update pin state');
+			toast.error('ピン留めの更新に失敗しました');
 		}
 	}
 
@@ -301,12 +301,12 @@ class ConversationsStore implements ConversationsPreferencesHost {
 			tabsStore.clear();
 			this.notifyConversationsDeleted(allIds);
 
-			toast.success('All conversations deleted');
+			toast.success('すべての会話を削除しました');
 
 			await goto(ROUTES.START);
 		} catch (error) {
 			console.error('Failed to delete all conversations:', error);
-			toast.error('Failed to delete conversations');
+			toast.error('会話の削除に失敗しました');
 		}
 	}
 
@@ -441,12 +441,12 @@ class ConversationsStore implements ConversationsPreferencesHost {
 
 			await goto(RouterService.chat(newConv.id));
 
-			toast.success('Conversation forked');
+			toast.success('会話をフォークしました');
 
 			return newConv.id;
 		} catch (error) {
 			console.error('Failed to fork conversation:', error);
-			toast.error('Failed to fork conversation');
+			toast.error('会話のフォークに失敗しました');
 
 			return null;
 		}

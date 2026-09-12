@@ -27,14 +27,14 @@
 
 <ToolCallBlock {isStreaming} meta={writeFileMeta} {onToggle} {open} {section}>
 	{#snippet titleSnippet()}
-		<span class="text-muted-foreground">Write file </span>
+		<span class="text-muted-foreground">ファイルを書き込み </span>
 
 		<span class="font-mono" title={writeFileMeta?.filePath}
 			>{abbreviateHome(writeFileMeta?.filePath ?? '', home)}</span
 		>
 
 		{#if writeFileMeta?.errorMessage}
-			<span class="ml-1 text-xs italic text-muted-foreground/70">(failed)</span>
+			<span class="ml-1 text-xs italic text-muted-foreground/70">(失敗)</span>
 		{/if}
 	{/snippet}
 
@@ -61,7 +61,7 @@
 
 				{#if meta.bytesWritten != null}
 					<span class="font-mono">{meta.bytesWritten}</span>
-					bytes
+					バイト
 				{/if}
 			</div>
 		{/if}

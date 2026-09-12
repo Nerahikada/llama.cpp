@@ -826,7 +826,7 @@
 
 					<div class="code-block-actions">
 						<ActionIconCopyToClipboard
-							ariaLabel="Diagram incomplete"
+							ariaLabel="図が未完成です"
 							canCopy={false}
 							text={incompleteCodeBlock.code}
 						/>
@@ -834,7 +834,7 @@
 				</div>
 
 				<div class="mermaid-loading-placeholder">
-					<span class="mermaid-loading-text">Generating diagram...</span>
+					<span class="mermaid-loading-text">図を生成中...</span>
 				</div>
 			</div>
 		{:else if streamingSvgCode !== null}
@@ -844,7 +844,7 @@
 
 					<div class="code-block-actions">
 						<ActionIconCopyToClipboard
-							ariaLabel="Diagram incomplete"
+							ariaLabel="図が未完成です"
 							canCopy={false}
 							text={incompleteCodeBlock.code}
 						/>
@@ -859,7 +859,7 @@
 					</div>
 				{:else}
 					<div class="mermaid-loading-placeholder">
-						<span class="mermaid-loading-text">Rendering svg...</span>
+						<span class="mermaid-loading-text">SVG を描画中...</span>
 					</div>
 				{/if}
 			</div>

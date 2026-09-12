@@ -10,7 +10,7 @@
 {#if displayPreview}
 	<div class="flex flex-1 items-center justify-center">
 		<img
-			alt={currentItem?.name || 'preview'}
+			alt={currentItem?.name || 'プレビュー'}
 			class="max-h-[80vh] max-w-[80vw] rounded-lg object-contain shadow-lg"
 			src={displayPreview}
 		/>

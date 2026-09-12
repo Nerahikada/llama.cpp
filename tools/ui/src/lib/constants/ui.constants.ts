@@ -17,15 +17,15 @@ export const UI_DATA_ATTRS = {
 } as const;
 
 export const TOOL_GROUP_LABELS = {
-	[ToolSource.BROWSER]: 'Browser',
-	[ToolSource.CUSTOM]: 'JSON Schema',
-	[ToolSource.SERVER]: 'Server'
+	[ToolSource.BROWSER]: 'ブラウザ',
+	[ToolSource.CUSTOM]: 'JSON スキーマ',
+	[ToolSource.SERVER]: 'サーバー'
 } as const;
 
 export const TOOL_SERVER_LABELS = {
-	[ToolSource.BROWSER]: 'Browser Tools',
-	[ToolSource.CUSTOM]: 'Custom Tools',
-	[ToolSource.SERVER]: 'Server Tools'
+	[ToolSource.BROWSER]: 'ブラウザツール',
+	[ToolSource.CUSTOM]: 'カスタムツール',
+	[ToolSource.SERVER]: 'サーバーツール'
 } as const;
 
 export const TOOLTIP_DELAY_DURATION = 500;
@@ -58,12 +58,12 @@ export const SIDEBAR_ACTIONS_ITEMS: DesktopIconStripItem[] = [
 		action: SidebarAction.NEW_CHAT,
 		icon: SquarePen,
 		keys: ['shift', 'cmd', 'o'],
-		tooltip: 'New chat'
+		tooltip: '新しいチャット'
 	},
-	{ icon: Search, keys: ['cmd', 'k'], tooltip: 'Search' },
+	{ icon: Search, keys: ['cmd', 'k'], tooltip: '検索' },
 	{
 		action: SidebarAction.SETTINGS,
 		icon: Settings,
-		tooltip: 'Settings'
+		tooltip: '設定'
 	}
 ];

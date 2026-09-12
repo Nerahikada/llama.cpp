@@ -26,13 +26,13 @@
 
 <DialogConfirmation
 	bind:open={showDeleteDialog}
-	cancelText="Cancel"
-	confirmText="Delete"
-	description="Are you sure you want to delete this conversation? This action cannot be undone and will permanently remove all messages in this conversation."
+	cancelText="キャンセル"
+	confirmText="削除"
+	description="この会話を削除してもよろしいですか？この操作は元に戻せず、この会話内のすべてのメッセージが完全に削除されます。"
 	icon={Trash2}
 	onCancel={() => (showDeleteDialog = false)}
 	onConfirm={handleDeleteConfirm}
-	title="Delete Conversation"
+	title="会話を削除"
 	variant="destructive"
 />
 

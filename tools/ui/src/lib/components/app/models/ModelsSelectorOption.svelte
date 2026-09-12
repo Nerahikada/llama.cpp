@@ -107,7 +107,7 @@
 					icon={HeartOff}
 					iconSize="h-2.5 w-2.5"
 					onclick={() => modelsStore.toggleFavorite(option.model)}
-					tooltip="Remove from favorites"
+					tooltip="お気に入りから削除"
 				/>
 			{:else}
 				<ActionIcon
@@ -115,7 +115,7 @@
 					icon={Heart}
 					iconSize="h-2.5 w-2.5"
 					onclick={() => modelsStore.toggleFavorite(option.model)}
-					tooltip="Add to favorites"
+					tooltip="お気に入りに追加"
 				/>
 			{/if}
 
@@ -126,7 +126,7 @@
 					icon={Info}
 					iconSize="h-2.5 w-2.5"
 					onclick={() => onInfoClick(option.model)}
-					tooltip="Model information"
+					tooltip="モデル情報"
 				/>
 			{/if}
 		</div>
@@ -148,7 +148,7 @@
 						iconSize="h-2.5 w-2.5"
 						onclick={() => modelsStore.status.load(option.model)}
 						stopPropagationOnClick
-						tooltip="Retry loading model"
+						tooltip="モデルの読み込みを再試行"
 					/>
 				</div>
 			</div>
@@ -167,7 +167,7 @@
 							e?.stopPropagation();
 							modelsStore.status.unload(option.model);
 						}}
-						tooltip="Unload model"
+						tooltip="モデルをアンロード"
 					/>
 				</div>
 			</div>
@@ -184,7 +184,7 @@
 						iconSize="h-2.5 w-2.5"
 						onclick={() => modelsStore.status.unload(option.model)}
 						stopPropagationOnClick
-						tooltip="Unload model"
+						tooltip="モデルをアンロード"
 					/>
 				</div>
 			</div>
@@ -201,7 +201,7 @@
 						iconSize="h-2.5 w-2.5"
 						onclick={() => modelsStore.status.load(option.model)}
 						stopPropagationOnClick
-						tooltip="Load model"
+						tooltip="モデルを読み込む"
 					/>
 				</div>
 			</div>

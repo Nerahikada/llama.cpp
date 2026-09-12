@@ -59,10 +59,10 @@
 
 			showSettingsExportSummary = true;
 			showSettingsImportSummary = false;
-			toast.success('Settings exported');
+			toast.success('設定をエクスポートしました');
 		} catch (err) {
 			console.error('Failed to export settings:', err);
-			toast.error('Failed to export settings');
+			toast.error('設定のエクスポートに失敗しました');
 		}
 	}
 
@@ -87,7 +87,7 @@
 					const data = JSON.parse(text);
 
 					if (!data || typeof data !== 'object' || !data.config) {
-						toast.error('Invalid settings file: missing config');
+						toast.error('無効な設定ファイルです。config フィールドがありません');
 
 						return;
 					}
@@ -96,17 +96,17 @@
 
 					showSettingsImportSummary = true;
 					showSettingsExportSummary = false;
-					toast.success('Settings imported successfully');
+					toast.success('設定をインポートしました');
 				} catch (err) {
 					console.error('Failed to import settings:', err);
-					toast.error('Failed to import settings');
+					toast.error('設定のインポートに失敗しました');
 				}
 			};
 
 			input.click();
 		} catch (err) {
 			console.error('Failed to open file picker:', err);
-			toast.error('Failed to open file picker');
+			toast.error('ファイル選択ダイアログを開けませんでした');
 		}
 	}
 
@@ -115,7 +115,7 @@
 			const allConversations = conversationsStore.conversations;
 
 			if (allConversations.length === 0) {
-				toast.info('No conversations to export');
+				toast.info('エクスポートする会話がありません');
 
 				return;
 			}
@@ -133,7 +133,7 @@
 			showExportDialog = true;
 		} catch (err) {
 			console.error('Failed to load conversations:', err);
-			alert('Failed to load conversations');
+			alert('会話の読み込みに失敗しました');
 		}
 	}
 
@@ -155,7 +155,7 @@
 			showExportDialog = false;
 		} catch (err) {
 			console.error('Export failed:', err);
-			alert('Failed to export conversations');
+			alert('会話のエクスポートに失敗しました');
 		}
 	}
 
@@ -177,7 +177,7 @@
 					const importedData = await ConversationTransferService.parseImportFile(file);
 
 					if (importedData.length === 0) {
-						throw new Error('No conversations found in file');
+						throw new Error('ファイル内に会話が見つかりませんでした');
 					}
 
 					fullImportData = importedData;
@@ -185,17 +185,17 @@
 					messageCountMap = createMessageCountMap(importedData);
 					showImportDialog = true;
 				} catch (err: unknown) {
-					const message = err instanceof Error ? err.message : 'Unknown error';
+					const message = err instanceof Error ? err.message : '不明なエラー';
 
 					console.error('Failed to parse file:', err);
-					alert(`Failed to parse file: ${message}`);
+					alert(`ファイルの解析に失敗しました。${message}`);
 				}
 			};
 
 			input.click();
 		} catch (err) {
 			console.error('Import failed:', err);
-			alert('Failed to import conversations');
+			alert('会話のインポートに失敗しました');
 		}
 	}
 
@@ -210,9 +210,7 @@
 			// A conversation already in the database is left untouched, so the summary
 			// lists what was written and the toast accounts for the rest.
 			if (skipped.length > 0) {
-				toast.info(
-					`Skipped ${skipped.length} conversation${skipped.length === 1 ? '' : 's'} already in your library`
-				);
+				toast.info(`${skipped.length} 件の会話は既に存在するためスキップしました`);
 			}
 
 			importedConversations = imported;
@@ -221,7 +219,7 @@
 			showImportDialog = false;
 		} catch (err) {
 			console.error('Import failed:', err);
-			alert('Failed to import conversations. Please check the file format.');
+			alert('会話のインポートに失敗しました。ファイル形式を確認してください。');
 		}
 	}
 
@@ -230,7 +228,7 @@
 			const allConversations = conversationsStore.conversations;
 
 			if (allConversations.length === 0) {
-				toast.info('No conversations to delete');
+				toast.info('削除する会話がありません');
 
 				return;
 			}
@@ -238,7 +236,7 @@
 			showDeleteDialog = true;
 		} catch (err) {
 			console.error('Failed to load conversations for deletion:', err);
-			toast.error('Failed to load conversations');
+			toast.error('会話の読み込みに失敗しました');
 		}
 	}
 
@@ -258,54 +256,54 @@
 </script>
 
 <div in:fade={{ duration: 150 }} class="space-y-12">
-	<SettingsGroup title="Conversations">
+	<SettingsGroup title="会話">
 		<SettingsChatImportExportSection
 			IconComponent={Download}
-			buttonText="Export conversations"
-			description="Download your conversations as a ZIP of JSONL files. This includes all messages, attachments, and conversation history."
+			buttonText="会話をエクスポート"
+			description="会話を JSONL ファイルの ZIP としてダウンロードします。すべてのメッセージ、添付ファイル、会話履歴が含まれます。"
 			onclick={handleExportClick}
-			summary={{ items: exportedConversations, show: showExportSummary, verb: 'Exported' }}
-			title="Export"
+			summary={{ items: exportedConversations, show: showExportSummary, verb: 'エクスポートしました' }}
+			title="エクスポート"
 		/>
 
 		<SettingsChatImportExportSection
 			IconComponent={Upload}
-			buttonText="Import conversations"
-			description="Import one or more conversations from a previously exported ZIP or JSONL file. This will merge with your existing conversations."
+			buttonText="会話をインポート"
+			description="以前にエクスポートした ZIP または JSONL ファイルから 1 つ以上の会話をインポートします。既存の会話とマージされます。"
 			onclick={handleImportClick}
-			summary={{ items: importedConversations, show: showImportSummary, verb: 'Imported' }}
-			title="Import"
+			summary={{ items: importedConversations, show: showImportSummary, verb: 'インポートしました' }}
+			title="インポート"
 		/>
 
 		<SettingsChatImportExportSection
 			IconComponent={Trash2}
 			buttonClass="text-destructive-foreground justify-start justify-self-start bg-destructive hover:bg-destructive/80 md:w-auto"
-			buttonText="Delete all conversations"
+			buttonText="すべての会話を削除"
 			buttonVariant="destructive"
-			description="Permanently delete all conversations and their messages. This action cannot be undone. Consider exporting your conversations first if you want to keep a backup."
+			description="すべての会話とそのメッセージを完全に削除します。この操作は元に戻せません。バックアップを残したい場合は、先に会話をエクスポートすることを検討してください。"
 			onclick={handleDeleteAllClick}
-			title="Delete All"
+			title="すべて削除"
 			titleClass="text-destructive"
 		/>
 	</SettingsGroup>
 
-	<SettingsGroup title="Settings">
+	<SettingsGroup title="設定">
 		<SettingsChatImportExportSection
 			IconComponent={Download}
-			buttonText="Export settings"
-			description="Export your chat settings and preferences as a JSON file."
+			buttonText="設定をエクスポート"
+			description="チャットの設定と環境設定を JSON ファイルとしてエクスポートします。"
 			onclick={handleSettingsExport}
-			summary={{ items: [], show: showSettingsExportSummary, verb: 'Exported' }}
-			title="Export"
+			summary={{ items: [], show: showSettingsExportSummary, verb: 'エクスポートしました' }}
+			title="エクスポート"
 		/>
 
 		<SettingsChatImportExportSection
 			IconComponent={Upload}
-			buttonText="Import settings"
-			description="Import chat settings from a previously exported JSON file. This will merge with your existing settings."
+			buttonText="設定をインポート"
+			description="以前にエクスポートした JSON ファイルからチャット設定をインポートします。既存の設定とマージされます。"
 			onclick={handleSettingsImport}
-			summary={{ items: [], show: showSettingsImportSummary, verb: 'Imported' }}
-			title="Import"
+			summary={{ items: [], show: showSettingsImportSummary, verb: 'インポートしました' }}
+			title="インポート"
 		/>
 	</SettingsGroup>
 </div>
@@ -337,12 +335,12 @@
 
 <DialogConfirmation
 	bind:open={showDeleteDialog}
-	cancelText="Cancel"
-	confirmText="Delete All"
-	description="Are you sure you want to delete all conversations? This action cannot be undone and will permanently remove all your conversations and messages."
+	cancelText="キャンセル"
+	confirmText="すべて削除"
+	description="すべての会話を削除してもよろしいですか？この操作は元に戻せず、すべての会話とメッセージが完全に削除されます。"
 	icon={Trash2}
 	onCancel={handleDeleteAllCancel}
 	onConfirm={handleDeleteAllConfirm}
-	title="Delete all conversations"
+	title="すべての会話を削除"
 	variant="destructive"
 />

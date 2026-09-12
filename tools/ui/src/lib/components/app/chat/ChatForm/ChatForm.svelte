@@ -101,7 +101,7 @@
 		onUploadedFileRemove,
 		onUploadedFilesChange,
 		onValueChange,
-		placeholder = 'Type a message...',
+		placeholder = 'メッセージを入力...',
 		showAddButton = true,
 		showModelSelector = true,
 		uploadedFiles = $bindable([]),
@@ -398,7 +398,7 @@
 		) {
 			event.preventDefault();
 
-			const textFile = new File([text], 'Pasted', {
+			const textFile = new File([text], '貼り付けたテキスト', {
 				type: MimeTypeText.PLAIN
 			});
 

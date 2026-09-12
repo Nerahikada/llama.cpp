@@ -57,14 +57,14 @@
 			class="w-0 overflow-hidden opacity-0 transition-[width,opacity] duration-200 ease-out group-hover:w-auto group-hover:opacity-100"
 		>
 			<ActionIcon
-				ariaLabel="Reset working directory"
+				ariaLabel="作業ディレクトリをリセット"
 				class="!h-4 !w-4 shrink-0 text-muted-foreground hover:text-foreground"
 				{disabled}
 				icon={X}
 				iconSize="h-3 w-3"
 				onclick={onClear}
 				stopPropagationOnClick
-				tooltip="Reset working directory"
+				tooltip="作業ディレクトリをリセット"
 			/>
 		</div>
 	{/if}

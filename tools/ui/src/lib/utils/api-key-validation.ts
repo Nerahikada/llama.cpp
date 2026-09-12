@@ -32,7 +32,7 @@ export async function validateApiKey(fetch: typeof globalThis.fetch): Promise<vo
 
 		if (!response.ok) {
 			if (response.status === 401 || response.status === 403) {
-				throw error(401, 'Access denied');
+				throw error(401, 'アクセスが拒否されました');
 			}
 
 			console.warn(`Server responded with status ${response.status} during API key validation`);

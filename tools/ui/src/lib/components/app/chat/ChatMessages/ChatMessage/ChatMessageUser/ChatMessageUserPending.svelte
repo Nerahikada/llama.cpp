@@ -29,7 +29,7 @@
 </script>
 
 <div
-	aria-label="Pending user message"
+	aria-label="保留中のユーザーメッセージ"
 	class="group flex flex-col items-end gap-3 transition-opacity hover:opacity-80 md:gap-2 {className} sticky bottom-32"
 	role="group"
 >
@@ -50,11 +50,11 @@
 					<div
 						class="pointer-events-auto inset-0 flex items-center gap-1 opacity-0 transition-all duration-150 group-hover:opacity-100"
 					>
-						<ActionIcon icon={Edit} onclick={editCtx.handleEdit} tooltip="Edit" />
+						<ActionIcon icon={Edit} onclick={editCtx.handleEdit} tooltip="編集" />
 
-						<ActionIcon icon={Trash2} onclick={onDelete} tooltip="Delete" />
+						<ActionIcon icon={Trash2} onclick={onDelete} tooltip="削除" />
 
-						<ActionIcon icon={ArrowUp} onclick={onSendImmediately} tooltip="Send immediately" />
+						<ActionIcon icon={ArrowUp} onclick={onSendImmediately} tooltip="すぐに送信" />
 					</div>
 				</div>
 			</div>

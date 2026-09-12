@@ -19,7 +19,7 @@
 		onInput,
 		onKeydown,
 		onPaste,
-		placeholder = 'Ask anything...',
+		placeholder = 'メッセージを入力...',
 		useRichInput = false,
 		value = $bindable('')
 	}: Props = $props();

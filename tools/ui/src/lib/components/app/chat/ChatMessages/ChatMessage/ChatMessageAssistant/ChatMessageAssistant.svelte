@@ -133,7 +133,7 @@
 	style:--last-user-message-height={lastUserMessageHeight > 0
 		? `${lastUserMessageHeight}px`
 		: undefined}
-	aria-label="Assistant message with actions"
+	aria-label="アクション付きアシスタントメッセージ"
 	class="chat-message-assistant text-md group w-full leading-7.5 {className}"
 	role="group"
 >

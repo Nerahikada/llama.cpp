@@ -28,14 +28,14 @@
 	let editUseProxy = $derived(serverUseProxy);
 
 	let urlError = $derived.by(() => {
-		if (!editUrl.trim()) return 'URL is required';
+		if (!editUrl.trim()) return 'URL は必須です';
 
 		try {
 			new URL(editUrl);
 
 			return null;
 		} catch {
-			return 'Invalid URL format';
+			return 'URL の形式が正しくありません';
 		}
 	});
 
@@ -69,7 +69,7 @@
 
 <form class="contents" onsubmit={handleSubmit}>
 	<div class="space-y-4">
-		<p class="font-medium">Configure Server</p>
+		<p class="font-medium">サーバーを設定</p>
 
 		<McpServerForm
 			headers={editHeaders}
@@ -85,10 +85,10 @@
 		/>
 
 		<div class="flex items-center justify-end gap-2">
-			<Button onclick={onCancel} size="sm" variant="secondary">Cancel</Button>
+			<Button onclick={onCancel} size="sm" variant="secondary">キャンセル</Button>
 
 			<Button disabled={!canSave} size="sm" type="submit">
-				{serverUrl.trim() ? 'Update' : 'Add'}
+				{serverUrl.trim() ? '更新' : '追加'}
 			</Button>
 		</div>
 	</div>

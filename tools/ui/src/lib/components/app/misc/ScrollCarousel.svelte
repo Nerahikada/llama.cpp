@@ -90,7 +90,7 @@
 					: 'pointer-events-none opacity-0')
 		)}
 		{...isCenter ? { disabled: !carousel.canScrollLeft } : {}}
-		aria-label="Scroll left"
+		aria-label="左にスクロール"
 		onclick={scrollLeft}
 	>
 		<ChevronLeft class={ICON_CLASS_DEFAULT} />
@@ -123,7 +123,7 @@
 					: 'pointer-events-none opacity-0')
 		)}
 		{...isCenter ? { disabled: !carousel.canScrollRight } : {}}
-		aria-label="Scroll right"
+		aria-label="右にスクロール"
 		onclick={scrollRight}
 	>
 		<ChevronRight class={ICON_CLASS_DEFAULT} />

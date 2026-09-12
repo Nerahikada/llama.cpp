@@ -179,7 +179,7 @@
 		{#if isSelectionMode}
 			<div
 				aria-checked={isSelected}
-				aria-label={isSelected ? `Deselect ${conversation.name}` : `Select ${conversation.name}`}
+				aria-label={isSelected ? `${conversation.name} の選択を解除` : `${conversation.name} を選択`}
 				class="shrink-0"
 				onclick={(e) => handleCheckboxClick(e)}
 				onkeydown={handleCheckboxKeydown}
@@ -187,7 +187,7 @@
 				tabindex="-1"
 			>
 				<Checkbox
-					aria-label={isSelected ? `Deselect ${conversation.name}` : `Select ${conversation.name}`}
+					aria-label={isSelected ? `${conversation.name} の選択を解除` : `${conversation.name} を選択`}
 					checked={isSelected}
 				/>
 			</div>
@@ -209,7 +209,7 @@
 				</Tooltip.Trigger>
 
 				<Tooltip.Content>
-					<p>See parent conversation</p>
+					<p>親の会話を表示</p>
 				</Tooltip.Content>
 			</Tooltip.Root>
 		{/if}
@@ -218,7 +218,7 @@
 			<Tooltip.Root>
 				<Tooltip.Trigger>
 					<div
-						aria-label="Stop generation"
+						aria-label="生成を停止"
 						class="stop-button flex {ICON_CLASS_DEFAULT} shrink-0 cursor-pointer items-center justify-center rounded text-muted-foreground transition-colors hover:text-foreground"
 						onclick={handleStop}
 						onkeydown={(e) => e.key === 'Enter' && handleStop(e)}
@@ -232,7 +232,7 @@
 				</Tooltip.Trigger>
 
 				<Tooltip.Content>
-					<p>Stop generation</p>
+					<p>生成を停止</p>
 				</Tooltip.Content>
 			</Tooltip.Root>
 		{/if}
@@ -247,7 +247,7 @@
 				actions={[
 					{
 						icon: conversation.pinned ? PinOff : Pin,
-						label: conversation.pinned ? 'Unpin' : 'Pin',
+						label: conversation.pinned ? 'ピン留め解除' : 'ピン留め',
 						onclick: (e: Event) => {
 							e.stopPropagation();
 							handleTogglePin();
@@ -255,13 +255,13 @@
 					},
 					{
 						icon: Pencil,
-						label: 'Edit',
+						label: '編集',
 						onclick: handleEdit,
 						shortcut: ['shift', 'cmd', 'e']
 					},
 					{
 						icon: Download,
-						label: 'Export',
+						label: 'エクスポート',
 						onclick: (e: Event) => {
 							e.stopPropagation();
 							conversationsStore.downloadConversation(conversation.id);
@@ -270,12 +270,12 @@
 					},
 					{
 						icon: ListChecks,
-						label: 'Select',
+						label: '選択',
 						onclick: handleEnterSelectionMode
 					},
 					{
 						icon: Trash2,
-						label: 'Delete',
+						label: '削除',
 						onclick: handleDelete,
 						separator: true,
 						shortcut: ['shift', 'cmd', 'd'],
@@ -283,7 +283,7 @@
 					}
 				]}
 				triggerIcon={MoreHorizontal}
-				triggerTooltip="More actions"
+				triggerTooltip="その他の操作"
 			/>
 		</div>
 	{/if}

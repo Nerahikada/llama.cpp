@@ -143,7 +143,7 @@
 			onPromptLoadComplete?.(placeholderId, result);
 		} catch (error) {
 			const errorMessage =
-				error instanceof Error ? error.message : 'Unknown error executing prompt';
+				error instanceof Error ? error.message : 'プロンプトの実行中に不明なエラーが発生しました';
 
 			onPromptLoadError?.(placeholderId, errorMessage);
 		}
@@ -360,7 +360,7 @@
 	class={className}
 	{onClose}
 	onKeydown={handleKeydown}
-	srLabel="Open prompt picker"
+	srLabel="プロンプトピッカーを開く"
 >
 	{#if selectedPrompt}
 		{@const prompt = selectedPrompt}
@@ -377,7 +377,7 @@
 				{#snippet titleExtra()}
 					{#if prompt.arguments?.length}
 						<Badge variant="secondary">
-							{prompt.arguments.length} arg{prompt.arguments.length > 1 ? 's' : ''}
+							{prompt.arguments.length} 件の引数
 						</Badge>
 					{/if}
 				{/snippet}
@@ -403,12 +403,12 @@
 	{:else}
 		<ChatFormPickerList
 			bind:searchQuery={internalSearchQuery}
-			emptyMessage="No MCP prompts available"
+			emptyMessage="利用可能な MCP プロンプトがありません"
 			{isLoading}
 			itemKey={(prompt) => prompt.serverName + ':' + prompt.name}
 			items={filteredPrompts}
 			{scrollTrigger}
-			searchPlaceholder="Search prompts..."
+			searchPlaceholder="プロンプトを検索..."
 			{selectedIndex}
 			{showSearchInput}
 		>
@@ -430,7 +430,7 @@
 						{#snippet titleExtra()}
 							{#if prompt.arguments?.length}
 								<Badge variant="secondary">
-									{prompt.arguments.length} arg{prompt.arguments.length > 1 ? 's' : ''}
+									{prompt.arguments.length} 件の引数
 								</Badge>
 							{/if}
 						{/snippet}

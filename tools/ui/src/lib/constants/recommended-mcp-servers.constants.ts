@@ -6,21 +6,21 @@ import type { RecommendedMCPServer } from '$lib/types';
 // after the user clicks Add.
 export const RECOMMENDED_MCP_SERVERS: RecommendedMCPServer[] = [
 	{
-		description: 'Search the web and fetch full page content as clean markdown.',
+		description: 'Web を検索し、ページ全文をクリーンな Markdown として取得します。',
 		iconUrl: '/recommended-mcp/exa.ico',
 		id: 'exa',
 		name: 'Exa',
 		url: 'https://mcp.exa.ai/mcp'
 	},
 	{
-		description: 'Search and browse AI models, datasets, spaces, and docs on the Hugging Face Hub.',
+		description: 'Hugging Face Hub 上の AI モデル、データセット、スペース、ドキュメントを検索・閲覧します。',
 		iconUrl: '/recommended-mcp/huggingface.ico',
 		id: 'huggingface',
 		name: 'Hugging Face',
 		url: 'https://huggingface.co/mcp'
 	},
 	{
-		description: 'Search repositories, issues, pull requests and interact with code on GitHub.',
+		description: 'GitHub のリポジトリ、Issue、プルリクエストを検索し、コードを操作します。',
 		iconUrlDark: '/recommended-mcp/github-dark.png',
 		iconUrlLight: '/recommended-mcp/github-light.png',
 		id: 'github',
@@ -29,7 +29,7 @@ export const RECOMMENDED_MCP_SERVERS: RecommendedMCPServer[] = [
 		url: 'https://api.githubcopilot.com/mcp'
 	},
 	{
-		description: 'Browse up-to-date documentation and code examples for libraries and frameworks.',
+		description: 'ライブラリやフレームワークの最新ドキュメントとコード例を閲覧します。',
 		iconUrl: '/recommended-mcp/context7.png',
 		id: 'context7',
 		name: 'Context7',

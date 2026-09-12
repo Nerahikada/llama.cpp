@@ -610,7 +610,7 @@ class AgenticStore {
 					return;
 				}
 
-				const normalizedError = error instanceof Error ? error : new Error('LLM stream error');
+				const normalizedError = error instanceof Error ? error : new Error('LLM ストリームエラー');
 
 				// preserve partial output as is, the outer error dialog informs the user separately
 				await onAssistantTurnComplete?.(
@@ -726,7 +726,8 @@ class AgenticStore {
 					);
 					for (let j = i; j < normalizedCalls.length; j++) {
 						const remainingCall = normalizedCalls[j];
-						const interruptedContent = 'Tool execution was interrupted by a new user message.';
+						const interruptedContent =
+							'新しいユーザーメッセージによってツールの実行が中断されました。';
 
 						if (createToolResultMessage) {
 							await createToolResultMessage(remainingCall.id, interruptedContent);
@@ -774,7 +775,7 @@ class AgenticStore {
 				this.updateSession(conversationId, { executingToolCallId: toolCall.id });
 
 				if (permission === ToolPermissionDecision.DENY) {
-					result = 'Tool execution was denied by the user.';
+					result = 'ユーザーによってツールの実行が拒否されました。';
 					toolSuccess = false;
 				} else {
 					try {

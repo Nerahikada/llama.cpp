@@ -25,7 +25,7 @@
 
 {#if siblingInfo && siblingInfo.totalSiblings > 1}
 	<div
-		aria-label="Message version {siblingInfo.currentIndex + 1} of {siblingInfo.totalSiblings}"
+		aria-label="メッセージバージョン {siblingInfo.currentIndex + 1} / {siblingInfo.totalSiblings}"
 		class="flex items-center gap-1 text-xs text-muted-foreground {className}"
 		role="navigation"
 	>
@@ -34,7 +34,7 @@
 			disabled={!hasPrevious}
 			icon={ChevronLeft}
 			onclick={() => messageActions.navigateToSibling(previousSiblingId!)}
-			tooltip="Previous version"
+			tooltip="前のバージョン"
 		/>
 
 		<span class="px-1 font-mono text-xs">
@@ -46,7 +46,7 @@
 			disabled={!hasNext}
 			icon={ChevronRight}
 			onclick={() => messageActions.navigateToSibling(nextSiblingId!)}
-			tooltip="Next version"
+			tooltip="次のバージョン"
 		/>
 	</div>
 {/if}

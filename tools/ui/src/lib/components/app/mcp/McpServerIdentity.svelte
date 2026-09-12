@@ -50,7 +50,7 @@
 
 	{#if showWebsite && safeWebsiteUrl}
 		<a
-			aria-label="Open website"
+			aria-label="ウェブサイトを開く"
 			class="shrink-0 text-muted-foreground hover:text-foreground"
 			href={safeWebsiteUrl}
 			onclick={(e) => e.stopPropagation()}

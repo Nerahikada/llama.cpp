@@ -24,7 +24,7 @@
 		onClose,
 		onInput,
 		onKeyDown,
-		placeholder = 'Search...',
+		placeholder = '検索...',
 		ref = $bindable(null),
 		value = $bindable('')
 	}: Props = $props();
@@ -68,7 +68,7 @@
 
 	{#if showClearButton}
 		<button
-			aria-label={value ? 'Clear search' : 'Close'}
+			aria-label={value ? '検索をクリア' : '閉じる'}
 			class="absolute top-1/2 right-3 -translate-y-1/2 transform cursor-pointer text-muted-foreground transition-colors hover:text-foreground"
 			onclick={handleClear}
 			type="button"

@@ -40,10 +40,10 @@
 					<ChevronRight class="h-3.5 w-3.5" />
 				{/if}
 
-				<span>Connection Log ({logs.length})</span>
+				<span>接続ログ ({logs.length})</span>
 
 				{#if connectionTimeMs !== undefined}
-					<span class="ml-1">· Connected in {connectionTimeMs}ms</span>
+					<span class="ml-1">· {connectionTimeMs}ms で接続</span>
 				{/if}
 			</Collapsible.Trigger>
 		</div>
@@ -67,7 +67,7 @@
 
 					{#if log.details !== undefined}
 						<details class="ml-11">
-							<summary class="cursor-pointer text-[10px] text-muted-foreground"> details </summary>
+							<summary class="cursor-pointer text-[10px] text-muted-foreground"> 詳細 </summary>
 
 							<pre
 								class="mt-1 overflow-x-auto rounded bg-background/70 p-2 text-[10px] break-all whitespace-pre-wrap text-foreground/80">

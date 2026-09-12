@@ -52,7 +52,7 @@
 		onfocus={onFocus}
 		oninput={(e) => onInput(e.currentTarget.value)}
 		onkeydown={onKeydown}
-		placeholder="Enter {name}"
+		placeholder="{name} を入力"
 		type="text"
 		{value}
 	/>

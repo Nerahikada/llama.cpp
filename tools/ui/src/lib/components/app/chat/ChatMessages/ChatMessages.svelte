@@ -38,7 +38,7 @@
 				asPlainText
 			);
 
-			await copyToClipboard(clipboardContent, 'Message copied to clipboard');
+			await copyToClipboard(clipboardContent, 'メッセージをクリップボードにコピーしました');
 		},
 
 		delete: async (message: DatabaseMessage) => {

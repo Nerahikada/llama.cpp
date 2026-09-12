@@ -69,11 +69,11 @@ export const rehypeEnhanceCodeBlocks: Plugin<[], Root> = () => {
 			};
 
 			const actions: Element[] = [
-				createCopyButton(codeId, MARKDOWN_DATA_ATTRS.CODE_ID, 'Copy code')
+				createCopyButton(codeId, MARKDOWN_DATA_ATTRS.CODE_ID, 'コードをコピー')
 			];
 
 			if (language.toLowerCase() === 'html') {
-				actions.push(createPreviewButton(codeId, MARKDOWN_DATA_ATTRS.CODE_ID, 'Preview code'));
+				actions.push(createPreviewButton(codeId, MARKDOWN_DATA_ATTRS.CODE_ID, 'コードをプレビュー'));
 			}
 
 			const header = createBlockHeader(language, codeId, MARKDOWN_DATA_ATTRS.CODE_ID, actions);

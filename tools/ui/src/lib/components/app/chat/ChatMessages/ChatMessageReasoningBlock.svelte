@@ -26,10 +26,10 @@
 
 	const currentConfig = settingsStore.config;
 
-	const REASONING_HEADER = 'Reasoning';
-	const REASONING_HEADER_PENDING = 'Reasoning...';
-	const REASONING_SUBTITLE_ERROR = 'Error';
-	const REASONING_SUBTITLE_CANCELLED = 'Cancelled';
+	const REASONING_HEADER = '推論';
+	const REASONING_HEADER_PENDING = '推論中...';
+	const REASONING_SUBTITLE_ERROR = 'エラー';
+	const REASONING_SUBTITLE_CANCELLED = 'キャンセル済み';
 
 	const isPending = $derived(section.type === AgenticSectionType.REASONING_PENDING);
 	const title = $derived(isPending && isStreaming ? REASONING_HEADER_PENDING : REASONING_HEADER);

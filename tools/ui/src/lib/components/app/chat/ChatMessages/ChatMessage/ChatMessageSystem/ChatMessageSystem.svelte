@@ -76,7 +76,7 @@
 </script>
 
 <div
-	aria-label="System message with actions"
+	aria-label="システムメッセージ"
 	class="group flex flex-col items-end gap-3 md:gap-2 {className}"
 	role="group"
 >
@@ -90,7 +90,7 @@
 					editCtx.setContent(e.currentTarget.value);
 				}}
 				onkeydown={handleEditKeydown}
-				placeholder="Edit system message..."
+				placeholder="システムメッセージを編集..."
 				style="max-height: var(--max-message-height);"
 				value={editCtx.editedContent}
 			></textarea>
@@ -99,7 +99,7 @@
 				<Button class="h-8 px-3" onclick={editCtx.cancel} size="sm" variant="outline">
 					<X class="mr-1 h-3 w-3" />
 
-					Cancel
+					キャンセル
 				</Button>
 
 				<Button
@@ -110,7 +110,7 @@
 				>
 					<Check class="mr-1 h-3 w-3" />
 
-					Save
+					保存
 				</Button>
 			</div>
 		</div>
@@ -163,7 +163,7 @@
 										size="sm"
 										variant="outline"
 									>
-										Show full system message
+										システムメッセージ全体を表示
 									</Button>
 								</div>
 							{/if}
@@ -180,7 +180,7 @@
 									size="sm"
 									variant="outline"
 								>
-									Collapse System Message
+									システムメッセージを折りたたむ
 								</Button>
 							</div>
 						{/if}

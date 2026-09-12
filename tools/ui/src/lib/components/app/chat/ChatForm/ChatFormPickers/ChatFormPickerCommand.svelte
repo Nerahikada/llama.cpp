@@ -106,10 +106,10 @@
 	class={className}
 	{onClose}
 	onKeydown={handleKeydown}
-	srLabel="Open command picker"
+	srLabel="コマンドピッカーを開く"
 >
 	<ChatFormPickerList
-		emptyMessage="No matching command"
+		emptyMessage="一致するコマンドがありません"
 		isLoading={false}
 		itemKey={(command) => command.name}
 		items={filteredCommands}

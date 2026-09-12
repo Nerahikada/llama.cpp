@@ -55,15 +55,16 @@
 		<AlertDialog.Header>
 			<AlertDialog.Title class="flex items-center gap-2">
 				<Pencil class="h-5 w-5" />
-				Rename conversation
+				会話名を変更
 			</AlertDialog.Title>
 
-			<AlertDialog.Description>Choose a new title for this conversation.</AlertDialog.Description>
+			<AlertDialog.Description>この会話の新しいタイトルを入力してください。</AlertDialog.Description
+			>
 		</AlertDialog.Header>
 
 		<form class="space-y-2 pt-2 pb-4" onsubmit={handleSubmit}>
 			<label class="text-sm font-medium text-muted-foreground" for="conversation-rename-input">
-				Conversation title
+				会話のタイトル
 			</label>
 
 			<Input
@@ -73,15 +74,15 @@
 				autocorrect="off"
 				id="conversation-rename-input"
 				maxlength={200}
-				placeholder="Conversation title"
+				placeholder="会話のタイトル"
 				spellcheck={false}
 			/>
 		</form>
 
 		<AlertDialog.Footer>
-			<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+			<AlertDialog.Cancel>キャンセル</AlertDialog.Cancel>
 
-			<Button disabled={!canSubmit} onclick={handleSubmit} type="button">Save</Button>
+			<Button disabled={!canSubmit} onclick={handleSubmit} type="button">保存</Button>
 		</AlertDialog.Footer>
 	</AlertDialog.Content>
 </AlertDialog.Root>

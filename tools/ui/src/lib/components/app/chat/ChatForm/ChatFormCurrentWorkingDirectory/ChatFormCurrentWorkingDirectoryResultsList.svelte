@@ -38,11 +38,11 @@
 	class="max-h-48 overflow-y-auto py-2"
 >
 	{#if isSearching && results.length === 0}
-		<div class="px-2 py-1.5 text-sm text-muted-foreground">Searching...</div>
+		<div class="px-2 py-1.5 text-sm text-muted-foreground">検索中...</div>
 	{:else if error}
 		<div class="px-2 py-1.5 text-sm text-destructive">{error}</div>
 	{:else if results.length === 0}
-		<div class="px-2 py-1.5 text-sm text-muted-foreground">No matching folders</div>
+		<div class="px-2 py-1.5 text-sm text-muted-foreground">一致するフォルダがありません</div>
 	{:else}
 		{#each results as path, index (path)}
 			<button

@@ -24,7 +24,7 @@
 			<Dialog.Title class="flex items-center gap-2">
 				<McpLogo class="h-5 w-5" />
 
-				<span>MCP Servers</span>
+				<span>MCP サーバー</span>
 			</Dialog.Title>
 		</Dialog.Header>
 

@@ -84,14 +84,14 @@
 
 		<div class="min-w-0 space-y-6 md:py-4 -mt-4! md:mt-0 pb-4">
 			<div class="min-w-0 space-y-2">
-				<Dialog.Title>Model Information</Dialog.Title>
+				<Dialog.Title>モデル情報</Dialog.Title>
 
-				<Dialog.Description>Current model details and capabilities</Dialog.Description>
+				<Dialog.Description>現在のモデルの詳細と機能</Dialog.Description>
 			</div>
 
 			{#if isLoadingModels || isLoadingRouterProps}
 				<div class="flex items-center justify-center py-8">
-					<div class="text-sm text-muted-foreground">Loading model information...</div>
+					<div class="text-sm text-muted-foreground">モデル情報を読み込み中...</div>
 				</div>
 			{:else if firstModel}
 				{@const modelMeta = firstModel.meta}
@@ -101,7 +101,7 @@
 					<Table.Root class="hidden table-fixed md:table">
 						<Table.Header>
 							<Table.Row>
-								<Table.Head class="w-[10rem]">Model</Table.Head>
+								<Table.Head class="w-[10rem]">モデル</Table.Head>
 
 								<Table.Head>
 									<div class="flex min-w-0 items-center gap-2">
@@ -110,7 +110,7 @@
 										</span>
 
 										<ActionIconCopyToClipboard
-											ariaLabel="Copy model name to clipboard"
+											ariaLabel="モデル名をクリップボードにコピー"
 											canCopy={!!modelName}
 											text={modelName || ''}
 										/>
@@ -122,7 +122,7 @@
 						<Table.Body>
 							<!-- Model Path -->
 							<Table.Row>
-								<Table.Cell class="h-10 align-middle font-medium">File Path</Table.Cell>
+								<Table.Cell class="h-10 align-middle font-medium">ファイルパス</Table.Cell>
 
 								<Table.Cell class="h-10 align-middle font-mono text-xs">
 									<div class="flex min-w-0 items-center gap-2">
@@ -131,7 +131,7 @@
 										</span>
 
 										<ActionIconCopyToClipboard
-											ariaLabel="Copy model path to clipboard"
+											ariaLabel="モデルパスをクリップボードにコピー"
 											text={serverProps.model_path}
 										/>
 									</div>
@@ -141,35 +141,35 @@
 							<!-- Context Size -->
 							{#if serverProps?.default_generation_settings?.n_ctx}
 								<Table.Row>
-									<Table.Cell class="h-10 align-middle font-medium">Context Size</Table.Cell>
+									<Table.Cell class="h-10 align-middle font-medium">コンテキストサイズ</Table.Cell>
 
 									<Table.Cell
-										>{formatNumber(serverProps.default_generation_settings.n_ctx)} tokens</Table.Cell
+										>{formatNumber(serverProps.default_generation_settings.n_ctx)} トークン</Table.Cell
 									>
 								</Table.Row>
 							{:else}
 								<Table.Row>
 									<Table.Cell class="h-10 align-middle font-medium text-red-500"
-										>Context Size</Table.Cell
+										>コンテキストサイズ</Table.Cell
 									>
 
-									<Table.Cell class="text-red-500">Not available</Table.Cell>
+									<Table.Cell class="text-red-500">利用できません</Table.Cell>
 								</Table.Row>
 							{/if}
 
 							<!-- Training Context -->
 							{#if modelMeta?.n_ctx_train}
 								<Table.Row>
-									<Table.Cell class="h-10 align-middle font-medium">Training Context</Table.Cell>
+									<Table.Cell class="h-10 align-middle font-medium">学習時コンテキスト</Table.Cell>
 
-									<Table.Cell>{formatNumber(modelMeta.n_ctx_train)} tokens</Table.Cell>
+									<Table.Cell>{formatNumber(modelMeta.n_ctx_train)} トークン</Table.Cell>
 								</Table.Row>
 							{/if}
 
 							<!-- Model Size -->
 							{#if modelMeta?.size}
 								<Table.Row>
-									<Table.Cell class="h-10 align-middle font-medium">Model Size</Table.Cell>
+									<Table.Cell class="h-10 align-middle font-medium">モデルサイズ</Table.Cell>
 
 									<Table.Cell>{formatFileSize(modelMeta.size)}</Table.Cell>
 								</Table.Row>
@@ -178,7 +178,7 @@
 							<!-- Parameters -->
 							{#if modelMeta?.n_params}
 								<Table.Row>
-									<Table.Cell class="h-10 align-middle font-medium">Parameters</Table.Cell>
+									<Table.Cell class="h-10 align-middle font-medium">パラメータ</Table.Cell>
 
 									<Table.Cell>{formatParameters(modelMeta.n_params)}</Table.Cell>
 								</Table.Row>
@@ -187,7 +187,7 @@
 							<!-- Embedding Size -->
 							{#if modelMeta?.n_embd}
 								<Table.Row>
-									<Table.Cell class="align-middle font-medium">Embedding Size</Table.Cell>
+									<Table.Cell class="align-middle font-medium">埋め込みサイズ</Table.Cell>
 
 									<Table.Cell>{formatNumber(modelMeta.n_embd)}</Table.Cell>
 								</Table.Row>
@@ -196,16 +196,16 @@
 							<!-- Vocabulary Size -->
 							{#if modelMeta?.n_vocab}
 								<Table.Row>
-									<Table.Cell class="align-middle font-medium">Vocabulary Size</Table.Cell>
+									<Table.Cell class="align-middle font-medium">語彙サイズ</Table.Cell>
 
-									<Table.Cell>{formatNumber(modelMeta.n_vocab)} tokens</Table.Cell>
+									<Table.Cell>{formatNumber(modelMeta.n_vocab)} トークン</Table.Cell>
 								</Table.Row>
 							{/if}
 
 							<!-- Vocabulary Type -->
 							{#if modelMeta?.vocab_type}
 								<Table.Row>
-									<Table.Cell class="align-middle font-medium">Vocabulary Type</Table.Cell>
+									<Table.Cell class="align-middle font-medium">語彙タイプ</Table.Cell>
 
 									<Table.Cell class="align-middle capitalize">{modelMeta.vocab_type}</Table.Cell>
 								</Table.Row>
@@ -213,7 +213,7 @@
 
 							<!-- Total Slots -->
 							<Table.Row>
-								<Table.Cell class="align-middle font-medium">Parallel Slots</Table.Cell>
+								<Table.Cell class="align-middle font-medium">並列スロット</Table.Cell>
 
 								<Table.Cell>{serverProps.total_slots}</Table.Cell>
 							</Table.Row>
@@ -221,7 +221,7 @@
 							<!-- Modalities -->
 							{#if modalities.length > 0}
 								<Table.Row>
-									<Table.Cell class="align-middle font-medium">Modalities</Table.Cell>
+									<Table.Cell class="align-middle font-medium">モダリティ</Table.Cell>
 
 									<Table.Cell>
 										<div class="flex flex-wrap gap-1">
@@ -233,7 +233,7 @@
 
 							<!-- Build Info -->
 							<Table.Row>
-								<Table.Cell class="align-middle font-medium">Build Info</Table.Cell>
+								<Table.Cell class="align-middle font-medium">ビルド情報</Table.Cell>
 
 								<Table.Cell class="align-middle font-mono text-xs"
 									>{serverProps.build_info}</Table.Cell
@@ -245,7 +245,7 @@
 								<Table.Row>
 									<Table.Cell class="py-4" colspan={2}>
 										<div class="flex flex-col gap-2">
-											<span class="font-medium">Chat Template</span>
+											<span class="font-medium">チャットテンプレート</span>
 
 											<div class="overflow-x-auto rounded-md bg-muted p-4">
 												<pre
@@ -261,13 +261,13 @@
 					<!-- Mobile: stacked layout; long values wrap instead of scrolling the page -->
 					<div class="flex min-w-0 flex-col gap-4 md:hidden">
 						<div class="min-w-0 space-y-1">
-							<div class="text-xs font-medium text-muted-foreground">Model</div>
+							<div class="text-xs font-medium text-muted-foreground">モデル</div>
 
 							<div class="flex min-w-0 items-start gap-2">
 								<span class="min-w-0 flex-1 break-all font-mono text-xs">{modelName}</span>
 
 								<ActionIconCopyToClipboard
-									ariaLabel="Copy model name to clipboard"
+									ariaLabel="モデル名をクリップボードにコピー"
 									canCopy={!!modelName}
 									text={modelName || ''}
 								/>
@@ -275,7 +275,7 @@
 						</div>
 
 						<div class="min-w-0 space-y-1">
-							<div class="text-xs font-medium text-muted-foreground">File Path</div>
+							<div class="text-xs font-medium text-muted-foreground">ファイルパス</div>
 
 							<div class="flex min-w-0 items-start gap-2">
 								<span class="min-w-0 flex-1 break-all font-mono text-xs"
@@ -283,7 +283,7 @@
 								>
 
 								<ActionIconCopyToClipboard
-									ariaLabel="Copy model path to clipboard"
+									ariaLabel="モデルパスをクリップボードにコピー"
 									text={serverProps.model_path}
 								/>
 							</div>
@@ -291,42 +291,42 @@
 
 						{#if serverProps?.default_generation_settings?.n_ctx}
 							{@render infoRow(
-								'Context Size',
-								`${formatNumber(serverProps.default_generation_settings.n_ctx)} tokens`
+								'コンテキストサイズ',
+								`${formatNumber(serverProps.default_generation_settings.n_ctx)} トークン`
 							)}
 						{:else}
-							{@render infoRow('Context Size', 'Not available', 'text-red-500')}
+							{@render infoRow('コンテキストサイズ', '利用できません', 'text-red-500')}
 						{/if}
 
 						{#if modelMeta?.n_ctx_train}
-							{@render infoRow('Training Context', `${formatNumber(modelMeta.n_ctx_train)} tokens`)}
+							{@render infoRow('学習時コンテキスト', `${formatNumber(modelMeta.n_ctx_train)} トークン`)}
 						{/if}
 
 						{#if modelMeta?.size}
-							{@render infoRow('Model Size', formatFileSize(modelMeta.size))}
+							{@render infoRow('モデルサイズ', formatFileSize(modelMeta.size))}
 						{/if}
 
 						{#if modelMeta?.n_params}
-							{@render infoRow('Parameters', formatParameters(modelMeta.n_params))}
+							{@render infoRow('パラメータ', formatParameters(modelMeta.n_params))}
 						{/if}
 
 						{#if modelMeta?.n_embd}
-							{@render infoRow('Embedding Size', formatNumber(modelMeta.n_embd))}
+							{@render infoRow('埋め込みサイズ', formatNumber(modelMeta.n_embd))}
 						{/if}
 
 						{#if modelMeta?.n_vocab}
-							{@render infoRow('Vocabulary Size', `${formatNumber(modelMeta.n_vocab)} tokens`)}
+							{@render infoRow('語彙サイズ', `${formatNumber(modelMeta.n_vocab)} トークン`)}
 						{/if}
 
 						{#if modelMeta?.vocab_type}
-							{@render infoRow('Vocabulary Type', modelMeta.vocab_type, 'capitalize')}
+							{@render infoRow('語彙タイプ', modelMeta.vocab_type, 'capitalize')}
 						{/if}
 
-						{@render infoRow('Parallel Slots', `${serverProps.total_slots}`)}
+						{@render infoRow('並列スロット', `${serverProps.total_slots}`)}
 
 						{#if modalities.length > 0}
 							<div class="min-w-0 space-y-1">
-								<div class="text-xs font-medium text-muted-foreground">Modalities</div>
+								<div class="text-xs font-medium text-muted-foreground">モダリティ</div>
 
 								<div class="flex flex-wrap gap-1">
 									<BadgesModality {modalities} />
@@ -335,14 +335,14 @@
 						{/if}
 
 						<div class="min-w-0 space-y-1">
-							<div class="text-xs font-medium text-muted-foreground">Build Info</div>
+							<div class="text-xs font-medium text-muted-foreground">ビルド情報</div>
 
 							<span class="block break-all font-mono text-xs">{serverProps.build_info}</span>
 						</div>
 
 						{#if serverProps.chat_template}
 							<div class="min-w-0 space-y-2">
-								<div class="text-xs font-medium text-muted-foreground">Chat Template</div>
+								<div class="text-xs font-medium text-muted-foreground">チャットテンプレート</div>
 
 								<div class="overflow-x-auto rounded-md bg-muted p-4">
 									<pre class="font-mono text-xs whitespace-pre">{serverProps.chat_template}</pre>
@@ -353,7 +353,7 @@
 				{/if}
 			{:else if !isLoadingModels}
 				<div class="flex items-center justify-center py-8">
-					<div class="text-sm text-muted-foreground">No model information available</div>
+					<div class="text-sm text-muted-foreground">利用可能なモデル情報がありません</div>
 				</div>
 			{/if}
 		</div>

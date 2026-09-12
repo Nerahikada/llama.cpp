@@ -37,7 +37,7 @@
 		{/if}
 
 		{#if showCopyIcon}
-			<ActionIconCopyToClipboard ariaLabel="Copy model name" text={model || ''} />
+			<ActionIconCopyToClipboard ariaLabel="モデル名をコピー" text={model || ''} />
 		{/if}
 	</BadgeInfo>
 {/snippet}
@@ -53,7 +53,7 @@
 			</Tooltip.Trigger>
 
 			<Tooltip.Content>
-				{onclick ? 'Click for model details' : model}
+				{onclick ? 'クリックしてモデルの詳細を表示' : model}
 			</Tooltip.Content>
 		</Tooltip.Root>
 	{:else}

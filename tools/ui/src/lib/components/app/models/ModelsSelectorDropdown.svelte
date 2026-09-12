@@ -171,7 +171,7 @@
 		<div class="flex items-center gap-2 text-xs text-muted-foreground">
 			<Loader2 class="h-3.5 w-3.5 animate-spin" />
 
-			Loading models…
+			モデルを読み込み中...
 		</div>
 	{:else if ms.options.length === 0 && ms.isRouter}
 		{#if currentModel}
@@ -185,7 +185,7 @@
 				<MODEL_SELECTOR_ICON class="h-3.5 w-3.5 shrink-0" />
 			</span>
 		{:else}
-			<p class="text-xs text-muted-foreground">No models available.</p>
+			<p class="text-xs text-muted-foreground">利用可能なモデルがありません。</p>
 		{/if}
 	{:else}
 		{@const selectedOption = ms.getDisplayOption()}
@@ -234,7 +234,7 @@
 											modelId={selectedOption.model}
 										/>
 									{:else}
-										<span class="min-w-0 font-medium">Select model</span>
+										<span class="min-w-0 font-medium">モデルを選択</span>
 									{/if}
 
 									{#if reasoning.isReasoningActive}
@@ -279,17 +279,17 @@
 									modelId={selectedOption.model}
 								/>
 							{:else}
-								<span class="min-w-0 flex-1 truncate text-muted-foreground">No model</span>
+								<span class="min-w-0 flex-1 truncate text-muted-foreground">モデルなし</span>
 							{/if}
 						</DropdownMenu.SubTrigger>
 
 						<DropdownMenu.SubContent class="w-100 max-w-[calc(100vw-2rem)] pt-0">
 							<DropdownMenuSearchable
-								emptyMessage="No models found."
+								emptyMessage="モデルが見つかりません。"
 								isEmpty={ms.filteredOptions.length === 0 && ms.isCurrentModelInCache}
 								onSearchChange={(v) => ms.setSearchTerm(v)}
 								onSearchKeyDown={handleSearchKeyDown}
-								placeholder="Search models..."
+								placeholder="モデルを検索..."
 								searchValue={ms.searchTerm}
 							>
 								<div class="models-list">
@@ -305,12 +305,12 @@
 										>
 											<ModelId class="flex-1" hideQuantization modelId={currentModel} />
 
-											<span class="ml-2 text-xs whitespace-nowrap opacity-70">(not available)</span>
+											<span class="ml-2 text-xs whitespace-nowrap opacity-70">(利用不可)</span>
 										</button>
 									{/if}
 
 									{#if ms.filteredOptions.length === 0}
-										<p class="px-4 py-3 text-sm text-muted-foreground">No models found.</p>
+										<p class="px-4 py-3 text-sm text-muted-foreground">モデルが見つかりません。</p>
 									{/if}
 
 									{#snippet modelOption(item: ModelItem, hideOrgName: boolean)}

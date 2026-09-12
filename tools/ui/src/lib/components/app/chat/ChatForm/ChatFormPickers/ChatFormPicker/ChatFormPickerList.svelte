@@ -38,7 +38,7 @@
 		items,
 		onSearchClose,
 		scrollTrigger,
-		searchPlaceholder = 'Search...',
+		searchPlaceholder = '検索...',
 		searchQuery = $bindable(),
 		selectedIndex,
 		showSearchInput,

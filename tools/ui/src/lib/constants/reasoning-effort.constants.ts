@@ -6,21 +6,21 @@ import type { ReasoningEffortLevel } from '$lib/types';
  * Keys match the ReasoningEffort enum values for type-safe lookups.
  */
 export const REASONING_EFFORT_LABELS: Record<string, string> = {
-	[ReasoningEffort.DEFAULT]: 'Default',
-	[ReasoningEffort.HIGH]: 'High',
-	[ReasoningEffort.LOW]: 'Low',
-	[ReasoningEffort.MAX]: 'Max',
-	[ReasoningEffort.MEDIUM]: 'Medium',
-	[ReasoningEffort.OFF]: 'Off'
+	[ReasoningEffort.DEFAULT]: '既定',
+	[ReasoningEffort.HIGH]: '高',
+	[ReasoningEffort.LOW]: '低',
+	[ReasoningEffort.MAX]: '最大',
+	[ReasoningEffort.MEDIUM]: '中',
+	[ReasoningEffort.OFF]: 'オフ'
 };
 
 export const REASONING_EFFORT_LEVELS: ReasoningEffortLevel[] = [
-	{ label: 'Default', value: ReasoningEffort.DEFAULT },
-	{ label: 'Off', value: ReasoningEffort.OFF },
-	{ label: 'Low', value: ReasoningEffort.LOW },
-	{ label: 'Medium', value: ReasoningEffort.MEDIUM },
-	{ label: 'High', value: ReasoningEffort.HIGH },
-	{ hasInfo: true, label: 'Max', value: ReasoningEffort.MAX }
+	{ label: '既定', value: ReasoningEffort.DEFAULT },
+	{ label: 'オフ', value: ReasoningEffort.OFF },
+	{ label: '低', value: ReasoningEffort.LOW },
+	{ label: '中', value: ReasoningEffort.MEDIUM },
+	{ label: '高', value: ReasoningEffort.HIGH },
+	{ hasInfo: true, label: '最大', value: ReasoningEffort.MAX }
 ];
 
 /**

@@ -16,12 +16,12 @@
 
 	let {
 		children,
-		emptyMessage = 'No items found',
+		emptyMessage = '項目が見つかりません',
 		footer,
 		isEmpty = false,
 		onSearchChange,
 		onSearchKeyDown,
-		placeholder = 'Search...',
+		placeholder = '検索...',
 		searchValue = $bindable('')
 	}: Props = $props();
 </script>

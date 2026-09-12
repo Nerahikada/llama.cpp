@@ -10,8 +10,8 @@
 	>
 		<Upload class="mb-4 h-12 w-12 text-muted-foreground" />
 
-		<p class="text-lg font-medium text-foreground">Attach a file</p>
+		<p class="text-lg font-medium text-foreground">ファイルを添付</p>
 
-		<p class="text-sm text-muted-foreground">Drop your files here to upload</p>
+		<p class="text-sm text-muted-foreground">ここにファイルをドロップしてアップロード</p>
 	</div>
 </div>

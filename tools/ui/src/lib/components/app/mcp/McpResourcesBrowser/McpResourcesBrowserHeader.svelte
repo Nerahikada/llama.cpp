@@ -18,7 +18,7 @@
 	<div class="mb-2 flex items-center gap-4">
 		<SearchInput
 			onInput={(value) => onSearch?.(value)}
-			placeholder="Search resources..."
+			placeholder="リソースを検索..."
 			value={searchQuery}
 		/>
 
@@ -27,7 +27,7 @@
 			disabled={isLoading}
 			onclick={onRefresh}
 			size="sm"
-			title="Refresh resources"
+			title="リソースを更新"
 			variant="ghost"
 		>
 			{#if isLoading}
@@ -38,5 +38,5 @@
 		</Button>
 	</div>
 
-	<h3 class="text-sm font-medium">Available resources</h3>
+	<h3 class="text-sm font-medium">利用可能なリソース</h3>
 </div>

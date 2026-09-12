@@ -41,7 +41,7 @@
 	const hasQuery = $derived(searchQuery.trim().length > 0);
 	const showHeader = $derived(hasQuery && filteredConversations.length > 0);
 
-	const emptyMessage = $derived(hasQuery ? 'No results found' : 'Start typing to see results');
+	const emptyMessage = $derived(hasQuery ? '結果が見つかりません' : '入力すると結果が表示されます');
 </script>
 
 <div class="flex min-h-0 flex-1 flex-col gap-2 whitespace-nowrap {className}">
@@ -49,7 +49,7 @@
 		<div
 			class="text-muted-foreground flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium"
 		>
-			Search results
+			検索結果
 		</div>
 	{/if}
 

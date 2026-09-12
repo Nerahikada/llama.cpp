@@ -17,7 +17,7 @@
 
 <div class="code-block-actions">
 	<ActionIconCopyToClipboard
-		ariaLabel={disabled ? 'Code incomplete' : 'Copy code'}
+		ariaLabel={disabled ? 'コードが未完成です' : 'コードをコピー'}
 		canCopy={!disabled}
 		text={code}
 	/>
@@ -27,7 +27,7 @@
 			{disabled}
 			icon={Eye}
 			onclick={() => onPreview!(code, language)}
-			tooltip={disabled ? 'Code incomplete' : 'Preview code'}
+			tooltip={disabled ? 'コードが未完成です' : 'コードをプレビュー'}
 		/>
 	{/if}
 </div>
