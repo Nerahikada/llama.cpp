@@ -47,7 +47,7 @@ export function useToolsPanel(): UseToolsPanelReturn {
 
 		if (toolsStore.toolGroups.length > 0) return null;
 
-		// Tools endpoint is unreachable (404) — server started without --tools
+		// Tools endpoint unreachable (403) — server started without tools
 		if (toolsStore.isToolsEndpointUnreachable) {
 			return `サーバーツールを有効にするには、llama-server を ${CLI_FLAGS.TOOLS} all または ${CLI_FLAGS.TOOLS} <name> フラグ付きで実行する必要があります。MCP ツールを表示するには、MCP サーバーを追加 / 有効化する必要があります。`;
 		}
